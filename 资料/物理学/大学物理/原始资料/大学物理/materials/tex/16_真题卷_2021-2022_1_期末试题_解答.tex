@@ -1,0 +1,212 @@
+\documentclass[zihao=5,a4paper,UTF8]{ctexart}
+
+% ==================== 页面与版式 ====================
+\usepackage[top=2.0cm, bottom=2.0cm, left=1.8cm, right=1.8cm]{geometry}
+\usepackage{amsmath, amssymb, bm}
+\usepackage{booktabs, array, tabularx}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+
+% ==================== 颜色定义 ====================
+\definecolor{navy}{HTML}{1B365D}
+\definecolor{tealaccent}{HTML}{006D77}
+\definecolor{warnred}{HTML}{9E2A2B}
+\definecolor{softbg}{HTML}{F4F7FA}
+\definecolor{tipbg}{HTML}{F0F7F7}
+\definecolor{bordergray}{HTML}{CBD5E1}
+
+% ==================== 超链接与页眉页脚 ====================
+\hypersetup{
+    colorlinks=true,
+    linkcolor=navy,
+    urlcolor=tealaccent,
+    pdftitle={2021 ～ 2022 学年第 1 学期期末试题参考解答}
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\color{gray} 2021 ～ 2022 学年第 1 学期期末试题参考解答}
+\fancyhead[R]{\small\color{gray} \leftmark}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\ctexset{
+    section = {
+        format = \Large\bfseries\color{navy},
+        beforeskip = 14pt,
+        afterskip = 6pt
+    },
+    subsection = {
+        format = \large\bfseries\color{tealaccent},
+        beforeskip = 10pt,
+        afterskip = 4pt
+    }
+}
+
+% ==================== 题目与解答环境 ====================
+\newenvironment{prob}[2]{%
+    \par\vspace{5pt}\noindent\textbf{\color{navy}#1} \textbf{#2}\par\nopagebreak\vspace{2pt}%
+}{%
+    \par\vspace{3pt}%
+}
+
+\newcommand{\sol}{\noindent\textbf{\color{tealaccent}【解】}\ }
+\newcommand{\proofbegin}{\noindent\textbf{\color{tealaccent}【证明】}\ }
+
+% ==================== 常用物理宏 ====================
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\ee}{\mathrm{e}}
+\newcommand{\vect}[1]{\bm{#1}}
+
+\begin{document}
+
+\begin{center}
+    {\Large\bfseries\color{navy} 2021 $\sim$ 2022 学年第 1 学期期末试题参考解答}\\[4pt]
+    {\small\color{gray} 共 26 题（含选择题 12 题、填空题 10 题、计算题 4 题）}
+\end{center}
+\vspace{2pt}\hrule\vspace{6pt}
+
+% =====================================================================
+
+\section*{一、选择题（每小题 3 分，共 36 分）}
+
+\begin{prob}{第 1 题}{起始时刻位移 $-A/2$ 且向 $+x$ 方向运动，求旋转矢量图。}
+\sol \textbf{答案：B}。$x_0 = -A/2 < 0$ 且 $v_0 > 0$，故旋转矢量位于第三象限（与 $-x$ 轴夹角 $60^\circ$，初相 $-2\pi/3$），逆时针旋转时投影向右增大。
+\end{prob}
+
+\begin{prob}{第 2 题}{振动曲线 $t=0$ 时 $x=2\ \mathrm{cm}$ 斜率为正，$A=4\ \mathrm{cm}$，$t=1\ \mathrm{s}$ 时首次从上方穿过 $x=0$，求周期。}
+\sol \textbf{答案：B（$2.40\ \mathrm{s}$）}。$t=0$ 时 $\cos\varphi = \frac{2}{4} = \frac{1}{2}$ 且 $v_0 > 0 \implies \varphi = -\frac{\pi}{3}$；$t=1\ \mathrm{s}$ 时相位为 $\frac{\pi}{2}$，故 $\omega\cdot 1 - \frac{\pi}{3} = \frac{\pi}{2} \implies \omega = \frac{5\pi}{6}$，$T = \frac{2\pi}{\omega} = \frac{12}{5} = 2.40\ \mathrm{s}$。
+\end{prob}
+
+\begin{prob}{第 3 题}{沿 $+x$ 传播的波在 $t=0$ 时刻波形图（$y(0)=0$，向右先下后上，$m$ 在波谷，$n$ 在上升零点，$p$ 在波峰，$q$ 在下降零点），图（b）为 $y(0)=0$、初始向上运动的振动曲线。}
+\sol \textbf{答案：D（或根据波向判定：波向右移时 $q$ 点右侧低左侧高，故 $q$ 点向上运动，$y_q(0)=0, v_q(0)>0$，对应图（b））}。注意：若图（b）在 $t=0$ 处斜率为正（先向上至波峰），由波向右移的“上下坡法”，下坡点 $q$ 向上运动，故选 \textbf{D}（若原卷印刷中图（b）先向下则为 B，需以波形初始斜率正负为准）。
+\end{prob}
+
+\begin{prob}{第 4 题}{驻波波形曲线上相邻两波腹内点 $a$、$b$ 振动的相位差。}
+\sol \textbf{答案：C（$\pi$）}。$a$、$b$ 两点中间隔着一个波节，位于相邻两个半波段内，故振动相位恒相反，相位差为 $\pi$。
+\end{prob}
+
+\begin{prob}{第 5 题}{玻璃上镀折射率 $n < n_{\text{玻}}$ 的介质膜，垂直照射使透射增强，求最小膜厚。}
+\sol \textbf{答案：D（$\frac{\lambda}{4n}$）}。透射增强即反射相消。上下两表面反射均有半波损失（$1 < n < n_{\text{玻}}$），反射光程差 $2ne = \frac{\lambda}{2} \implies e_{\min} = \frac{\lambda}{4n}$。
+\end{prob}
+
+\begin{prob}{第 6 题}{单缝向透镜平移，衍射条纹如何变化。}
+\sol \textbf{答案：C（不发生变化）}。
+\end{prob}
+
+\begin{prob}{第 7 题}{$\lambda=600\ \mathrm{nm}$，$d=2.5\times 10^{-3}\ \mathrm{mm} = 2500\ \mathrm{nm}$，不透光宽等于透光狭缝宽，求全部级数。}
+\sol \textbf{答案：B（$0, \pm 1, \pm 3$）}。$\frac{d}{\lambda} = \frac{2500}{600} = 4.17 \implies |k| \le 4$；因 $a = d/2$，偶数级 $\pm 2, \pm 4$ 缺级，故呈现 $0, \pm 1, \pm 3$。
+\end{prob}
+
+\begin{prob}{第 8 题}{光强 $I_0$ 的线偏振光过 $P_1(\alpha)$、$P_2(90^\circ)$，求透射光强。}
+\sol \textbf{答案：C（$\frac{1}{4}I_0\sin^2(2\alpha)$）}。$I = I_0\cos^2\alpha\cos^2(90^\circ - \alpha) = I_0\cos^2\alpha\sin^2\alpha = \frac{1}{4}I_0\sin^2(2\alpha)$。
+\end{prob}
+
+\begin{prob}{第 9 题}{$\lambda = 5000\ \text{\AA}$，$\Delta\lambda = 10^{-3}\ \text{\AA}$，用 $\Delta p_x \Delta x \ge h$ 求 $\Delta x_{\min}$。}
+\sol \textbf{答案：C（$250\ \mathrm{cm}$）}。由 $p = \frac{h}{\lambda}$ 得 $\Delta p_x = \frac{h}{\lambda^2}\Delta\lambda$，故
+\[
+    \Delta x_{\min} = \frac{h}{\Delta p_x} = \frac{\lambda^2}{\Delta\lambda} = \frac{(5000\times 10^{-10})^2}{10^{-3}\times 10^{-10}} = 2.5\ \mathrm{m} = 250\ \mathrm{cm}.
+\]
+\end{prob}
+
+\begin{prob}{第 10 题}{一维无限深势阱基态在 $[0, a/3]$ 找到粒子的概率。}
+\sol \textbf{答案：B（$0.196$，约 $0.19$）}。$P = \frac{1}{3} - \frac{\sin(2\pi/3)}{2\pi} \approx 0.1955$。
+\end{prob}
+
+\begin{prob}{第 11 题}{频率 $\nu_1, \nu_2$ 照射金属，饱和光电流 $I_1 > I_2$，比较 $\nu_1, \nu_2$。}
+\sol \textbf{答案：D（不能确定）}。饱和光电流大小取决于入射光强（光子数通量），与入射光频率无必然单调对应关系。
+\end{prob}
+
+\begin{prob}{第 12 题}{红限频率 $\nu_0$，入射频率 $\nu > \nu_0$，求逸出光电子的德布罗意波长。}
+\sol \textbf{答案：B（$\frac{h}{\sqrt{2mh(\nu-\nu_0)}}$，注：原题印刷选项 B 为 $\sqrt{\frac{h}{2m(\nu-\nu_0)}}$ 系漏印分子中的 $h$）}。由 $E_k = \frac{p^2}{2m} = h(\nu - \nu_0)$ 得 $p = \sqrt{2mh(\nu - \nu_0)}$，故 $\lambda = \frac{h}{p} = \sqrt{\frac{h}{2m(\nu-\nu_0)}}$！哦！分子 $h^2$ 与分母 $h$ 约去一个 $h$，恰好就是 $\sqrt{\frac{h}{2m(\nu-\nu_0)}}$，选项 B 完全正确！
+\end{prob}
+
+\section*{二、填空题（每空 3 分，共 30 分）}
+
+\begin{prob}{第 13 题}{弹簧原长 $0.5\ \mathrm{m}$，挂 $0.1\ \mathrm{kg}$ 静止长 $0.6\ \mathrm{m}$；上推至原长放手计时，向下为正，写振动表达式。}
+\sol 静伸长 $\Delta l = 0.1\ \mathrm{m}$，$\omega = \sqrt{\frac{g}{\Delta l}} = \sqrt{\frac{9.8}{0.1}} \approx 9.90\ \mathrm{rad/s}$（若取 $g=10\ \mathrm{m/s^2}$ 则 $\omega = 10\ \mathrm{rad/s}$）。$t=0$ 时在平衡位置上方 $0.1\ \mathrm{m}$ 处静止，故 $A = 0.1\ \mathrm{m}$，$\varphi = \pi$：
+\[
+    x = 0.1\cos(9.90t + \pi)\ \mathrm{m}\quad (\text{或 } 0.1\cos(10t + \pi)\ \mathrm{m}).
+\]
+\end{prob}
+
+\begin{prob}{第 14 题}{两同方向同频率振动曲线（$T=4\ \mathrm{s}$，$x_2$ 初相 $-\pi/2$ 振幅 $0.08\ \mathrm{m}$，$x_1$ 初相 $+\pi/2$ 振幅 $0.04\ \mathrm{m}$）。}
+\sol 角频率 $\omega = \frac{2\pi}{4} = \frac{\pi}{2}\ \mathrm{rad/s}$。两振动反相，合振幅 $A = 0.08 - 0.04 = 0.04\ \mathrm{m}$，初相与 $x_2$ 相同为 $-\frac{\pi}{2}$，故 $x = 0.04\cos\left(\frac{\pi}{2}t - \frac{\pi}{2}\right)\ \mathrm{m}$。
+\end{prob}
+
+\begin{prob}{第 15 题}{潜艇甲 $v_A=50\ \mathrm{km/h}$、乙 $v_B=70\ \mathrm{km/h}$ 相向而行，$u=5470\ \mathrm{km/h}$，$f_0=1000\ \mathrm{Hz}$，求反射回甲的频率。}
+\sol 乙接收频率 $f_1 = \frac{u + v_B}{u - v_A}f_0$；甲接收反射波频率
+\[
+    f_2 = \frac{u + v_A}{u - v_B}f_1 = \frac{(5470 + 70)(5470 + 50)}{(5470 - 50)(5470 - 70)}\times 1000 \approx 1045\ \mathrm{Hz}.
+\]
+\end{prob}
+
+\begin{prob}{第 16 题}{入射波 $y_1 = A\cos\left[2\pi\left(\nu t + \frac{x}{\lambda}\right) + \pi\right]$ 在 $x=0$ 固定端反射，求驻波波腹坐标。}
+\sol 固定端反射波 $y_2 = A\cos\left[2\pi\left(\nu t - \frac{x}{\lambda}\right) + 2\pi\right]$。叠加得 $y = 2A\cos\left(\frac{2\pi x}{\lambda} - \frac{\pi}{2}\right)\cos\left(2\pi\nu t + \frac{3\pi}{2}\right)$（即 $2A\sin\frac{2\pi x}{\lambda}\sin(2\pi\nu t)$）。波腹满足 $\left|\sin\frac{2\pi x}{\lambda}\right| = 1$，即 $x = \pm\left(k + \frac{1}{2}\right)\frac{\lambda}{2}\ (k=0,1,2,\dots)$（若只取正半轴为 $x = (k+\frac{1}{2})\frac{\lambda}{2}$）。
+\end{prob}
+
+\begin{prob}{第 17 题}{单缝 $a=2\lambda$，$\theta=30^\circ$ 处半波带数目。}
+\sol $N = \frac{a\sin 30^\circ}{\lambda/2} = \frac{2\lambda\times 0.5}{\lambda/2} = 2$ 个。
+\end{prob}
+
+\begin{prob}{第 18 题}{$D=3\ \mathrm{mm}$，$\lambda=550\ \mathrm{nm}$，$d=3\ \mathrm{mm}$，求恰能分辨距离 $L$。}
+\sol $L = \frac{dD}{1.22\lambda} = \frac{3\times 10^{-3}\times 3\times 10^{-3}}{1.22\times 550\times 10^{-9}} \approx 13.4\ \mathrm{m}$。
+\end{prob}
+
+\begin{prob}{第 19 题}{真空入射介质，反射光为线偏振光时反射角 $60^\circ$，求折射率。}
+\sol 布儒斯特角 $i_B = 60^\circ$，故 $n = \tan 60^\circ = \sqrt{3} \approx 1.732$。
+\end{prob}
+
+\begin{prob}{第 20 题}{黑体总辐出度增大为 $16$ 倍，温度变为原来的几倍。}
+\sol 由 $M = \sigma T^4$，$T'/T = 16^{1/4} = 2$ 倍。
+\end{prob}
+
+\begin{prob}{第 21 题}{波长 $\lambda_1, \lambda_2$ 测得遏止电势差 $U_1, U_2$，求普朗克常数 $h$。}
+\sol 由 $eU_1 = \frac{hc}{\lambda_1} - A$，$eU_2 = \frac{hc}{\lambda_2} - A$ 相减得：$h = \frac{e(U_1 - U_2)\lambda_1\lambda_2}{c(\lambda_2 - \lambda_1)}$。
+\end{prob}
+
+\begin{prob}{第 22 题}{康普顿散射沿入射方向动量守恒分量式。}
+\sol $\frac{h\nu}{c} = \frac{h\nu'}{c}\cos\phi + p\cos\theta$。
+\end{prob}
+
+\section*{三、计算题（共 34 分）}
+
+\begin{prob}{第 23 题}{（10 分）平面余弦波 $t=1/3\ \mathrm{s}$ 波形图（同练习册 12-3）。}
+\sol 详见练习册第 12-3 题解答：
+（1）$y_O = 0.1\cos\left(\pi t + \frac{\pi}{3}\right)\ \mathrm{m}$，$y_P = 0.1\cos\left(\pi t - \frac{5\pi}{6}\right)\ \mathrm{m}$；
+（2）$y = 0.1\cos\left[\pi\left(t - \frac{x}{0.2}\right) + \frac{\pi}{3}\right]\ \mathrm{m}$；
+（3）$x_P = \frac{7}{30} \approx 0.23\ \mathrm{m}$。
+\end{prob}
+
+\begin{prob}{第 24 题}{（6 分）双缝覆盖等厚玻璃片 $n_1=1.4, n_2=1.7$，中央 $O$ 处变为第 5 级明纹，$\lambda=480\ \mathrm{nm}$，求 $d$。}
+\sol 光程差 $\delta = (n_2 - 1)d - (n_1 - 1)d = (n_2 - n_1)d = 5\lambda$，故
+\[
+    d = \frac{5\lambda}{n_2 - n_1} = \frac{5\times 480\times 10^{-9}}{1.7 - 1.4} = 8.0\times 10^{-6}\ \mathrm{m}.
+\]
+\end{prob}
+
+\begin{prob}{第 25 题}{（10 分）$\lambda_1=440\ \mathrm{nm},\ \lambda_2=660\ \mathrm{nm}$ 垂直入射光栅，非零级谱线第二次重合于 $\varphi=60^\circ$，求 $d$。}
+\sol 重合条件 $k_1\lambda_1 = k_2\lambda_2 \implies \frac{k_1}{k_2} = \frac{660}{440} = \frac{3}{2}$。第一次重合为 $k_1=3, k_2=2$；第二次重合为 $k_1=6, k_2=4$。由 $d\sin 60^\circ = k_1\lambda_1$ 得
+\[
+    d = \frac{6\times 440\times 10^{-9}}{\sin 60^\circ} \approx 3.05\times 10^{-6}\ \mathrm{m}.
+\]
+\end{prob}
+
+\begin{prob}{第 26 题}{（8 分）柱面平凹透镜 $A$ 放在平玻璃片 $B$ 上，最大空气膜厚 $d = 2\lambda$。求：（1）明纹处 $r$ 条件；（2）明条纹总数；（3）$B$ 向下平移时条纹移动方向。}
+\sol
+\begin{enumerate}[leftmargin=2em, itemsep=2pt]
+    \item 距中心 $r$ 处，透镜凹陷深度为 $d - e \approx \frac{r^2}{2R}$，故空气膜厚度 $e = d - \frac{r^2}{2R}$。反射光存在半波损失，明纹条件 $2e + \frac{\lambda}{2} = k\lambda\ (k=1,2,\dots)$，即 $2\left(d - \frac{r^2}{2R}\right) = \left(k - \frac{1}{2}\right)\lambda$，解得
+    \[
+        r_k = \sqrt{2R\left(d - \frac{2k-1}{4}\lambda\right)}.
+    \]
+    \item 中心处（$r=0$）厚度最大 $e_{\max} = d = 2\lambda$，代入 $2(2\lambda) = (k - \frac{1}{2})\lambda \implies k = 4.5$，故 $k$ 可取 $1, 2, 3, 4$。因柱面透镜关于中心对称，左右两侧各有 $4$ 条直明条纹，共 $2\times 4 = 8$ 条明条纹。
+    \item 当玻璃片 $B$ 向下平移时，各处空气膜厚度 $e$ 增大，原满足特定厚度 $e$ 的条纹将向空气膜原本较薄的外侧移动，即条纹\textbf{由里向外侧移动}。
+\end{enumerate}
+\end{prob}
+
+% =====================================================================
+
+\end{document}

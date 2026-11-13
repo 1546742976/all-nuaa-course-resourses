@@ -1,0 +1,1114 @@
+\documentclass[zihao=5,a4paper,UTF8]{ctexart}
+
+% ==================== 页面与版式 ====================
+\usepackage[top=2.0cm, bottom=2.0cm, left=1.8cm, right=1.8cm]{geometry}
+\usepackage{amsmath, amssymb, bm}
+\usepackage{booktabs, array, tabularx}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+
+% ==================== 颜色定义 ====================
+\definecolor{navy}{HTML}{1B365D}
+\definecolor{tealaccent}{HTML}{006D77}
+\definecolor{warnred}{HTML}{9E2A2B}
+\definecolor{softbg}{HTML}{F4F7FA}
+\definecolor{tipbg}{HTML}{F0F7F7}
+\definecolor{bordergray}{HTML}{CBD5E1}
+
+% ==================== 超链接与页眉页脚 ====================
+\hypersetup{
+    colorlinks=true,
+    linkcolor=navy,
+    urlcolor=tealaccent,
+    pdftitle={大学物理（下）练习册完整解答}
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\color{gray} 大学物理（下）练习册完整解答}
+\fancyhead[R]{\small\color{gray} \leftmark}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\ctexset{
+    section = {
+        format = \Large\bfseries\color{navy},
+        beforeskip = 14pt,
+        afterskip = 6pt
+    },
+    subsection = {
+        format = \large\bfseries\color{tealaccent},
+        beforeskip = 10pt,
+        afterskip = 4pt
+    }
+}
+
+% ==================== 题目与解答环境 ====================
+\newenvironment{prob}[2]{%
+    \par\vspace{6pt}\noindent\textbf{\color{navy}#1} \textbf{#2}\par\nopagebreak\vspace{2pt}%
+}{%
+    \par\vspace{4pt}%
+}
+
+\newcommand{\sol}{\noindent\textbf{\color{tealaccent}【解】}\ }
+\newcommand{\proofbegin}{\noindent\textbf{\color{tealaccent}【证明】}\ }
+
+% ==================== 常用物理宏 ====================
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\ee}{\mathrm{e}}
+\newcommand{\vect}[1]{\bm{#1}}
+
+\begin{document}
+
+\begin{center}
+    {\Huge\bfseries\color{navy} 大学物理（下）练习册完整解答}\\[6pt]
+    {\small\color{gray} 适用范围：第十一章 机械振动（11-1～11-9）、第十二章 机械波（12-1～12-14）、第十三章 光学（13-1～13-30）、第十四章 量子物理（14-1～14-20），共 73 题}
+\end{center}
+\vspace{2pt}
+\hrule
+\vspace{6pt}
+
+\begin{tcolorbox}[colback=softbg, colframe=navy, boxrule=0.6pt, arc=2pt, left=8pt, right=8pt, top=5pt, bottom=5pt]
+\small
+\textbf{常用物理常量取值说明}（除题干另有给定外）：普朗克常量 $h = 6.626\times 10^{-34}\ \mathrm{J\cdot s}$，约化普朗克常量 $\hbar = \frac{h}{2\pi} \approx 1.055\times 10^{-34}\ \mathrm{J\cdot s}$，真空光速 $c = 3.00\times 10^{8}\ \mathrm{m/s}$（精确值 $2.998\times 10^{8}\ \mathrm{m/s}$），基本电荷 $e = 1.602\times 10^{-19}\ \mathrm{C}$，电子静止质量 $m_0 = 9.109\times 10^{-31}\ \mathrm{kg}$（静能 $m_0 c^2 = 0.511\ \mathrm{MeV}$），电子康普顿波长 $\lambda_c = \frac{h}{m_0 c} \approx 2.426\times 10^{-3}\ \mathrm{nm}$，维恩常量 $b = 2.897\times 10^{-3}\ \mathrm{m\cdot K}$，斯特藩-玻尔兹曼常量 $\sigma = 5.67\times 10^{-8}\ \mathrm{W/(m^2\cdot K^4)}$。
+\end{tcolorbox}
+
+% =====================================================================
+\section{第十一章\quad 机械振动}
+% =====================================================================
+
+\subsection{谐振动表达式}
+
+\begin{prob}{11-1}{一物体作简谐运动的曲线如图 11-1 所示（$A = 4\ \mathrm{cm}$，$t=0$ 时 $x_0 = -2\sqrt{2}\ \mathrm{cm}$ 且向正方向运动，$t=0.5\ \mathrm{s}$ 时首次经过 $x=0$），试求其谐振动表达式。}
+\sol 设谐振动表达式为 $x = A\cos(\omega t + \varphi)$。
+\begin{enumerate}[leftmargin=2em, itemsep=2pt]
+    \item 由图知振幅 $A = 4\ \mathrm{cm} = 4\times 10^{-2}\ \mathrm{m}$。
+    \item $t=0$ 时，$x_0 = -2\sqrt{2}\ \mathrm{cm}$，故 $\cos\varphi = \frac{x_0}{A} = -\frac{\sqrt{2}}{2}$。又 $t=0$ 时曲线斜率 $\frac{\dd x}{\dd t}\big|_{t=0} > 0$（即 $v_0 > 0$，$\sin\varphi < 0$），因此初相位
+    \[
+        \varphi = -\frac{3\pi}{4}.
+    \]
+    \item 当 $t = 0.5\ \mathrm{s}$ 时，物体首次到达平衡位置 $x = 0$ 且向正方向运动，此时相位为 $-\frac{\pi}{2}$，即
+    \[
+        \omega \times 0.5 - \frac{3\pi}{4} = -\frac{\pi}{2} \implies \omega = \frac{\pi}{2}\ \mathrm{rad/s}.
+    \]
+\end{enumerate}
+故谐振动表达式为
+\[
+    x = 4\times 10^{-2}\cos\left(\frac{\pi}{2}t - \frac{3\pi}{4}\right)\ \mathrm{m}.
+\]
+\end{prob}
+
+\begin{prob}{11-2}{一质量为 $0.02\ \mathrm{kg}$ 的弹簧振子沿 $x$ 轴作谐振动，振幅为 $0.12\ \mathrm{m}$，周期为 $2\ \mathrm{s}$。当 $t=0$ 时，振子位于 $0.06\ \mathrm{m}$ 处，并向 $x$ 轴正方向运动，试求：（1）用旋转矢量法确定初相位并写出谐振动表达式；（2）$t=0.5\ \mathrm{s}$ 时的位置、速度和加速度；（3）从 $x=-0.06\ \mathrm{m}$ 处向 $x$ 轴负方向运动再回到平衡位置所需时间。}
+\sol
+\begin{enumerate}[leftmargin=2em, itemsep=2pt]
+    \item 角频率 $\omega = \frac{2\pi}{T} = \frac{2\pi}{2} = \pi\ \mathrm{rad/s}$。$t=0$ 时，$\cos\varphi = \frac{x_0}{A} = \frac{0.06}{0.12} = \frac{1}{2}$；因振子向 $x$ 轴正方向运动（$v_0 > 0$），在旋转矢量图上矢量位于第四象限，逆时针旋转时其 $x$ 轴投影增大，故 $\varphi = -\frac{\pi}{3}$。振动表达式为
+    \[
+        x = 0.12\cos\left(\pi t - \frac{\pi}{3}\right)\ \mathrm{m}.
+    \]
+    \item 将 $t = 0.5\ \mathrm{s}$ 代入位置、速度、加速度表达式：
+    \begin{align*}
+        x &= 0.12\cos\left(\frac{\pi}{2} - \frac{\pi}{3}\right) = 0.12\cos\frac{\pi}{6} \approx 0.10\ \mathrm{m}\quad (\text{精确值 } 0.104\ \mathrm{m}),\\
+        v &= -\omega A\sin\left(\pi t - \frac{\pi}{3}\right) = -0.12\pi\sin\frac{\pi}{6} = -0.06\pi \approx -0.19\ \mathrm{m/s},\\
+        a &= -\omega^2 x = -\pi^2 \times 0.1039 \approx -1.03\ \mathrm{m/s^2}.
+    \end{align*}
+    \item 当 $x = -0.06\ \mathrm{m}$ 且向 $x$ 轴负方向运动时，相位 $\theta_1$ 满足 $\cos\theta_1 = -\frac{1}{2}$ 且 $\sin\theta_1 > 0$，即 $\theta_1 = \frac{2\pi}{3}$（第二象限）；再回到平衡位置（经负最大位移回到 $x=0$ 向正方向运动）时，相位 $\theta_2 = \frac{3\pi}{2}$。相位差 $\Delta\theta = \frac{3\pi}{2} - \frac{2\pi}{3} = \frac{5\pi}{6}$，所需时间为
+    \[
+        \Delta t = \frac{\Delta\theta}{\omega} = \frac{5\pi/6}{\pi} = \frac{5}{6}\ \mathrm{s}.
+    \]
+\end{enumerate}
+\end{prob}
+
+\begin{prob}{11-3}{水平轻质弹簧一端固定，另一端所系轻绳绕过一滑轮垂挂一质量为 $m$ 的物体。若弹簧劲度系数为 $k$，滑轮半径为 $R$，转动惯量为 $J$。（1）证明物体作简谐振动；（2）求振动周期；（3）设 $t=0$ 时弹簧无伸缩，物体由静止下落，写出物体的谐振动表达式。}
+\sol
+\begin{enumerate}[leftmargin=2em, itemsep=2pt]
+    \item \textbf{证明}：取平衡位置为坐标原点 $O$，竖直向下为 $x$ 轴正方向。平衡时弹簧伸长量为 $x_0$，满足 $kx_0 = mg$。当物体偏离平衡位置位移为 $x$ 时，弹簧总伸长量为 $x_0 + x$，绳与物体接触处速度为 $v = \dot{x}$，滑轮角速度 $\omega_{\text{轮}} = \frac{v}{R}$。以系统为研究对象，机械能为
+    \[
+        E = \frac{1}{2}mv^2 + \frac{1}{2}J\left(\frac{v}{R}\right)^2 + \frac{1}{2}k(x_0+x)^2 - mgx = \text{常量}.
+    \]
+    两边对 $t$ 求导（并利用 $kx_0 = mg$）：
+    \[
+        \left(m + \frac{J}{R^2}\right)v\frac{\dd v}{\dd t} + k(x_0+x)v - mgv = 0 \implies \frac{\dd^2 x}{\dd t^2} + \frac{k}{m + J/R^2}x = 0.
+    \]
+    令 $\omega^2 = \frac{k}{m + J/R^2}$，即 $\ddot{x} + \omega^2 x = 0$，故物体作简谐振动。
+    \item 振动周期为
+    \[
+        T = \frac{2\pi}{\omega} = 2\pi\sqrt{\frac{m + J/R^2}{k}}.
+    \]
+    \item $t=0$ 时弹簧无伸缩，即物体位于平衡位置上方 $x_0 = \frac{mg}{k}$ 处，坐标 $x(0) = -\frac{mg}{k}$，且初速度 $v(0) = 0$。故振幅 $A = \frac{mg}{k}$，初相位 $\varphi = \pi$。谐振动表达式为
+    \[
+        x = \frac{mg}{k}\cos\left(\sqrt{\frac{k}{m + J/R^2}}\,t + \pi\right).
+    \]
+\end{enumerate}
+\end{prob}
+
+\begin{prob}{11-4}{一质量为 $m$ 的小球在一个光滑的半径为 $R$ 的球形碗底作微小振动，如图 11-4 所示。设 $t=0$ 时，$\theta=0$，小球的速度为 $v_0$，并向右运动。求在振幅很小的情况下，小球的谐振动表达式。}
+\sol 取向右偏离最低点的角位移 $\theta$ 为广义坐标（$\theta \ll 1$）。小球沿切线方向的动力学方程（或绕球心 $O$ 的转动定律）为
+\[
+    mR^2\frac{\dd^2\theta}{\dd t^2} = -mgR\sin\theta \approx -mgR\theta \implies \frac{\dd^2\theta}{\dd t^2} + \frac{g}{R}\theta = 0.
+\]
+故小球作简谐振动，角频率 $\omega = \sqrt{\frac{g}{R}}$。设 $\theta = \theta_m\cos(\omega t + \varphi)$。
+由初始条件 $t=0$ 时 $\theta(0) = 0$，且向右运动（$\dot{\theta}(0) = \frac{v_0}{R} > 0$）：
+\[
+    \cos\varphi = 0,\quad -\omega\theta_m\sin\varphi = \frac{v_0}{R} > 0 \implies \varphi = -\frac{\pi}{2},\quad \theta_m = \frac{v_0}{\omega R} = \frac{v_0}{\sqrt{Rg}}.
+\]
+因此小球的角位移谐振动表达式为
+\[
+    \theta = \frac{v_0}{\sqrt{Rg}}\cos\left(\sqrt{\frac{g}{R}}\,t - \frac{\pi}{2}\right).
+\]
+\end{prob}
+
+\subsection{简谐振动能量}
+
+\begin{prob}{11-5}{一弹簧振子作简谐振动，振幅 $A=0.20\ \mathrm{m}$，劲度系数 $k=2.0\ \mathrm{N/m}$，质量 $m=0.50\ \mathrm{kg}$。求：（1）当动能和势能相等时，物体的位移是多少？（2）设 $t=0$ 时物体在正最大位移处，则在一个周期内达到动能和势能相等处所需的时间是多少？}
+\sol
+\begin{enumerate}[leftmargin=2em, itemsep=2pt]
+    \item 当 $E_k = E_p$ 时，$E_p = \frac{1}{2}E$，即 $\frac{1}{2}kx^2 = \frac{1}{2}\left(\frac{1}{2}kA^2\right)$，得
+    \[
+        x = \pm\frac{A}{\sqrt{2}} = \pm\frac{0.20}{\sqrt{2}} \approx \pm 0.14\ \mathrm{m}.
+    \]
+    \item 角频率 $\omega = \sqrt{\frac{k}{m}} = \sqrt{\frac{2.0}{0.50}} = 2.0\ \mathrm{rad/s}$，周期 $T = \frac{2\pi}{\omega} = \pi\ \mathrm{s}$。$t=0$ 时在正最大位移处，即 $\varphi = 0$，$x = A\cos(\omega t)$。令 $\cos(\omega t) = \pm\frac{\sqrt{2}}{2}$，在一个周期 $[0, T)$ 内对应的相位为 $\omega t = \frac{\pi}{4},\, \frac{3\pi}{4},\, \frac{5\pi}{4},\, \frac{7\pi}{4}$，对应时刻分别为
+    \[
+        t_1 = \frac{\pi}{8} \approx 0.39\ \mathrm{s},\quad t_2 = \frac{3\pi}{8} \approx 1.18\ \mathrm{s},\quad t_3 = \frac{5\pi}{8} \approx 1.96\ \mathrm{s},\quad t_4 = \frac{7\pi}{8} \approx 2.75\ \mathrm{s}.
+    \]
+\end{enumerate}
+\end{prob}
+
+\begin{prob}{11-6}{质量为 $0.01\ \mathrm{kg}$ 的物体，以振幅 $1.0\times 10^{-2}\ \mathrm{m}$ 作简谐运动，其最大加速度为 $4.0\ \mathrm{m/s^2}$。求：（1）振动的周期；（2）物体通过平衡位置时的总能量和动能；（3）当物体的位移大小为振幅的一半时，动能和势能各占总能量的多少？}
+\sol
+\begin{enumerate}[leftmargin=2em, itemsep=2pt]
+    \item 由 $a_{\max} = \omega^2 A$ 得 $\omega = \sqrt{\frac{a_{\max}}{A}} = \sqrt{\frac{4.0}{1.0\times 10^{-2}}} = 20\ \mathrm{rad/s}$，故周期
+    \[
+        T = \frac{2\pi}{\omega} = \frac{2\pi}{20} = 0.1\pi \approx 0.314\ \mathrm{s}.
+    \]
+    \item 物体通过平衡位置时势能为零，总能量等于此时动能：
+    \[
+        E = E_{k,\max} = \frac{1}{2}m\omega^2 A^2 = \frac{1}{2}\times 0.01\times 20^2 \times (1.0\times 10^{-2})^2 = 2.0\times 10^{-4}\ \mathrm{J}.
+    \]
+    \item 当 $|x| = \frac{A}{2}$ 时，势能占比 $\frac{E_p}{E} = \frac{\frac{1}{2}kx^2}{\frac{1}{2}kA^2} = \left(\frac{x}{A}\right)^2 = \frac{1}{4}$，动能占比 $\frac{E_k}{E} = 1 - \frac{1}{4} = \frac{3}{4}$。
+\end{enumerate}
+\end{prob}
+
+\subsection{同方向简谐振动的合成}
+
+\begin{prob}{11-7}{两个同方向的简谐振动，表达式分别为 $x_1 = 0.05\cos\left(10t + \frac{3}{4}\pi\right)$，$x_2 = 0.06\cos\left(10t + \frac{1}{4}\pi\right)$。（1）求它们合成振动的振幅和初相位；（2）若另有一振动 $x_3 = 0.07\cos(10t + \varphi_3)$，则 $\varphi_3$ 为多少时，$x_1+x_3$ 的振幅最大？又 $\varphi_3$ 为多少时，$x_2+x_3$ 的振幅最小？}
+\sol
+\begin{enumerate}[leftmargin=2em, itemsep=2pt]
+    \item 两振动相位差 $\Delta\varphi = \frac{3\pi}{4} - \frac{\pi}{4} = \frac{\pi}{2}$，合成振幅为
+    \[
+        A = \sqrt{A_1^2 + A_2^2 + 2A_1A_2\cos\Delta\varphi} = \sqrt{0.05^2 + 0.06^2} = \sqrt{0.0061} \approx 7.8\times 10^{-2}\ \mathrm{m}.
+    \]
+    初相位 $\varphi$ 满足
+    \[
+        \tan\varphi = \frac{A_1\sin\frac{3\pi}{4} + A_2\sin\frac{\pi}{4}}{A_1\cos\frac{3\pi}{4} + A_2\cos\frac{\pi}{4}} = \frac{0.05 + 0.06}{-0.05 + 0.06} = 11 \implies \varphi = \arctan 11 \approx 1.48\ \mathrm{rad}
+    \]
+    （分子分母均大于零，位于第一象限）。
+    \item $x_1 + x_3$ 振幅最大要求两者同相：$\varphi_3 - \frac{3\pi}{4} = 2k\pi \implies \varphi_3 = 2k\pi + \frac{3\pi}{4}\ (k=0,\pm 1,\pm 2,\dots)$。\\
+    $x_2 + x_3$ 振幅最小要求两者反相：$\varphi_3 - \frac{\pi}{4} = (2k+1)\pi \implies \varphi_3 = 2k\pi + \frac{5\pi}{4}\ (k=0,\pm 1,\pm 2,\dots)$。
+\end{enumerate}
+\end{prob}
+
+\begin{prob}{11-8}{有两个同方向同频率的简谐运动，其合成振动的振幅为 $0.20\ \mathrm{m}$，合振动的相位与第一个振动的相位差为 $\pi/6$，第一个振动的振幅为 $0.173\ \mathrm{m}$，求第二个振动的振幅及两振动的相位差。}
+\sol 注意 $0.173 \approx 0.20\times\frac{\sqrt{3}}{2} = A\cos\frac{\pi}{6}$。由旋转矢量合成三角形及余弦定理：
+\[
+    A_2 = \sqrt{A^2 + A_1^2 - 2AA_1\cos\frac{\pi}{6}} = \sqrt{0.20^2 + 0.173^2 - 2\times 0.20\times 0.173\times\frac{\sqrt{3}}{2}} \approx 0.10\ \mathrm{m}.
+\]
+又由 $A_1^2 + A_2^2 = 0.173^2 + 0.10^2 \approx 0.040 = A^2$，可知旋转矢量 $\vect{A}_1$ 与 $\vect{A}_2$ 互相垂直，故两振动的相位差为 $\frac{\pi}{2}$。
+\end{prob}
+
+\begin{prob}{11-9}{图 11-9 表示两个同方向、同频率的简谐振动余弦曲线，其角频率为 $\omega$，分别求出（a）和（b）情形时：（1）合振动振幅；（2）合振动的振动表达式。}
+\sol
+\begin{enumerate}[leftmargin=2em, itemsep=2pt]
+    \item \textbf{情形（a）}：由图可知，$t=0$ 时 $x_1(0) = 0$ 且斜率为正，故 $\varphi_1 = -\frac{\pi}{2}$；$x_2(0) = 0$ 且斜率为负，故 $\varphi_2 = +\frac{\pi}{2}$。两振动反相，合振动振幅为 $A = |A_2 - A_1|$。若 $A_2 > A_1$，合振动与 $x_2$ 同相，表达式为
+    \[
+        x = |A_2 - A_1|\cos\left(\omega t + \frac{\pi}{2}\right).
+    \]
+    （注：若 $A_1 > A_2$，则初相位为 $-\frac{\pi}{2}$。）
+    \item \textbf{情形（b）}：由图可知，$t=0$ 时 $x_1(0) = 0$ 且斜率为负，故 $\varphi_1 = +\frac{\pi}{2}$；$x_2(0) = A_2$，故 $\varphi_2 = 0$。两矢量正交，合振动振幅为
+    \[
+        A = \sqrt{A_1^2 + A_2^2}.
+    \]
+    矢量 $\vect{A}_1$ 在 $+y$ 轴（相位 $\frac{\pi}{2}$），$\vect{A}_2$ 在 $+x$ 轴（相位 $0$），故合振动初相位 $\varphi = \arctan\frac{A_1}{A_2}$（位于第一象限），合振动表达式为
+    \[
+        x = \sqrt{A_1^2 + A_2^2}\cos\left(\omega t + \arctan\frac{A_1}{A_2}\right).
+    \]
+\end{enumerate}
+\end{prob}
+
+% =====================================================================
+\section{第十二章\quad 机械波}
+% =====================================================================
+
+\subsection{波函数}
+
+\begin{prob}{12-1}{一横波沿绳子传播时的波函数为 $y = 0.05\cos(10\pi t - 4\pi x)\ (\mathrm{SI})$，求：（1）此波的振幅、波速、频率和波长；（2）绳子上各质点振动的最大速度和最大加速度；（3）$x=0.2\ \mathrm{m}$ 处的质点在 $t=1\ \mathrm{s}$ 时的相位，它是原点处质点在哪一时刻的相位？（4）分别画出 $t=1\ \mathrm{s}$、$1.25\ \mathrm{s}$、$1.50\ \mathrm{s}$ 时的波形（说明波形特征）。}
+\sol
+\begin{enumerate}[leftmargin=2em, itemsep=2pt]
+    \item 与标准波函数 $y = A\cos\left(\omega t - \frac{2\pi}{\lambda}x\right)$ 对比：
+    \[
+        A = 0.05\ \mathrm{m},\quad \omega = 10\pi\ \mathrm{rad/s} \implies f = \frac{\omega}{2\pi} = 5\ \mathrm{Hz},
+    \]
+    \[
+        \frac{2\pi}{\lambda} = 4\pi \implies \lambda = 0.5\ \mathrm{m},\quad u = \lambda f = 0.5\times 5 = 2.5\ \mathrm{m/s}.
+    \]
+    \item 质点最大速度 $v_{\max} = \omega A = 10\pi \times 0.05 = 0.5\pi \approx 1.57\ \mathrm{m/s}$；最大加速度 $a_{\max} = \omega^2 A = (10\pi)^2 \times 0.05 = 5\pi^2 \approx 49.3\ \mathrm{m/s^2}$。
+    \item $x=0.2\ \mathrm{m}$ 处在 $t=1\ \mathrm{s}$ 时的相位为 $\phi = 10\pi(1) - 4\pi(0.2) = 9.2\pi$。令原点 $x=0$ 在 $t'$ 时刻具有相同相位：$10\pi t' = 9.2\pi \implies t' = 0.92\ \mathrm{s}$。
+    \item 各时刻波形方程：
+    \begin{itemize}[leftmargin=1.5em]
+        \item $t=1\ \mathrm{s}$：$y = 0.05\cos(10\pi - 4\pi x) = 0.05\cos(4\pi x)$（标准余弦波形，在 $x=0,\,0.5\ \mathrm{m}$ 处取波峰 $+0.05\ \mathrm{m}$）；
+        \item $t=1.25\ \mathrm{s}$：$y = 0.05\cos(12.5\pi - 4\pi x) = 0.05\sin(4\pi x)$（正弦波形，向右平移 $\frac{5}{4}\lambda$，在 $x=0.125\ \mathrm{m}$ 处取波峰）；
+        \item $t=1.50\ \mathrm{s}$：$y = 0.05\cos(15\pi - 4\pi x) = -0.05\cos(4\pi x)$（反余弦波形，在 $x=0$ 处取波谷 $-0.05\ \mathrm{m}$）。
+    \end{itemize}
+\end{enumerate}
+\end{prob}
+
+\begin{prob}{12-2}{波源作简谐振动，周期为 $1.0\times 10^{-2}\ \mathrm{s}$，以它经平衡位置向正方向运动时为时间起点，若此振动以 $u=400\ \mathrm{m/s}$ 的速度沿直线传播，求：（1）距波源为 $8.0\ \mathrm{m}$ 处的质点 $P$ 的振动表达式和初相；（2）距波源为 $9.0\ \mathrm{m}$ 和 $10.0\ \mathrm{m}$ 处两点的相位差。}
+\sol
+\begin{enumerate}[leftmargin=2em, itemsep=2pt]
+    \item $\omega = \frac{2\pi}{T} = 200\pi\ \mathrm{rad/s}$，波长 $\lambda = uT = 400\times 1.0\times 10^{-2} = 4.0\ \mathrm{m}$。$t=0$ 时波源经平衡位置向正方向运动，故波源初相 $\varphi_0 = -\frac{\pi}{2}$，波函数为
+    \[
+        y = A\cos\left[200\pi\left(t - \frac{x}{400}\right) - \frac{\pi}{2}\right].
+    \]
+    将 $x_P = 8.0\ \mathrm{m}$ 代入，得 $P$ 点振动表达式为
+    \[
+        y_P = A\cos\left(200\pi t - \frac{9}{2}\pi\right),
+    \]
+    初相 $\varphi_P = -\frac{9}{2}\pi$（或等价写为 $-\frac{\pi}{2}$）。
+    \item 两点距离 $\Delta x = 10.0 - 9.0 = 1.0\ \mathrm{m}$，相位差为
+    \[
+        \Delta\phi = \frac{2\pi}{\lambda}\Delta x = \frac{2\pi}{4.0}\times 1.0 = \frac{\pi}{2}.
+    \]
+\end{enumerate}
+\end{prob}
+
+\begin{prob}{12-3}{图 12-3 为一沿 $x$ 轴正向传播的平面余弦波在 $t = 1/3\ \mathrm{s}$ 时的波形（振幅 $A=10\ \mathrm{cm}=0.1\ \mathrm{m}$，$x=0$ 处 $y=-5\ \mathrm{cm}$ 且波形右移将使 $y$ 增大，半个波长标示距离为 $20\ \mathrm{cm}=0.2\ \mathrm{m}$，波形与 $x$ 轴在 $O$ 右侧的第一个下降零点为 $P$），其周期 $T=2\ \mathrm{s}$。求：（1）$O$ 点和 $P$ 点的振动表达式；（2）波函数；（3）$P$ 点离 $O$ 点的距离。}
+\sol
+\begin{enumerate}[leftmargin=2em, itemsep=2pt]
+    \item 由图可知，$A = 0.1\ \mathrm{m}$，由两对称波谷/零点间半波长为 $0.2\ \mathrm{m}$ 得波长 $\lambda = 0.4\ \mathrm{m}$，$\omega = \frac{2\pi}{T} = \pi\ \mathrm{rad/s}$。波沿 $+x$ 传播，波形向右平移，在 $t=1/3\ \mathrm{s}$ 时 $O$ 点处于 $y = -0.05\ \mathrm{m}$ 且正在向下运动（波形左高右低？由图见 $x=0$ 右侧波形上升，故波向右移时 $O$ 点质点向下运动，速度 $v<0$），所以 $t=1/3\ \mathrm{s}$ 时 $O$ 点相位为 $\frac{2\pi}{3}$。因此 $O$ 点初相 $\varphi_O = \frac{2\pi}{3} - \pi\times\frac{1}{3} = \frac{\pi}{3}$，即
+    \[
+        y_O = 0.1\cos\left(\pi t + \frac{\pi}{3}\right)\ \mathrm{m}.
+    \]
+    在 $t=1/3\ \mathrm{s}$ 时刻，$P$ 点位于 $y=0$ 且正在向上运动（即将向正方向运动，左侧波峰右移），或由图知 $P$ 点处于下降沿与 $x$ 轴交点：由 $y = 0.1\cos(\pi t - \frac{2\pi}{0.4}x + \frac{\pi}{3})$，在 $t=1/3\ \mathrm{s}$ 时，$O$ 点相位为 $\frac{2\pi}{3}$，向右经过第一个波峰（相位 $0$）再到下降零点 $P$（相位 $-\frac{\pi}{2}$），相位滞后 $\frac{2\pi}{3} - (-\frac{\pi}{2}) = \frac{7\pi}{6}$。故 $P$ 点初相 $\varphi_P = \frac{\pi}{3} - \frac{7\pi}{6} = -\frac{5\pi}{6}$，振动表达式为
+    \[
+        y_P = 0.1\cos\left(\pi t - \frac{5\pi}{6}\right)\ \mathrm{m}.
+    \]
+    \item 波速 $u = \frac{\lambda}{T} = \frac{0.4}{2} = 0.2\ \mathrm{m/s}$，波函数为
+    \[
+        y = 0.1\cos\left[\pi\left(t - \frac{x}{0.2}\right) + \frac{\pi}{3}\right]\ \mathrm{m}.
+    \]
+    \item $P$ 点与 $O$ 点相位差 $\Delta\phi = \frac{7\pi}{6}$，故距离
+    \[
+        x_P = \frac{\Delta\phi}{2\pi}\lambda = \frac{7/6}{2}\times 0.4 = \frac{7}{30} \approx 0.23\ \mathrm{m}.
+    \]
+\end{enumerate}
+\end{prob}
+
+\begin{prob}{12-4}{一平面简谐波在媒质中以速度 $u=30\ \mathrm{cm/s} = 0.3\ \mathrm{m/s}$ 自左向右传播。已知波线上某点 $A$ 的振动表达式为 $y = 3\cos(4\pi t - \pi)\ (\mathrm{SI})$，$D$ 点在 $A$ 点的右方 $9\ \mathrm{m}$ 处，取 $x$ 轴方向水平向右。（1）以 $A$ 为坐标原点，求波函数，并写出 $D$ 点的振动表达式；（2）以 $A$ 点左方 $5\ \mathrm{m}$ 处的 $O$ 点为原点，写出波函数和 $D$ 点的振动表达式。}
+\sol
+\begin{enumerate}[leftmargin=2em, itemsep=2pt]
+    \item 以 $A$ 为原点，波向右传播（沿 $+x$ 方向），波函数为
+    \[
+        y = 3\cos\left[4\pi\left(t - \frac{x}{0.3}\right) - \pi\right]\ (\mathrm{SI}).
+    \]
+    将 $x_D = 9\ \mathrm{m}$ 代入，$4\pi\times\frac{9}{0.3} = 120\pi$（$2\pi$ 的整数倍），故 $D$ 点振动表达式为
+    \[
+        y_D = 3\cos(4\pi t - \pi)\ (\mathrm{SI}).
+    \]
+    \item 以 $A$ 左方 $5\ \mathrm{m}$ 处 $O$ 为原点，则 $A$ 点坐标 $x_A = 5\ \mathrm{m}$，$O$ 点比 $A$ 点超前时间 $\Delta t = \frac{5}{0.3}\ \mathrm{s}$，超前相位 $4\pi\times\frac{5}{0.3} = \frac{200\pi}{3} = 66\pi + \frac{2\pi}{3}$。故 $O$ 点振动初相为 $-\pi + \frac{2\pi}{3} = -\frac{\pi}{3}$（等价于 $+\frac{5\pi}{3}$），波函数为
+    \[
+        y = 3\cos\left[4\pi\left(t - \frac{x}{0.3}\right) + \frac{5\pi}{3}\right]\ (\mathrm{SI}).
+    \]
+    此时 $x_D = 5 + 9 = 14\ \mathrm{m}$，代入得 $4\pi\times\frac{14}{0.3} = \frac{560\pi}{3} = 186\pi + \frac{2\pi}{3}$，故 $D$ 点振动表达式仍为
+    \[
+        y_D' = 3\cos(4\pi t - \pi)\ (\mathrm{SI}).
+    \]
+\end{enumerate}
+\end{prob}
+
+\subsection{波动能量}
+
+\begin{prob}{12-5}{一正弦式声波，沿直径为 $0.14\ \mathrm{m}$ 的圆柱形管行进，波的强度为 $9.0\times 10^{-3}\ \mathrm{W/m^2}$，频率为 $300\ \mathrm{Hz}$，波速 $300\ \mathrm{m/s}$。问：（1）波中的平均能量密度和最大能量密度为多少？（2）每两个相邻的、相位差为 $2\pi$ 的同相面间有多少能量？}
+\sol
+\begin{enumerate}[leftmargin=2em, itemsep=2pt]
+    \item 平均能量密度 $\bar{w} = \frac{I}{u} = \frac{9.0\times 10^{-3}}{300} = 3.0\times 10^{-5}\ \mathrm{J/m^3}$；最大能量密度 $w_{\max} = 2\bar{w} = 6.0\times 10^{-5}\ \mathrm{J/m^3}$。
+    \item 相邻两同相面距离为一个波长 $\lambda = \frac{u}{f} = \frac{300}{300} = 1.0\ \mathrm{m}$，管截面积 $S = \pi r^2 = \pi(0.07)^2\ \mathrm{m^2}$，体积 $V = S\lambda$，总能量为
+    \[
+        E = \bar{w}V = 3.0\times 10^{-5}\times \pi\times 0.07^2\times 1.0 \approx 4.62\times 10^{-7}\ \mathrm{J}.
+    \]
+\end{enumerate}
+\end{prob}
+
+\begin{prob}{12-6}{一平面简谐声波的频率为 $500\ \mathrm{Hz}$，在空气中（$\rho = 1.3\ \mathrm{kg/m^3}$）以速度 $u=340\ \mathrm{m/s}$ 传播。到达人耳时，振幅 $A=10^{-4}\ \mathrm{cm} = 10^{-6}\ \mathrm{m}$，试求人耳接收到声波的平均能量密度和声强。}
+\sol 平均能量密度与声强分别为
+\begin{align*}
+    \bar{w} &= \frac{1}{2}\rho\omega^2 A^2 = \frac{1}{2}\times 1.3\times (2\pi\times 500)^2\times (10^{-6})^2 \approx 6.42\times 10^{-6}\ \mathrm{J/m^3},\\
+    I &= \bar{w}u = 6.415\times 10^{-6}\times 340 \approx 2.18\times 10^{-3}\ \mathrm{W/m^2}.
+\end{align*}
+\end{prob}
+
+\subsection{波的干涉}
+
+\begin{prob}{12-7}{如图 12-7 所示，两个相干波源 $S_1$、$S_2$，频率都是 $100\ \mathrm{Hz}$，振幅均为 $5\ \mathrm{cm}$，波速均为 $10\ \mathrm{cm/s}$。已知波源 $S_1$ 的初相位为 $0$，$S_1O=S_2O=12\ \mathrm{cm}$，$OP=16\ \mathrm{cm}$，试求下列情况下，$S_1$、$S_2$ 连线的中垂线上 $P$ 点的振动表达式。（1）$S_1$、$S_2$ 的相位差为 $0$；（2）$S_2$ 相位超前 $S_1$ 相位 $\pi/2$；（3）$S_1$、$S_2$ 的相位差为 $\pi$。}
+\sol 波长 $\lambda = \frac{u}{f} = \frac{10}{100} = 0.1\ \mathrm{cm}$，角频率 $\omega = 2\pi f = 200\pi\ \mathrm{rad/s}$。$P$ 到两波源距离相等：$r_1 = r_2 = \sqrt{12^2 + 16^2} = 20\ \mathrm{cm} = 0.2\ \mathrm{m}$，故波程差 $\Delta r = 0$。$S_1$ 传到 $P$ 点的振动相位为 $\omega t - \frac{2\pi r_1}{\lambda} = 200\pi t - \frac{2\pi\times 20}{0.1} = 200\pi t - 400\pi$（即初相为 $0$，或写作 $200\pi(t-2)$）。
+\begin{enumerate}[leftmargin=2em, itemsep=2pt]
+    \item $\Delta\varphi_0 = 0$ 时，两列波在 $P$ 点同相加强，合振幅 $A_P = 2A = 10\ \mathrm{cm} = 0.1\ \mathrm{m}$，振动表达式为
+    \[
+        y = 0.1\cos[200\pi(t-2)]\ \mathrm{m}\quad (\text{或 } 0.1\cos(200\pi t)\ \mathrm{m}).
+    \]
+    \item $S_2$ 超前 $S_1$ 相位 $\frac{\pi}{2}$，即 $\varphi_{02} = \frac{\pi}{2}$，两波在 $P$ 点相位差 $\Delta\phi = \frac{\pi}{2}$，合振幅 $A_P = \sqrt{2}A = 5\sqrt{2}\ \mathrm{cm} \approx 7.07\times 10^{-2}\ \mathrm{m}$，合初相为 $\frac{\pi}{4}$，振动表达式为
+    \[
+        y = 7.07\times 10^{-2}\cos\left(200\pi t + \frac{\pi}{4}\right)\ \mathrm{m}.
+    \]
+    \item 相位差为 $\pi$ 时，两波在 $P$ 点反相相消，合振幅 $A_P = 0$，故 $y = 0$。
+\end{enumerate}
+\end{prob}
+
+\begin{prob}{12-8}{如图 12-8 所示，两个相距为 $D$ 的相干波源 $S_1$、$S_2$，它们振动的相位相同，因而探测器在 $S_1$、$S_2$ 的垂直平分线上距波源 $L$ 处的 $O$ 点得相长干涉（即互相加强），若探测器往上移动，到距离 $O$ 点为 $h$ 的 $P$ 处首次得到相消干涉。设 $L$ 比 $D$ 及 $h$ 都大得多，求波长 $\lambda$。（提示：$r_1+r_2 \approx 2L$）}
+\sol 由几何关系，
+\[
+    r_1^2 = L^2 + \left(h - \frac{D}{2}\right)^2,\quad r_2^2 = L^2 + \left(h + \frac{D}{2}\right)^2.
+\]
+两式相减：
+\[
+    r_2^2 - r_1^2 = (r_2 - r_1)(r_2 + r_1) = 2Dh.
+\]
+因 $L \gg D, h$，有 $r_1 + r_2 \approx 2L$，故波程差 $\Delta r = r_2 - r_1 \approx \frac{2Dh}{2L} = \frac{Dh}{L}$。\\
+因两波源同相，首次出现相消干涉对应波程差 $\Delta r = \frac{\lambda}{2}$，于是
+\[
+    \frac{Dh}{L} = \frac{\lambda}{2} \implies \lambda = \frac{2hD}{L}.
+\]
+\end{prob}
+
+\begin{prob}{12-9}{同一介质中的两个波源位于 $A$、$B$ 两点，其振幅相等，频率都是 $100\ \mathrm{Hz}$，$B$ 的相位比 $A$ 超前 $\pi$。若 $A$、$B$ 两点相距为 $30\ \mathrm{m}$，波在介质中的传播速度为 $400\ \mathrm{m/s}$。问在 $AB$ 连线上 $A$ 的左侧和 $B$ 的右侧能出现因干涉而静止的点吗？试求出 $AB$ 连线上因干涉而静止的各点位置。}
+\sol 波长 $\lambda = \frac{u}{f} = \frac{400}{100} = 4\ \mathrm{m}$。设波源 $A$ 的初相 $\varphi_A = 0$，则 $\varphi_B = \pi$。对连线上任一点 $P$，干涉相消（静止）条件为：
+\[
+    \Delta\phi = (\varphi_B - \varphi_A) - \frac{2\pi}{\lambda}(r_B - r_A) = (2k+1)\pi\quad (k \in \mathbb{Z}).
+\]
+代入 $\varphi_B - \varphi_A = \pi$ 得 $\frac{2\pi}{\lambda}(r_B - r_A) = 2k\pi \implies r_B - r_A = k\lambda = 4k\ (\mathrm{m})$（或写 $r_A - r_B = 4k$）。
+\begin{itemize}[leftmargin=1.5em, itemsep=2pt]
+    \item \textbf{$A$ 的左侧与 $B$ 的右侧}：在 $A$ 左侧，恒有 $r_B - r_A = AB = 30\ \mathrm{m}$；在 $B$ 右侧，恒有 $r_A - r_B = 30\ \mathrm{m}$。因 $30$ 不是 $\lambda = 4\ \mathrm{m}$ 的整数倍（$30/4 = 7.5$），故 \textbf{$A$ 左侧和 $B$ 右侧均不能出现静止点}（事实上均为干涉加强）。
+    \item \textbf{$AB$ 之间}：设点 $P$ 距 $A$ 点距离为 $x\ (0 < x < 30\ \mathrm{m})$，则 $r_A = x$，$r_B = 30 - x$，于是
+    \[
+        r_B - r_A = 30 - 2x = 4k \implies x = 15 - 2k\ (\mathrm{m}).
+    \]
+    由 $0 < 15 - 2k < 30$ 得 $-7 \le k \le 7$，故静止点距 $A$ 点的距离分别为
+    \[
+        x = 1,\, 3,\, 5,\, \dots,\, 29\ \mathrm{m}\quad (\text{共 } 15\text{ 个点}).
+    \]
+\end{itemize}
+\end{prob}
+
+\subsection{驻波}
+
+\begin{prob}{12-10}{一弦上的驻波方程为 $y = 3.0\times 10^{-2}\cos(1.6\pi x)\cos(550\pi t)\ (\mathrm{SI})$。（1）如将此驻波看成是由传播方向相反，振幅及波速均相等的两列相干波叠加而成的，求它们的振幅和波速；（2）求相邻波节之间的距离；（3）求 $t = 3.0\times 10^{-3}\ \mathrm{s}$ 时位于 $x = 0.625\ \mathrm{m}$ 处质点的振动速度。}
+\sol
+\begin{enumerate}[leftmargin=2em, itemsep=2pt]
+    \item 与驻波方程 $y = 2A\cos\left(\frac{2\pi}{\lambda}x\right)\cos(\omega t)$ 对比：
+    \[
+        2A = 3.0\times 10^{-2}\ \mathrm{m} \implies A = 1.5\times 10^{-2}\ \mathrm{m};
+    \]
+    \[
+        \frac{2\pi}{\lambda} = 1.6\pi \implies \lambda = 1.25\ \mathrm{m},\quad \omega = 550\pi\ \mathrm{rad/s} \implies f = 275\ \mathrm{Hz},
+    \]
+    故波速 $u = \lambda f = 1.25\times 275 = 343.75 \approx 343.8\ \mathrm{m/s}$。
+    \item 相邻波节间距离为 $\frac{\lambda}{2} = \frac{1.25}{2} = 0.625\ \mathrm{m}$。
+    \item 质点振动速度 $v = \frac{\partial y}{\partial t} = -3.0\times 10^{-2}\times 550\pi\cos(1.6\pi x)\sin(550\pi t)$。代入 $x=0.625\ \mathrm{m}$，$t=3.0\times 10^{-3}\ \mathrm{s}$：
+    \[
+        \cos(1.6\pi\times 0.625) = \cos\pi = -1,\quad \sin(550\pi\times 3.0\times 10^{-3}) = \sin(1.65\pi) \approx -0.8910,
+    \]
+    \[
+        v = -16.5\pi\times (-1)\times (-0.8910) \approx -46.2\ \mathrm{m/s}.
+    \]
+\end{enumerate}
+\end{prob}
+
+\begin{prob}{12-11}{设入射波函数为 $y_{\text{入}} = A\cos\left[2\pi\left(\frac{t}{T} + \frac{x}{\lambda}\right) + \frac{\pi}{2}\right]$，在弦上传播并在 $x=0$ 处发生反射，反射点为自由端。试求（1）反射波的波函数；（2）合成波方程；（3）波腹、波节的位置。}
+\sol
+\begin{enumerate}[leftmargin=2em, itemsep=2pt]
+    \item 自由端反射无半波损失。入射波沿 $-x$ 方向传播，在 $x=0$ 处振动为 $y_{\text{入}}(0,t) = A\cos\left(\frac{2\pi t}{T} + \frac{\pi}{2}\right)$；反射波沿 $+x$ 方向传播，其波函数为
+    \[
+        y_{\text{反}} = A\cos\left[2\pi\left(\frac{t}{T} - \frac{x}{\lambda}\right) + \frac{\pi}{2}\right].
+    \]
+    \item 合成波方程（利用和差化积）：
+    \[
+        y = y_{\text{入}} + y_{\text{反}} = 2A\cos\left(\frac{2\pi x}{\lambda}\right)\cos\left(\frac{2\pi t}{T} + \frac{\pi}{2}\right).
+    \]
+    \item 波腹位置满足 $\left|\cos\frac{2\pi x}{\lambda}\right| = 1 \implies \frac{2\pi x}{\lambda} = k\pi \implies x_{\text{腹}} = \frac{k\lambda}{2}\ (k=0,\pm 1,\pm 2,\dots)$；\\
+    波节位置满足 $\cos\frac{2\pi x}{\lambda} = 0 \implies \frac{2\pi x}{\lambda} = \left(k+\frac{1}{2}\right)\pi \implies x_{\text{节}} = (2k+1)\frac{\lambda}{4}\ (k=0,\pm 1,\pm 2,\dots)$。
+\end{enumerate}
+\end{prob}
+
+\begin{prob}{12-12}{如图 12-12 所示，设从 $O$ 点发出一沿 $x$ 轴正向传播的平面简谐波，其频率为 $\nu$，振幅为 $A$，波速为 $u$，当 $O$ 点运动到正方向最大位移处开始计时。（1）写出波函数；（2）距 $O$ 点 $L$ 处有一反射壁，在反射处有半波损失，写出反射波函数；（3）设 $L$ 和波长 $\lambda$ 之比为 $100$，求 $x = \frac{L}{2}$ 处的振动规律。}
+\sol
+\begin{enumerate}[leftmargin=2em, itemsep=2pt]
+    \item $t=0$ 时 $O$ 点位于正最大位移处，故 $\varphi_O = 0$，入射波函数为
+    \[
+        y = A\cos\left[2\pi\nu\left(t - \frac{x}{u}\right)\right].
+    \]
+    \item 入射波到达 $x=L$ 处时相位为 $2\pi\nu\left(t - \frac{L}{u}\right)$，反射时有半波损失（相位突变 $\pi$），再向左传到 $x$ 处（路程 $L-x$），故反射波函数为
+    \[
+        y' = A\cos\left[2\pi\nu\left(t - \frac{2L - x}{u}\right) + \pi\right].
+    \]
+    \item 在 $x = \frac{L}{2}$ 处，因 $\frac{L}{\lambda} = 100$，$\frac{L}{u} = \frac{100}{\nu}$，则 $2\pi\nu\cdot\frac{L/2}{u} = 100\pi$，$2\pi\nu\cdot\frac{3L/2}{u} = 300\pi$。两列波在此处分别为
+    \[
+        y = A\cos(2\pi\nu t - 100\pi) = A\cos(2\pi\nu t),\quad y' = A\cos(2\pi\nu t - 300\pi + \pi) = -A\cos(2\pi\nu t).
+    \]
+    合位移 $y + y' = 0$，即 $x = \frac{L}{2}$ 处为波节，始终静止。
+\end{enumerate}
+\end{prob}
+
+\subsection{多普勒效应}
+
+\begin{prob}{12-13}{用安装在火车站铁道旁的仪器，测得火车驶近车站时和离开车站时火车汽笛的频率分别为 $410\ \mathrm{Hz}$ 和 $380\ \mathrm{Hz}$，求火车速度。（已知空气中的声速为 $u=330\ \mathrm{m/s}$）}
+\sol 观察者静止（$v_R = 0$），设火车速度为 $v_S$，汽笛固有频率为 $\nu_0$。驶近与离开时测得频率分别为
+\[
+    \nu_1 = \frac{u}{u - v_S}\nu_0 = 410\ \mathrm{Hz},\quad \nu_2 = \frac{u}{u + v_S}\nu_0 = 380\ \mathrm{Hz}.
+\]
+两式相除消去 $\nu_0$：
+\[
+    \frac{\nu_1}{\nu_2} = \frac{u + v_S}{u - v_S} \implies v_S = u\frac{\nu_1 - \nu_2}{\nu_1 + \nu_2} = 330\times\frac{410 - 380}{410 + 380} = \frac{9900}{790} \approx 12.5\ \mathrm{m/s}.
+\]
+\end{prob}
+
+\begin{prob}{12-14}{一静止波源向一飞行物发射频率为 $\nu_s=30\ \mathrm{kHz}$ 的超声波，飞行物以速度 $v$ 离开波源飞出，站在波源处相对波源静止的观察者测得波源发射波与飞行物反射波两振动合成的拍频为 $\nu_b=100\ \mathrm{Hz}$，已知声速 $u=340\ \mathrm{m/s}$，试计算飞行物的运动速度。}
+\sol 飞行物离开波源飞出，先作为接收者接收到频率 $\nu' = \frac{u - v}{u}\nu_s$；再作为运动波源以 $\nu'$ 向静止观察者反射，观察者接收频率为
+\[
+    \nu'' = \frac{u}{u + v}\nu' = \frac{u - v}{u + v}\nu_s.
+\]
+拍频 $\nu_b = \nu_s - \nu'' = \nu_s\left(1 - \frac{u - v}{u + v}\right) = \frac{2v}{u + v}\nu_s$。解得
+\[
+    v = \frac{\nu_b u}{2\nu_s - \nu_b} = \frac{100\times 340}{2\times 30000 - 100} \approx 0.57\ \mathrm{m/s}.
+\]
+\end{prob}
+
+% =====================================================================
+\section{第十三章\quad 光学}
+% =====================================================================
+
+\subsection{双缝干涉}
+
+\begin{prob}{13-1}{在双缝干涉实验中，两缝的间距为 $0.6\ \mathrm{mm}$，照亮狭缝的光源是汞弧灯加上绿色滤光片。在 $2.5\ \mathrm{m}$ 远处的屏幕上出现干涉条纹，测得相邻两明条纹中心的距离为 $2.27\ \mathrm{mm}$。试计算入射光的波长。}
+\sol 由双缝干涉条纹间距公式 $\Delta x = \frac{D}{d}\lambda$，得
+\[
+    \lambda = \frac{d\,\Delta x}{D} = \frac{0.6\times 10^{-3}\times 2.27\times 10^{-3}}{2.5} = 5.448\times 10^{-7}\ \mathrm{m} \approx 545\ \mathrm{nm}.
+\]
+\end{prob}
+
+\begin{prob}{13-2}{如图 13-2 所示，波长 $\lambda=550\ \mathrm{nm}$ 的单色光射在相距 $d=2\times 10^{-4}\ \mathrm{m}$ 的双缝上，屏到双缝的距离 $D=2\ \mathrm{m}$，求：（1）相邻明条纹的距离；（2）中央明纹两侧的两条第 10 级明纹中心的间距；（3）如用一厚度为 $e=6.6\times 10^{-6}\ \mathrm{m}$，折射率为 $n=1.58$ 的云母片覆盖上面的一条缝，零级明纹将向什么方向移动？移到原来的第几级明纹处？}
+\sol
+\begin{enumerate}[leftmargin=2em, itemsep=2pt]
+    \item 相邻明条纹间距 $\Delta x = \frac{D\lambda}{d} = \frac{2\times 550\times 10^{-9}}{2\times 10^{-4}} = 5.5\times 10^{-3}\ \mathrm{m}$。
+    \item 两侧第 $10$ 级明纹中心的间距为 $2\times 10\,\Delta x = 20\times 5.5\times 10^{-3} = 0.11\ \mathrm{m}$。
+    \item 覆盖上方狭缝 $S_1$ 后，光程增加 $\Delta L = (n-1)e$，零级明纹满足总光程差为零，故向光程增大的一侧（\textbf{向上}）移动。移动的条纹级数为
+    \[
+        k = \frac{(n-1)e}{\lambda} = \frac{(1.58 - 1)\times 6.6\times 10^{-6}}{550\times 10^{-9}} = 6.96 \approx 7,
+    \]
+    即移到原来的第 $7$ 级明纹处。
+\end{enumerate}
+\end{prob}
+
+\begin{prob}{13-3}{在双缝干涉实验中，单色光源 $S_0$ 到两缝 $S_1$ 和 $S_2$ 的距离分别为 $l_1$ 和 $l_2$，并且 $l_1 - l_2 = 3\lambda$，$\lambda$ 为入射光的波长，双缝之间的距离为 $d$，双缝到屏幕的距离为 $D$，如图 13-3 所示。求：（1）零级明纹到屏幕中央 $O$ 的距离；（2）相邻明条纹的距离。}
+\sol
+\begin{enumerate}[leftmargin=2em, itemsep=2pt]
+    \item 屏幕上角位置 $\theta$ 处的总光程差为 $\delta = (l_1 + r_1) - (l_2 + r_2) = (l_1 - l_2) + (r_1 - r_2) = 3\lambda - d\sin\theta$（若取上方为正，$r_2 - r_1 \approx d\sin\theta \implies r_1 - r_2 = -d\sin\theta$）。零级明纹处 $\delta = 0$，即
+    \[
+        d\sin\theta = 3\lambda \implies x_0 \approx D\sin\theta = \frac{3D\lambda}{d}\quad (\text{位于 } O \text{ 点上方}).
+    \]
+    \item 覆盖/偏置光源只使整套条纹平移，不改变条纹间距，故相邻明条纹距离仍为 $\Delta x = \frac{D\lambda}{d}$。
+\end{enumerate}
+\end{prob}
+
+\begin{prob}{13-4}{上题中，欲使零级明条纹移回到 $O$ 点，应在哪个缝处覆盖一薄云母片才有可能？若用波长 $589\ \mathrm{nm}$ 的单色光，云母片的厚度应为多少？已知云母片的折射率为 $1.58$。}
+\sol 因 $l_1 - l_2 = 3\lambda$，经 $S_1$ 的光路原本比 $S_2$ 多 $3\lambda$。要使零级明纹回到 $O$ 点（此时 $r_1 = r_2$），必须在光程较短的 \textbf{$S_2$ 缝}处覆盖云母片来补偿这 $3\lambda$ 的光程差：
+\[
+    (n - 1)e = 3\lambda \implies e = \frac{3\lambda}{n - 1} = \frac{3\times 589\times 10^{-9}}{1.58 - 1} \approx 3.05\times 10^{-6}\ \mathrm{m}.
+\]
+\end{prob}
+
+\subsection{等倾干涉}
+
+\begin{prob}{13-5}{以白光垂直照射到空气中的厚度为 $d=380\ \mathrm{nm}$ 的肥皂水膜上，肥皂水的折射率为 $n=1.33$，试分析肥皂水膜的正面和背面各呈现什么颜色？}
+\sol
+\begin{itemize}[leftmargin=1.5em, itemsep=2pt]
+    \item \textbf{正面（反射光）}：空气-肥皂水-空气结构，上表面有半波损失、下表面无半波损失，存在额外光程差 $\frac{\lambda}{2}$。垂直入射反射加强条件为
+    \[
+        2nd + \frac{\lambda}{2} = k\lambda \implies \lambda = \frac{2nd}{k - \frac{1}{2}} = \frac{2\times 1.33\times 380}{k - 0.5} = \frac{1010.8}{k - 0.5}\ \mathrm{nm}\quad (k=1,2,3,\dots).
+    \]
+    逐一取整数 $k$：
+    $k=1$ 时，$\lambda_1 = 2021.6\ \mathrm{nm}$（红外，不可见）；
+    $k=2$ 时，$\lambda_2 = 673.9\ \mathrm{nm}$（红光）；
+    $k=3$ 时，$\lambda_3 = 404.3\ \mathrm{nm}$（紫光）；
+    $k=4$ 时，$\lambda_4 = 288.8\ \mathrm{nm}$（紫外，不可见）。\\
+    红光与紫光混合，故正面呈\textbf{紫红色}。
+    \item \textbf{背面（透射光）}：透射光无半波损失（两次透射无突变，或一次透射加两次内反射均在光密介质内反射，无半波损失），透射加强条件为
+    \[
+        2nd = k\lambda \implies \lambda = \frac{2nd}{k} = \frac{1010.8}{k}\ \mathrm{nm}.
+    \]
+    $k=1$ 时 $\lambda_1 = 1010.8\ \mathrm{nm}$（红外）；$k=2$ 时 $\lambda_2 = 505.4\ \mathrm{nm}$（绿光）；$k=3$ 时 $\lambda_3 = 336.9\ \mathrm{nm}$（紫外）。\\
+    可见光范围内仅 $505.4\ \mathrm{nm}$ 加强（注意反射与透射能量互补，反射削弱的波长透射加强），故背面呈\textbf{绿色}。
+\end{itemize}
+\end{prob}
+
+\begin{prob}{13-6}{（1）有一层折射率为 $1.33$ 的薄油膜（设在空气中，或水面等价分析按空气中油膜计算），当我们的观察方向与膜面的法线方向成 $30^\circ$ 角时，可看到由油膜反射的光呈波长为 $500\ \mathrm{nm}$ 的绿色光。试问油膜的最薄厚度为多少？（2）如果从膜面的法线方向观察，则反射光的颜色如何？}
+\sol
+\begin{enumerate}[leftmargin=2em, itemsep=2pt]
+    \item 空气中油膜（$n=1.33$）反射光存在半波损失 $\frac{\lambda}{2}$，光程差 $\Delta = 2nd\cos\theta_2 + \frac{\lambda}{2} = k\lambda$。由折射定律 $\sin 30^\circ = n\sin\theta_2$，得
+    \[
+        \cos\theta_2 = \sqrt{1 - \left(\frac{\sin 30^\circ}{1.33}\right)^2} = \sqrt{1 - \left(\frac{0.5}{1.33}\right)^2} \approx 0.9267.
+    \]
+    取最薄厚度（$k=1$），即 $2nd_{\min}\cos\theta_2 = \frac{\lambda}{2}$：
+    \[
+        d_{\min} = \frac{\lambda}{4n\cos\theta_2} = \frac{500}{4\times 1.33\times 0.9267} \approx 101.4\ \mathrm{nm}\quad (\text{约 } 101.5\ \mathrm{nm}).
+    \]
+    \item 从法线方向（$\theta_2 = 0$）观察时，加强波长满足 $2nd_{\min} = \left(k - \frac{1}{2}\right)\lambda'$。取 $k=1$ 得
+    \[
+        \lambda' = 4nd_{\min} = 4\times 1.33\times 101.5 \approx 540.0\ \mathrm{nm}\quad (\text{黄绿色/绿色}).
+    \]
+\end{enumerate}
+\end{prob}
+
+\begin{prob}{13-7}{让光从空气中垂直照射到覆盖在玻璃板上的厚度均匀的薄油膜上，所用光源的波长在可见光范围内连续变化时，只观察到 $500\ \mathrm{nm}$ 与 $700\ \mathrm{nm}$ 两个波长的光相继在反射光中消失。已知空气的折射率为 $1.00$，油的折射率为 $1.30$，玻璃的折射率为 $1.50$，试求油膜的厚度。}
+\sol 折射率关系 $n_{\text{空}}(1.00) < n_{\text{油}}(1.30) < n_{\text{玻}}(1.50)$，故上下两表面反射均有半波损失，额外光程差抵消（$\Delta = 2n_{\text{油}}d$）。反射光消失即干涉相消，满足 $2n_{\text{油}}d = \left(k + \frac{1}{2}\right)\lambda$（$k=0,1,2,\dots$）。\\
+在可见光范围内相继消失（即相邻级次），设 $700\ \mathrm{nm}$ 对应级次 $k$，则 $500\ \mathrm{nm}$ 对应级次 $k+1$：
+\[
+    \left(k + \frac{1}{2}\right)\times 700 = \left(k + \frac{3}{2}\right)\times 500 \implies 7k + 3.5 = 5k + 7.5 \implies k = 2.
+\]
+代入求厚度：
+\[
+    d = \frac{(2 + 0.5)\times 700}{2\times 1.30} = \frac{1750}{2.60} \approx 673.1\ \mathrm{nm}.
+\]
+\end{prob}
+
+\begin{prob}{13-8}{在空气中垂直入射的白光从肥皂膜上反射，在可见光谱中 $630\ \mathrm{nm}$ 处有一干涉极大，而在 $525\ \mathrm{nm}$ 处有一干涉极小，在这极大与极小之间没有另外的极小。假定膜厚是均匀的，求这膜的厚度。肥皂水的折射率看作与水相同，为 $1.33$。}
+\sol 空气中肥皂膜反射有额外半波损失 $\frac{\lambda}{2}$，故极大条件为 $2nd = \left(k - \frac{1}{2}\right)\lambda_{\text{明}}$，极小条件为 $2nd = m\lambda_{\text{暗}}$。\\
+因 $630\ \mathrm{nm}$ 为极大，$525\ \mathrm{nm}$ 为极小且两者之间无其他极小，故当极大取 $\left(k - \frac{1}{2}\right)\lambda_{\text{明}}$ 时，相邻较短波长的极小对应整数 $m = k$：
+\[
+    \left(k - \frac{1}{2}\right)\times 630 = k\times 525 \implies \frac{k - 0.5}{k} = \frac{525}{630} = \frac{5}{6} \implies k = 3.
+\]
+故肥皂膜厚度为
+\[
+    d = \frac{3\times 525}{2\times 1.33} \approx 592.1\ \mathrm{nm}.
+\]
+\end{prob}
+
+\subsection{等厚干涉——劈尖}
+
+\begin{prob}{13-9}{长 $l_0=12\ \mathrm{cm}$ 的两玻璃片的一边相互接触，另一边用直径 $D=4.760\times 10^{-5}\ \mathrm{m}$ 的细金属丝隔开。波长 $\lambda=680\ \mathrm{nm}$ 的平行光垂直照射其上，试问（1）两暗纹的高度差 $\Delta d$ 以及它们之间的距离 $l$ 为多少？（2）在这 $12\ \mathrm{cm}$ 内呈现多少条暗纹？（3）如金属丝受热膨胀，在劈的中点 $P$ 观察到有 $4$ 条暗纹移过，则金属丝直径膨胀了多少？}
+\sol
+\begin{enumerate}[leftmargin=2em, itemsep=2pt]
+    \item 空气劈尖相邻两暗纹对应的厚度差 $\Delta d = \frac{\lambda}{2} = \frac{680}{2} = 340\ \mathrm{nm} = 3.40\times 10^{-7}\ \mathrm{m}$。\\
+    劈尖顶角满足 $\sin\theta \approx \theta = \frac{D}{l_0}$，故相邻暗纹间距
+    \[
+        l = \frac{\Delta d}{\theta} = \frac{\lambda l_0}{2D} = \frac{3.40\times 10^{-7}\times 12\times 10^{-2}}{4.760\times 10^{-5}} \approx 8.57\times 10^{-4}\ \mathrm{m} = 8.57\times 10^{-2}\ \mathrm{cm}.
+    \]
+    \item 金属丝处厚度 $D = k\frac{\lambda}{2} \implies k = \frac{4.760\times 10^{-5}}{3.40\times 10^{-7}} = 140$。加上棱边（$d=0$）处的第 $0$ 级暗纹，共有暗纹总数
+    \[
+        N = 140 + 1 = 141\ \text{条}.
+    \]
+    \item 中点 $P$ 处空气膜厚度 $d_P = \frac{D}{2}$。每移过 $1$ 条暗纹，$P$ 处厚度增加 $\frac{\lambda}{2}$，移过 $4$ 条暗纹则 $\Delta d_P = 4\times\frac{\lambda}{2} = 2\lambda$，故金属丝直径膨胀量
+    \[
+        \Delta D = 2\Delta d_P = 4\lambda = 4\times 680\times 10^{-9} = 2.72\times 10^{-6}\ \mathrm{m}.
+    \]
+\end{enumerate}
+\end{prob}
+
+\begin{prob}{13-10}{利用空气劈的等厚干涉条纹，可以测量工件表面加工的情况。如图 13-10 所示，工件与一平晶形成空气劈尖，以波长 $\lambda$ 的单色光垂直照射，观察到的条纹如图（条纹向右弯向厚端方向，弯曲量为 $a$，相邻条纹间距为 $b$）。问（1）不平处是凹的还是凸的？（2）证明凹凸不平的深度（高度）为 $H = \frac{a}{b}\frac{\lambda}{2}$。}
+\sol
+\begin{enumerate}[leftmargin=2em, itemsep=2pt]
+    \item 等厚干涉条纹代表空气膜厚度相等的轨迹。图中条纹向劈尖厚端（右侧）弯曲，说明在弯折处本应位于左侧的薄空气层在右侧较厚处提前出现了相同的空气膜厚度，即工件表面在该处向内\textbf{凹}陷。
+    \item \proofbegin 设相邻条纹间距为 $b$，对应空气膜厚度差为 $\frac{\lambda}{2}$，则劈角 $\theta \approx \frac{\lambda}{2b}$。条纹向厚端弯曲了距离 $a$，说明不平处底部的空气膜厚度与向右平移 $a$ 处平直表面处的厚度相同，两者厚度之差即凹陷深度为
+    \[
+        H = a\theta = a\cdot\frac{\lambda}{2b} = \frac{a}{b}\frac{\lambda}{2}.
+    \]
+\end{enumerate}
+\end{prob}
+
+\subsection{等厚干涉——牛顿环}
+
+\begin{prob}{13-11}{使用单色光来观察牛顿环，测得某一明环的直径为 $3.00\ \mathrm{mm}$，在它外面第 $5$ 个明环的直径为 $4.60\ \mathrm{mm}$，所用平凸透镜的曲率半径为 $1.03\ \mathrm{m}$，求此单色光的波长。}
+\sol 空气膜反射光形成的牛顿环第 $m$ 级明环半径满足 $r_m^2 = \left(m - \frac{1}{2}\right)R\lambda$，即直径平方 $D_m^2 = 4\left(m - \frac{1}{2}\right)R\lambda$。外推第 $5$ 个明环为第 $m+5$ 级，两式相减：
+\[
+    D_{m+5}^2 - D_m^2 = 4\times 5\,R\lambda = 20R\lambda.
+\]
+代入数据：
+\[
+    \lambda = \frac{(4.60^2 - 3.00^2)\times 10^{-6}}{20\times 1.03} = \frac{12.16\times 10^{-6}}{20.6} \approx 5.903\times 10^{-7}\ \mathrm{m} = 590.3\ \mathrm{nm}.
+\]
+\end{prob}
+
+\begin{prob}{13-12}{如图 13-12 所示，牛顿环装置的平凸透镜与平板玻璃有一小缝隙 $d_0$（答案中也记作 $e_0$），现用波长为 $\lambda$ 的单色光垂直照射，已知平凸透镜的曲率半径为 $R$，求反射光形成的牛顿环的各暗环半径。}
+\sol 在距中心为 $r$ 处，空气膜总厚度 $d = d_0 + \frac{r^2}{2R}$。反射光干涉暗环条件（存在半波损失）：
+\[
+    2d + \frac{\lambda}{2} = \left(k + \frac{1}{2}\right)\lambda \implies 2\left(d_0 + \frac{r_k^2}{2R}\right) = k\lambda.
+\]
+整理得第 $k$ 级暗环半径：
+\[
+    r_k = \sqrt{(k\lambda - 2d_0)R},\quad \text{其中 } k > \frac{2d_0}{\lambda}\ (k\in \mathbb{N}^*).
+\]
+\end{prob}
+
+\begin{prob}{13-13}{如图 13-13 所示，折射率 $n_1=1.50$ 的平板玻璃上有一折射率 $n_2=1.20$ 的油膜，在波长 $\lambda=600\ \mathrm{nm}$ 的单色平行光垂直照射下，观察到油膜反射光的干涉条纹。问：（1）当油膜中心最高点与玻璃片上表面相距 $1200\ \mathrm{nm}$ 时，看到怎样的干涉条纹（条纹形状、明条纹数、中心和边缘处的明暗情况）？各明纹所在处的油膜厚度为多少？（2）当油膜继续扩大时，条纹情况将如何变化？}
+\sol
+\begin{enumerate}[leftmargin=2em, itemsep=2pt]
+    \item 折射率 $1.00 < n_2(1.20) < n_1(1.50)$，故油膜上下表面反射均有半波损失，额外光程差为 $0$，光程差 $\Delta = 2n_2 d$。
+    \begin{itemize}[leftmargin=1.5em]
+        \item \textbf{条纹形状}：油滴呈轴对称球冠状，等厚线为圆，故条纹为\textbf{同心圆环}。
+        \item \textbf{边缘处（$d=0$）}：$\Delta = 0$，满足明纹条件 $2n_2 d = k\lambda\ (k=0)$，故\textbf{边缘为第 $0$ 级明纹}。
+        \item \textbf{中心处（$d=1200\ \mathrm{nm}$）}：$\Delta = 2\times 1.20\times 1200 = 2880\ \mathrm{nm}$。明纹条件 $k = \frac{2880}{600} = 4.8$（$4 < 4.8 < 5$，接近 $4.5\lambda$ 的暗纹附近），中心不是明纹（为较暗处）。
+        \item \textbf{明纹数及对应厚度}：由 $0 \le k \le 4.8$，可出现 $k = 0, 1, 2, 3, 4$ 共 \textbf{$5$ 条明纹}。对应油膜厚度 $d_k = \frac{k\lambda}{2n_2} = 250k\ \mathrm{nm}$，分别为 $0,\, 250\ \mathrm{nm},\, 500\ \mathrm{nm},\, 750\ \mathrm{nm},\, 1000\ \mathrm{nm}$。
+    \end{itemize}
+    \item 当油膜继续扩大变薄时，中心厚度 $d$ 减小，条纹不断向中心收缩并从中心消失，明暗条纹总数逐渐减少。
+\end{enumerate}
+\end{prob}
+
+\subsection{迈克耳逊干涉仪}
+
+\begin{prob}{13-14}{迈克耳逊干涉仪可用来测量单色光的波长，当 $M_2$ 移动距离 $d=0.3220\ \mathrm{mm}$ 时，测得单色光的干涉条纹移过 $N=1204$ 条，试求该单色光的波长。}
+\sol 迈克耳逊干涉仪中反射镜移动距离 $d$ 与移过条纹数 $N$ 的关系为 $d = N\frac{\lambda}{2}$，故
+\[
+    \lambda = \frac{2d}{N} = \frac{2\times 0.3220\times 10^{-3}}{1204} \approx 5.349\times 10^{-7}\ \mathrm{m} = 534.9\ \mathrm{nm}.
+\]
+\end{prob}
+
+\subsection{单缝的夫琅禾费衍射}
+
+\begin{prob}{13-15}{一单色平行光束垂直照射在宽为 $1.0\ \mathrm{mm}$ 的单缝上，在缝后放一焦距为 $2.0\ \mathrm{m}$ 的会聚透镜。已知位于透镜焦面处的屏幕上的中央明条纹宽度为 $2.5\ \mathrm{mm}$。求入射光波长。}
+\sol 单缝衍射中央明纹线性宽度 $\Delta x_0 = \frac{2f\lambda}{a}$，故
+\[
+    \lambda = \frac{a\,\Delta x_0}{2f} = \frac{1.0\times 10^{-3}\times 2.5\times 10^{-3}}{2\times 2.0} = 6.25\times 10^{-7}\ \mathrm{m} = 625\ \mathrm{nm}.
+\]
+\end{prob}
+
+\begin{prob}{13-16}{一单色平行光垂直入射一单缝，其衍射第三级明纹位置恰与波长为 $600\ \mathrm{nm}$ 的单色光垂直入射该缝时衍射的第二级明纹位置重合，求该单色光波长。}
+\sol 单缝衍射第 $k$ 级明纹中心近似满足 $a\sin\theta = \left(k + \frac{1}{2}\right)\lambda$。位置重合即衍射角 $\theta$ 相同：
+\[
+    \left(3 + \frac{1}{2}\right)\lambda = \left(2 + \frac{1}{2}\right)\times 600\ \mathrm{nm} \implies \lambda = \frac{2.5}{3.5}\times 600 \approx 428.6\ \mathrm{nm}.
+\]
+\end{prob}
+
+\begin{prob}{13-17}{如图 13-17 所示，设有一波长为 $\lambda$ 的单色平面光波沿着与单缝平面的法线成 $\varphi$ 角的方向入射于宽度为 $a$ 的单缝上，确定各暗纹的衍射角 $\theta$ 应满足的条件。}
+\sol 如图，斜入射光波在进入单缝前，上下两边缘光线已有波程差 $a\sin\varphi$；若衍射角 $\theta$ 偏向上方（与入射光偏离法线方向在同侧或按图中 $\varphi$ 与 $\theta$ 均为向上偏折），总波程差为 $\delta = a\sin\theta - a\sin\varphi$（若按光程差代数和且 $\varphi$ 在法线下方、$\theta$ 在法线上方，则取负号有 $a(\sin\theta - \sin\varphi) = k\lambda$）。暗纹条件为 $a(\sin\theta - \sin\varphi) = k\lambda\ (k=\pm 1,\pm 2,\dots)$，即
+\[
+    \theta = \arcsin\left(\frac{k\lambda}{a} + \sin\varphi\right)\quad (k = \pm 1, \pm 2, \dots).
+\]
+\end{prob}
+
+\begin{prob}{13-18}{平行光垂直入射在宽度 $a=0.6\ \mathrm{mm}$ 的单狭缝上，如图 13-18 所示。已知薄透镜的焦距 $f=40\ \mathrm{cm}$。如果在透镜主光轴与屏之交点 $O$ 和距 $O$ 点 $1.4\ \mathrm{mm}$ 的 $P$ 点看到的是亮纹，求：（1）入射光的波长（设在可见光 $380\sim 760\ \mathrm{nm}$ 范围内）；（2）$P$ 点条纹的级数；（3）从 $P$ 点看，对该光波而言，狭缝处的波阵面可看作的半波带的数目；（4）若 $P$ 点看到的是暗纹，入射光的波长为何？}
+\sol $P$ 点处 $\sin\theta \approx \tan\theta = \frac{y}{f} = \frac{1.4\times 10^{-3}}{0.40} = 3.5\times 10^{-3}$，狭缝边缘光程差
+\[
+    \Delta = a\sin\theta = 0.6\times 10^{-3}\times 3.5\times 10^{-3} = 2.1\times 10^{-6}\ \mathrm{m} = 2100\ \mathrm{nm}.
+\]
+\begin{enumerate}[leftmargin=2em, itemsep=2pt]
+    \item $P$ 点为亮纹时，$\Delta = \left(k + \frac{1}{2}\right)\lambda \implies \lambda = \frac{2100}{k + 0.5}\ \mathrm{nm}$。结合可见光范围 $380\sim 760\ \mathrm{nm}$：
+    \begin{itemize}[leftmargin=1.5em]
+        \item $k=3$ 时，$\lambda = \frac{2100}{3.5} = 600.0\ \mathrm{nm}$；
+        \item $k=4$ 时，$\lambda = \frac{2100}{4.5} \approx 466.7\ \mathrm{nm}$；
+        \item $k=5$ 时，$\lambda = \frac{2100}{5.5} \approx 381.8\ \mathrm{nm}$。
+    \end{itemize}
+    \item 对应的条纹级数为 $k = 3$ 或 $4$ 或 $5$。
+    \item 半波带数目 $N = \frac{\Delta}{\lambda/2} = 2k + 1$，分别对应 $7$ 或 $9$ 或 $11$ 个半波带。
+    \item 若 $P$ 点为暗纹，则 $\Delta = k\lambda \implies \lambda = \frac{2100}{k}\ \mathrm{nm}$。在可见光范围内：
+    \begin{itemize}[leftmargin=1.5em]
+        \item $k=3$ 时，$\lambda = 700\ \mathrm{nm}$；
+        \item $k=4$ 时，$\lambda = 525\ \mathrm{nm}$；
+        \item $k=5$ 时，$\lambda = 420\ \mathrm{nm}$（注：部分教材估算取 $470\ \mathrm{nm}$ 系误算，$2100/5=420\ \mathrm{nm}$）。
+    \end{itemize}
+\end{enumerate}
+\end{prob}
+
+\subsection{光学仪器分辨率}
+
+\begin{prob}{13-19}{在迎面驶来的汽车上，两盏前灯相距 $120\ \mathrm{cm}$。问汽车离人多远时，人眼恰能分辨这两盏前灯？设夜间人眼瞳孔直径为 $5.0\ \mathrm{mm}$，入射光波长为 $550\ \mathrm{nm}$，且只考虑人眼瞳孔的衍射效应。}
+\sol 由瑞利判据，最小分辨角 $\theta_{\min} = \frac{1.22\lambda}{D}$。恰能分辨时两灯对人眼张角 $\frac{l}{L} = \theta_{\min}$，故
+\[
+    L = \frac{lD}{1.22\lambda} = \frac{1.20\times 5.0\times 10^{-3}}{1.22\times 550\times 10^{-9}} \approx 8.94\times 10^3\ \mathrm{m} \approx 8.9\times 10^3\ \mathrm{m}.
+\]
+\end{prob}
+
+\subsection{衍射光栅}
+
+\begin{prob}{13-20}{一双缝，缝间距 $d=0.10\ \mathrm{mm}$，缝宽 $a=0.02\ \mathrm{mm}$，用波长 $\lambda=480\ \mathrm{nm}$ 的平行单色光垂直入射该双缝，双缝后放一焦距为 $50\ \mathrm{cm}$ 的透镜。求：（1）透镜焦平面处屏上干涉条纹的间距；（2）单缝衍射中央亮纹的宽度；（3）单缝衍射的中央包线内干涉主极大数。}
+\sol
+\begin{enumerate}[leftmargin=2em, itemsep=2pt]
+    \item 双缝干涉条纹间距 $\Delta x = \frac{f\lambda}{d} = \frac{0.50\times 480\times 10^{-9}}{0.10\times 10^{-3}} = 2.4\times 10^{-3}\ \mathrm{m}$。（注：教材参考答案中印刷体“$2.4\times 9^{-3}\ \mathrm{m}$”系“$10$”误印为“$9$”。）
+    \item 单缝衍射中央亮纹宽度 $\Delta x_0 = \frac{2f\lambda}{a} = \frac{2\times 0.50\times 480\times 10^{-9}}{0.02\times 10^{-3}} = 2.4\times 10^{-2}\ \mathrm{m}$。
+    \item 缺级条件 $\frac{d}{a} = \frac{0.10}{0.02} = 5$，故干涉主极大第 $\pm 5$ 级恰好落在单缝衍射第一级极小处（缺级），中央包线内包含 $k = 0, \pm 1, \pm 2, \pm 3, \pm 4$，共 $2\times 5 - 1 = 9$ 个干涉主极大。
+\end{enumerate}
+\end{prob}
+
+\begin{prob}{13-21}{一光栅，宽为 $2.0\ \mathrm{cm}$，共有 $6000$ 条缝。如用钠光（$589.3\ \mathrm{nm}$）垂直入射，问：（1）在哪些角度出现光强极大？共出现多少条明纹？（2）如钠光与光栅的法线方向成 $30^\circ$ 角入射，最多能观察到第几级条纹？共出现多少条明纹？}
+\sol 光栅常量 $d = \frac{2.0\times 10^{-2}}{6000} = \frac{1}{3}\times 10^{-5}\ \mathrm{m} \approx 3.333\times 10^{-6}\ \mathrm{m}$。
+\begin{enumerate}[leftmargin=2em, itemsep=2pt]
+    \item 垂直入射时，光栅方程 $d\sin\theta = k\lambda$，最大级数 $k_{\max} = \left\lfloor\frac{d}{\lambda}\right\rfloor = \left\lfloor\frac{3333.3}{589.3}\right\rfloor = \lfloor 5.656\rfloor = 5$。\\
+    由 $\sin\theta_k = \frac{k\lambda}{d} = 0.1768k$，得各级极大角为：
+    $k=0:\ 0^\circ$；$k=\pm 1:\ \pm 10.18^\circ$；$k=\pm 2:\ \pm 20.71^\circ$；$k=\pm 3:\ \pm 32.03^\circ$；$k=\pm 4:\ \pm 45.00^\circ$；$k=\pm 5:\ \pm 62.12^\circ$。共 $2\times 5 + 1 = 11$ 条明纹。
+    \item 斜入射（入射角 $i=30^\circ$）时，光栅方程 $d(\sin\theta + \sin 30^\circ) = k\lambda$（同侧取正，异侧包含在 $\theta\in(-90^\circ, 90^\circ)$ 内）。由 $-1 < \sin\theta < 1$ 得
+    \[
+        -\frac{d}{2\lambda} < k < \frac{3d}{2\lambda} \implies -2.83 < k < 8.48.
+    \]
+    故 $k = -2, -1, 0, 1, \dots, 8$，最多观察到第 $8$ 级条纹，共 $11$ 条明纹。
+\end{enumerate}
+\end{prob}
+
+\begin{prob}{13-22}{每厘米有 $3000$ 条刻痕的光栅，其刻痕宽度与透光缝宽相等。以波长 $\lambda=546\ \mathrm{nm}$ 的单色平行光垂直入射到光栅上，问：（1）第一级明条纹的衍射角是多少？（2）最多能观察到多少条明条纹？}
+\sol 光栅常量 $d = \frac{1\times 10^{-2}}{3000} = 3.333\times 10^{-6}\ \mathrm{m}$，因刻痕宽等于透光缝宽，故 $a = \frac{d}{2}$，$\frac{d}{a} = 2$，所有偶数级（$k = \pm 2, \pm 4, \dots$）均缺级。
+\begin{enumerate}[leftmargin=2em, itemsep=2pt]
+    \item 第一级衍射角满足 $\sin\theta_1 = \frac{\lambda}{d} = \frac{546\times 10^{-9}}{3.333\times 10^{-6}} = 0.1638 \implies \theta_1 \approx 9.43^\circ$。
+    \item 最大级次 $k_{\max} = \left\lfloor\frac{d}{\lambda}\right\rfloor = \lfloor 6.105\rfloor = 6$。扣除偶数缺级（$\pm 2, \pm 4, \pm 6$），实际能观察到的级次为 $k = 0, \pm 1, \pm 3, \pm 5$，共 $7$ 条明条纹。
+\end{enumerate}
+\end{prob}
+
+\begin{prob}{13-23}{波长为 $600\ \mathrm{nm}$ 的单色光垂直入射在一光栅上，第二和第三级明条纹分别出现在 $\sin\theta = 0.20$ 与 $\sin\theta = 0.30$ 处，第四级缺级。求：（1）光栅常数；（2）光栅上狭缝宽度；（3）屏上实际呈现的全部级数。}
+\sol
+\begin{enumerate}[leftmargin=2em, itemsep=2pt]
+    \item 由 $d\sin\theta_2 = 2\lambda$，得 $d = \frac{2\times 600\times 10^{-9}}{0.20} = 6.0\times 10^{-6}\ \mathrm{m}$。
+    \item 第四级缺级，且 $2, 3$ 级不缺级，故 $\frac{d}{a} = 4$，狭缝宽度 $a = \frac{d}{4} = 1.5\times 10^{-6}\ \mathrm{m}$。
+    \item 最大级次上限 $\frac{d}{\lambda} = \frac{6.0\times 10^{-6}}{600\times 10^{-9}} = 10$（注意 $\sin\theta < 1$，故 $\pm 10$ 级在 $\pm 90^\circ$ 处不出现），允许级次为 $|k|\le 9$；再扣除 $4$ 的整数倍缺级（$\pm 4, \pm 8$），实际呈现的全部级数为
+    \[
+        k = 0,\, \pm 1,\, \pm 2,\, \pm 3,\, \pm 5,\, \pm 6,\, \pm 7,\, \pm 9.
+    \]
+\end{enumerate}
+\end{prob}
+
+\subsection{马吕斯定律}
+
+\begin{prob}{13-24}{使自然光通过两个偏振化方向成 $60^\circ$ 角的偏振片，透射光强为 $I_1$。今在这两个偏振片之间再插入另一偏振片，它的偏振化方向与前两个偏振片均成 $30^\circ$ 角，则透射光强为多少？}
+\sol 设入射自然光强为 $I_0$。未插片时，透射光强 $I_1 = \frac{1}{2}I_0\cos^2 60^\circ = \frac{1}{8}I_0$。\\
+插入中间偏振片后，连续两次应用马吕斯定律，透射光强为
+\[
+    I = \frac{1}{2}I_0 \cos^2 30^\circ \cdot \cos^2 30^\circ = \frac{1}{2}I_0 \left(\frac{\sqrt{3}}{2}\right)^4 = \frac{9}{32}I_0 = \frac{9}{4}I_1 = 2.25I_1.
+\]
+\end{prob}
+
+\begin{prob}{13-25}{有两个偏振片分别作为起偏振器和检偏振器。它们的偏振化方向夹角为 $30^\circ$ 时观察一束单色自然光。当夹角为 $60^\circ$ 时观察另一束单色自然光，发现从检偏振器透射出的两束光强度相等。求这两束自然光的强度之比。}
+\sol 设两束自然光强度分别为 $I_1, I_2$。由题意，透射光强相等：
+\[
+    \frac{1}{2}I_1\cos^2 30^\circ = \frac{1}{2}I_2\cos^2 60^\circ \implies \frac{I_1}{I_2} = \frac{\cos^2 60^\circ}{\cos^2 30^\circ} = \frac{(1/2)^2}{(\sqrt{3}/2)^2} = \frac{1}{3}.
+\]
+\end{prob}
+
+\begin{prob}{13-26}{一束自然光和线偏振光混合的光，垂直射入偏振片。若把偏振片以入光为轴旋转一周，发现透射光的强度最大值是最小值的 $5$ 倍，试求入射光束中自然光和线偏振光的光强比值？}
+\sol 设入射光中自然光强为 $I_0$，线偏振光强为 $I$。当偏振片偏振化方向与线偏振光平行时透射光强最大：$I_{\max} = \frac{1}{2}I_0 + I$；垂直时最小：$I_{\min} = \frac{1}{2}I_0$。由 $I_{\max} = 5I_{\min}$：
+\[
+    \frac{1}{2}I_0 + I = 5\left(\frac{1}{2}I_0\right) \implies I = 2I_0 \implies \frac{I_0}{I} = \frac{1}{2}.
+\]
+\end{prob}
+
+\begin{prob}{13-27}{在两正交偏振片之间，有一理想偏振片以光传播方向为轴旋转，角速度为 $\omega$。证明自然光通过这一系统后，出射光强的变化频率被调制为旋转频率的四倍。即证明 $I = \frac{I_1}{8}(1 - \cos 4\omega t)$，其中 $I_1$ 为第一个偏振片后的出射光强，$I$ 为最后一个偏振片后的出射光强。}
+\proofbegin 设在 $t$ 时刻旋转偏振片与第一片偏振片夹角为 $\theta = \omega t$，则它与正交的最后一片偏振片夹角为 $\frac{\pi}{2} - \omega t$。连续两次运用马吕斯定律：
+\begin{align*}
+    I &= I_1\cos^2(\omega t)\cos^2\left(\frac{\pi}{2} - \omega t\right) = I_1\cos^2(\omega t)\sin^2(\omega t) \\
+      &= \frac{I_1}{4}\sin^2(2\omega t) = \frac{I_1}{8}(1 - \cos 4\omega t).
+\end{align*}
+可见出射光强随时间按角频率 $4\omega$ 变化，即调制为旋转频率的四倍。
+\end{prob}
+
+\subsection{布儒斯特定律}
+
+\begin{prob}{13-28}{已知某釉质材料在空气中的布儒斯特角 $i_0=58^\circ$。（1）求它的折射率；（2）如果把它放在水中（$n_{\text{水}}=1.33$），其布儒斯特角变为多少？它相对水的折射率为多少？}
+\sol
+\begin{enumerate}[leftmargin=2em, itemsep=2pt]
+    \item 由布儒斯特定律 $\tan i_0 = \frac{n}{n_{\text{空}}} = n$，得 $n = \tan 58^\circ \approx 1.60$。
+    \item 放在水中时，相对折射率 $n_{\text{相对}} = \frac{n}{n_{\text{水}}} = \frac{1.6003}{1.33} \approx 1.20$；布儒斯特角为
+    \[
+        i_0' = \arctan(n_{\text{相对}}) = \arctan(1.203) \approx 50.26^\circ.
+    \]
+\end{enumerate}
+\end{prob}
+
+\begin{prob}{13-29}{一束自然光以 $58^\circ$ 角入射至玻璃表面，发现反射光为完全线偏振光，求：（1）折射光的折射角；（2）玻璃的折射率。}
+\sol
+\begin{enumerate}[leftmargin=2em, itemsep=2pt]
+    \item 反射光为完全线偏振光，即以布儒斯特角入射，反射光线与折射光线垂直：$i_B + \gamma = 90^\circ$，故折射角
+    \[
+        \gamma = 90^\circ - 58^\circ = 32^\circ.
+    \]
+    \item 玻璃折射率 $n = \tan 58^\circ \approx 1.60$。
+\end{enumerate}
+\end{prob}
+
+\begin{prob}{13-30}{如图 13-30 所示，一束线偏振光沿 $AO$ 从空气射到玻璃（$n_2 > n_1$），$i_B$ 为空气到玻璃的布儒斯特角，$i_1$ 为折射角，试问：（1）入射光的振动方向平行于入射面时，有无反射光？为什么？（2）如该光束沿 $BO$ 入射（从玻璃到空气）有无反射光？为什么？（3）如光仍沿 $AO$ 入射，但振动方向与入射面垂直，用点和短划线说明出反、折射光偏振情况。}
+\sol
+\begin{enumerate}[leftmargin=2em, itemsep=2pt]
+    \item \textbf{无反射光}。因为在布儒斯特角入射时，反射光线与折射光线互相垂直（$i_B + i_1 = 90^\circ$），而玻璃中电偶极子受迫振动的方向与折射光线垂直且平行于入射面，即恰好沿着反射方向振动；由于横波沿振动方向无电磁辐射，故平行于入射面的分量反射光强为零。
+    \item \textbf{无反射光}。由光路可逆原理（或 $\tan i_1 = \cot i_B = \frac{n_1}{n_2}$），$i_1$ 正好是从玻璃到空气的布儒斯特角，故当振动平行于入射面时同样无反射光。
+    \item 入射光振动垂直于入射面（用点“$\bullet$”表示）时，反射光为振动仍\textbf{垂直于入射面}的线偏振光（点“$\bullet$”），折射光亦为振动\textbf{垂直于入射面}的线偏振光（点“$\bullet$”）。
+\end{enumerate}
+\end{prob}
+
+% =====================================================================
+\section{第十四章\quad 早期量子论和量子物理基础}
+% =====================================================================
+
+\subsection{热辐射}
+
+\begin{prob}{14-1}{在加热黑体过程中，其单色辐出度的峰值波长是由 $0.69\ \mu\mathrm{m}$ 变化到 $0.50\ \mu\mathrm{m}$，求总辐出度改变为原来的多少倍？}
+\sol 由维恩位移定律 $\lambda_m T = b$ 及斯特藩-玻尔兹曼定律 $M(T) = \sigma T^4$，得 $M \propto \lambda_m^{-4}$，故
+\[
+    \frac{M_2}{M_1} = \left(\frac{T_2}{T_1}\right)^4 = \left(\frac{\lambda_{m1}}{\lambda_{m2}}\right)^4 = \left(\frac{0.69}{0.50}\right)^4 = 1.38^4 \approx 3.63.
+\]
+\end{prob}
+
+\begin{prob}{14-2}{氢弹爆炸时火球的瞬时温度达到 $10^7\ \mathrm{K}$。求：（1）辐射最强的波长；（2）这种波长的光子能量是多少？}
+\sol
+\begin{enumerate}[leftmargin=2em, itemsep=2pt]
+    \item 由维恩位移定律 $\lambda_m T = b$：
+    \[
+        \lambda_m = \frac{2.897\times 10^{-3}}{10^7} = 2.897\times 10^{-10}\ \mathrm{m} = 289.7\times 10^{-3}\ \mathrm{nm}\quad (0.2897\ \mathrm{nm}).
+    \]
+    \item 该波长光子的能量为
+    \[
+        \varepsilon = \frac{hc}{\lambda_m} = \frac{6.626\times 10^{-34}\times 2.998\times 10^8}{2.897\times 10^{-10}} \approx 6.86\times 10^{-16}\ \mathrm{J}.
+    \]
+\end{enumerate}
+\end{prob}
+
+\begin{prob}{14-3}{一空腔的侧面开一个面积为 $10\ \mathrm{cm^2}$ 的小圆孔，每秒钟由小圆孔辐射出的能量为 $473.6\ \mathrm{W}$，求：（1）空腔的温度；（2）与最大单色辐出度相对应的波长；（3）若空腔的温度升高一倍，小圆孔处的辐出度。}
+\sol
+\begin{enumerate}[leftmargin=2em, itemsep=2pt]
+    \item 小圆孔可看作黑体，其辐出度 $M_1 = \frac{P}{S} = \frac{473.6}{10\times 10^{-4}} = 4.736\times 10^5\ \mathrm{W/m^2}$。由 $M_1 = \sigma T^4$ 得
+    \[
+        T = \left(\frac{M_1}{\sigma}\right)^{1/4} = \left(\frac{4.736\times 10^5}{5.67\times 10^{-8}}\right)^{1/4} \approx 1.70\times 10^3\ \mathrm{K}.
+    \]
+    \item 由维恩位移定律，峰值波长为
+    \[
+        \lambda_m = \frac{b}{T} = \frac{2.897\times 10^{-3}}{1.70\times 10^3} \approx 1.70\times 10^{-6}\ \mathrm{m} = 1.70\ \mu\mathrm{m}.
+    \]
+    （注：教材参考答案印作“$1.70\times 10^{-6}\ \mu\mathrm{m}$”，多写了前缀 $\mu$，实际应为 $1.70\times 10^{-6}\ \mathrm{m}$ 或 $1.70\ \mu\mathrm{m}$。）
+    \item “温度升高一倍”指温度变为 $T' = 2T$ 时，辐出度 $M_2 = \sigma (2T)^4 = 16M_1 \approx 7.58\times 10^6\ \mathrm{W/m^2}$。（注：若按部分题库误作 $M_1$ 本身或 $T$ 不变，原参考答案所写 $4.74\times 10^5\ \mathrm{W/m^2}$ 实为第（1）问中的初始辐出度 $M_1$。）
+\end{enumerate}
+\end{prob}
+
+\subsection{光电效应}
+
+\begin{prob}{14-4}{钾的光电效应红限波长为 $\lambda_0=0.62\ \mu\mathrm{m}$。求：（1）钾的逸出功；（2）在波长 $\lambda=330\ \mathrm{nm}$ 的紫外光照射下，钾的遏止电势差。}
+\sol
+\begin{enumerate}[leftmargin=2em, itemsep=2pt]
+    \item 钾的逸出功 $A = \frac{hc}{\lambda_0} = \frac{6.626\times 10^{-34}\times 2.998\times 10^8}{0.62\times 10^{-6}} \approx 3.204\times 10^{-19}\ \mathrm{J} \approx 2.0\ \mathrm{eV}$。
+    \item 由爱因斯坦光电效应方程 $eU_a = \frac{hc}{\lambda} - A$：
+    \[
+        U_a = \frac{hc}{e\lambda} - \frac{A}{e} = \frac{1240}{330} - 2.0 \approx 3.76 - 2.0 = 1.76\ \mathrm{V}\quad (\text{若用 } c=3.00\times 10^8\ \mathrm{m/s}\text{ 得 } 1.77\ \mathrm{V}).
+    \]
+\end{enumerate}
+\end{prob}
+
+\begin{prob}{14-5}{铝的逸出功为 $4.2\ \mathrm{eV}$。今用波长为 $200\ \mathrm{nm}$ 的紫外光照射到铝表面上，发射的光电子的最大初动能为多少？遏止电势差为多大？铝的红限波长是多大？}
+\sol 入射光子能量 $\varepsilon = \frac{hc}{\lambda} = \frac{6.626\times 10^{-34}\times 2.998\times 10^8}{200\times 10^{-9}\times 1.602\times 10^{-19}} \approx 6.20\ \mathrm{eV}$。
+\begin{itemize}[leftmargin=1.5em, itemsep=2pt]
+    \item 光电子最大初动能：$E_{km} = \varepsilon - A = 6.20 - 4.2 = 2.0\ \mathrm{eV}$（$= 3.20\times 10^{-19}\ \mathrm{J}$）。
+    \item 遏止电势差：$U_a = \frac{E_{km}}{e} = 2.0\ \mathrm{V}$。
+    \item 红限波长：$\lambda_0 = \frac{hc}{A} = \frac{6.626\times 10^{-34}\times 3.00\times 10^8}{4.2\times 1.602\times 10^{-19}} \approx 295.4\ \mathrm{nm}$（约 $296\ \mathrm{nm}$）。
+\end{itemize}
+\end{prob}
+
+\begin{prob}{14-6}{在光电效应实验中，对某种金属，当入射光频率为 $2.2\times 10^{15}\ \mathrm{Hz}$ 时，截止电压为 $6.6\ \mathrm{V}$，入射光频率为 $4.6\times 10^{15}\ \mathrm{Hz}$ 时，截止电压为 $16.5\ \mathrm{V}$。试由上述数据计算普朗克常数 $h$。}
+\sol 由 $eU_a = h\nu - A$，将两组数据相减消去逸出功 $A$：
+\begin{align*}
+    e(U_{a2} - U_{a1}) = h(\nu_2 - \nu_1) \implies h &= \frac{e(U_{a2} - U_{a1})}{\nu_2 - \nu_1} \\
+    &= \frac{1.602\times 10^{-19}\times (16.5 - 6.6)}{(4.6 - 2.2)\times 10^{15}} \approx 6.61\times 10^{-34}\ \mathrm{J\cdot s}\quad (\text{约 } 6.6\times 10^{-34}\ \mathrm{J\cdot s}).
+\end{align*}
+\end{prob}
+
+\subsection{康普顿效应}
+
+\begin{prob}{14-7}{在康普顿散射中，入射 X 射线的波长为 $3\times 10^{-3}\ \mathrm{nm}$，反冲电子的速率为 $0.6c$。求散射光子的波长和散射方向。}
+\sol 由能量守恒，入射光子减少的能量等于反冲电子获得的动能：
+\[
+    \frac{hc}{\lambda} - \frac{hc}{\lambda'} = E_k = (\gamma - 1)m_0 c^2,
+\]
+其中 $\gamma = \frac{1}{\sqrt{1 - (v/c)^2}} = \frac{1}{\sqrt{1 - 0.6^2}} = 1.25$，故 $E_k = 0.25\,m_0 c^2 = 0.25\times 0.511 = 0.1278\ \mathrm{MeV}$。\\
+入射光子能量 $E_0 = \frac{hc}{\lambda} = \frac{1240\ \mathrm{eV\cdot nm}}{3\times 10^{-3}\ \mathrm{nm}} \approx 0.4133\ \mathrm{MeV}$。\\
+散射光子能量 $E' = E_0 - E_k = 0.4133 - 0.1278 = 0.2855\ \mathrm{MeV}$，故散射光子波长
+\[
+    \lambda' = \frac{hc}{E'} \approx 4.34\times 10^{-3}\ \mathrm{nm}.
+\]
+由康普顿公式 $\Delta\lambda = \lambda' - \lambda = \lambda_c(1 - \cos\theta)$，得
+\[
+    1 - \cos\theta = \frac{4.34\times 10^{-3} - 3\times 10^{-3}}{2.426\times 10^{-3}} \approx 0.5523 \implies \cos\theta \approx 0.4477 \implies \theta \approx 63.4^\circ\ (63^\circ 25').
+\]
+\end{prob}
+
+\begin{prob}{14-8}{一波长 $\lambda=0.2\ \mathrm{nm}$ 的 X 射线射到碳块上，由于康普顿散射，频率改变了 $0.04\%$。求：（1）散射光子的散射角；（2）反冲电子获得的能量。}
+\sol
+\begin{enumerate}[leftmargin=2em, itemsep=2pt]
+    \item 散射后频率减小，$\frac{\Delta\nu}{\nu} = -0.04\%$，即 $\nu' = 0.9996\nu$，$\lambda' = \frac{\lambda}{0.9996}$，波长改变量
+    \[
+        \Delta\lambda = \lambda' - \lambda \approx 0.0004\lambda = 0.0004\times 0.2\ \mathrm{nm} = 8\times 10^{-5}\ \mathrm{nm}.
+    \]
+    由 $\Delta\lambda = \lambda_c(1 - \cos\theta)$ 得
+    \[
+        1 - \cos\theta = \frac{8\times 10^{-5}}{2.426\times 10^{-3}} \approx 0.03298 \implies \cos\theta \approx 0.9670 \implies \theta \approx 14.75^\circ.
+    \]
+    \item 反冲电子获得的能量等于光子损失的能量：
+    \[
+        E_k = h\nu - h\nu' = h\nu\cdot\frac{|\Delta\nu|}{\nu} = \frac{hc}{\lambda}\times 0.04\% = \frac{6.626\times 10^{-34}\times 3.00\times 10^8}{0.2\times 10^{-9}}\times 4\times 10^{-4} \approx 3.976\times 10^{-19}\ \mathrm{J}.
+    \]
+\end{enumerate}
+\end{prob}
+
+\begin{prob}{14-9}{在康普顿散射实验中，入射的 X 射线波长 $\lambda=0.01\ \mathrm{nm}$，如果光的散射角是 $90^\circ$，求：（1）康普顿效应 $\Delta\lambda$；（2）反冲电子的出射角多大？（3）电子获得的能量和动量。}
+\sol
+\begin{enumerate}[leftmargin=2em, itemsep=2pt]
+    \item $\Delta\lambda = \lambda_c(1 - \cos 90^\circ) = \lambda_c = 2.426\times 10^{-3}\ \mathrm{nm} \approx 2.4\times 10^{-3}\ \mathrm{nm}$。
+    \item 散射光子波长 $\lambda' = \lambda + \Delta\lambda = 0.012426\ \mathrm{nm}$。入射光子动量 $p_0 = \frac{h}{\lambda} = 6.626\times 10^{-23}\ \mathrm{kg\cdot m/s}$，散射光子动量 $p' = \frac{h}{\lambda'} = 5.332\times 10^{-23}\ \mathrm{kg\cdot m/s}$。因光子散射角为 $90^\circ$，由动量守恒三角形知电子出射角 $\varphi$ 满足
+    \[
+        \tan\varphi = \frac{p'}{p_0} = \frac{\lambda}{\lambda'} = \frac{0.01}{0.012426} \approx 0.8048 \implies \varphi \approx 38.8^\circ \approx 39^\circ.
+    \]
+    \item 电子获得的能量
+    \[
+        E_k = \frac{hc}{\lambda} - \frac{hc}{\lambda'} \approx (1.240\times 10^5 - 0.998\times 10^5)\ \mathrm{eV} \approx 2.42\times 10^4\ \mathrm{eV}\quad (\text{取 }\Delta\lambda=2.4\times 10^{-3}\ \mathrm{nm}\text{ 时为 } 2.38\times 10^4\ \mathrm{eV}).
+    \]
+    电子获得的动量大小
+    \[
+        p_e = \sqrt{p_0^2 + p'^2} = \sqrt{(6.626^2 + 5.332^2)\times 10^{-46}} \approx 8.51\times 10^{-23}\ \mathrm{kg\cdot m/s}.
+    \]
+    （注：教材参考答案中“$8.41\times 10^{-22}\ \mathrm{kg\cdot m/s}$”数量级误印，应为 $10^{-23}$ 量级。）
+\end{enumerate}
+\end{prob}
+
+\subsection{氢原子光谱}
+
+\begin{prob}{14-10}{对处于第一激发态（$n=2$）的氢原子，如果用可见光（$380\ \mathrm{nm}\sim 750\ \mathrm{nm}$）照射能否使之电离？}
+\sol 氢原子第一激发态能量 $E_2 = -\frac{13.6}{2^2} = -3.40\ \mathrm{eV}$，使其电离所需的最小能量（电离能）为 $3.40\ \mathrm{eV}$。\\
+可见光中最短波长 $\lambda_{\min} = 380\ \mathrm{nm}$ 对应最大光子能量：
+\[
+    \varepsilon_{\max} = \frac{hc}{\lambda_{\min}} \approx \frac{1240}{380} \approx 3.26\ \mathrm{eV} < 3.40\ \mathrm{eV}.
+\]
+因此，可见光中所有光子的能量均小于 $3.40\ \mathrm{eV}$，\textbf{不能使之电离}。
+\end{prob}
+
+\begin{prob}{14-11}{在气体放电管中，用能量为 $12.2\ \mathrm{eV}$ 的电子轰击处于基态的氢原子，试求氢原子所能发射的光谱线波长。}
+\sol 基态能量 $E_1 = -13.6\ \mathrm{eV}$。各激发态能量：$E_2 = -3.40\ \mathrm{eV}$（激发需 $10.20\ \mathrm{eV}$），$E_3 = -1.51\ \mathrm{eV}$（激发需 $12.09\ \mathrm{eV}$），$E_4 = -0.85\ \mathrm{eV}$（激发需 $12.75\ \mathrm{eV}$）。\\
+因 $12.09\ \mathrm{eV} < 12.2\ \mathrm{eV} < 12.75\ \mathrm{eV}$，氢原子最高被激发到 $n=3$ 能级。从 $n=3$ 跃迁回基态可发射 $C_3^2 = 3$ 条谱线：
+\begin{align*}
+    3\to 2:\quad \Delta E_{32} &= 3.40 - 1.51 = 1.89\ \mathrm{eV} \implies \lambda_{32} = \frac{hc}{\Delta E_{32}} \approx \frac{1240}{1.89} \approx 656.3\ \mathrm{nm},\\
+    2\to 1:\quad \Delta E_{21} &= 13.6 - 3.40 = 10.20\ \mathrm{eV} \implies \lambda_{21} \approx \frac{1240}{10.20} \approx 121.5\ \mathrm{nm},\\
+    3\to 1:\quad \Delta E_{31} &= 13.6 - 1.51 = 12.09\ \mathrm{eV} \implies \lambda_{31} \approx \frac{1240}{12.09} \approx 102.6\ \mathrm{nm}.
+\end{align*}
+\end{prob}
+
+\begin{prob}{14-12}{用能量为 $15\ \mathrm{eV}$ 的光子从处于基态的氢原子中激发出光电子，求光电子在远离开原子核时以多大的速率运动？（提示：当电子 $E_k \ll m_0 c^2$ 时才可不考虑相对论效应，$m_0 c^2 = 0.51\ \mathrm{MeV}$）}
+\sol 基态氢原子电离能为 $13.6\ \mathrm{eV}$，光电子脱离原子核后的动能为
+\[
+    E_k = 15 - 13.6 = 1.4\ \mathrm{eV} = 1.4\times 1.602\times 10^{-19} = 2.243\times 10^{-19}\ \mathrm{J}.
+\]
+因 $E_k \ll m_0 c^2$，使用非相对论动能公式 $E_k = \frac{1}{2}m_0 v^2$：
+\[
+    v = \sqrt{\frac{2E_k}{m_0}} = \sqrt{\frac{2\times 2.243\times 10^{-19}}{9.109\times 10^{-31}}} \approx 7.02\times 10^5\ \mathrm{m/s}\quad (\text{若电离能取 } 13.58\ \mathrm{eV}\text{ 得 } 7.1\times 10^5\ \mathrm{m/s}).
+\]
+\end{prob}
+
+\subsection{德布罗意波}
+
+\begin{prob}{14-13}{计算动能分别为 $1.0\ \mathrm{keV}$、$1.0\ \mathrm{MeV}$、$1.0\ \mathrm{GeV}$ 的电子的德布罗意波长。}
+\sol 电子静能 $m_0 c^2 = 0.511\ \mathrm{MeV}$。利用相对论能量-动量关系 $p = \frac{1}{c}\sqrt{E_k(E_k + 2m_0 c^2)}$ 及 $\lambda = \frac{h}{p} = \frac{hc}{\sqrt{E_k(E_k + 2m_0 c^2)}}$（或非相对论近似 $E_k \ll m_0 c^2$ 时 $\lambda = \frac{h}{\sqrt{2m_0 E_k}}$）：
+\begin{enumerate}[leftmargin=2em, itemsep=2pt]
+    \item $E_k = 1.0\ \mathrm{keV} \ll 0.511\ \mathrm{MeV}$，可用非相对论公式：
+    \[
+        \lambda_1 = \frac{6.626\times 10^{-34}}{\sqrt{2\times 9.109\times 10^{-31}\times 1.0\times 10^3\times 1.602\times 10^{-19}}} \approx 3.88\times 10^{-11}\ \mathrm{m} \approx 3.9\times 10^{-2}\ \mathrm{nm}.
+    \]
+    \item $E_k = 1.0\ \mathrm{MeV}$，需用相对论公式：
+    \[
+        \lambda_2 = \frac{1240\ \mathrm{eV\cdot nm}}{\sqrt{1.0\times 10^6(1.0\times 10^6 + 1.022\times 10^6)}} \approx 8.72\times 10^{-4}\ \mathrm{nm}\quad (\text{约 } 8.75\times 10^{-4}\ \mathrm{nm}).
+    \]
+    \item $E_k = 1.0\ \mathrm{GeV} = 10^9\ \mathrm{eV} \gg m_0 c^2$，极端相对论近似 $pc \approx E_k$：
+    \[
+        \lambda_3 \approx \frac{hc}{E_k} = \frac{1240\ \mathrm{eV\cdot nm}}{1.0\times 10^9\ \mathrm{eV}} = 1.24\times 10^{-6}\ \mathrm{nm}.
+    \]
+\end{enumerate}
+\end{prob}
+
+\begin{prob}{14-14}{一束带电粒子经 $206\ \mathrm{V}$ 电压加速后，测得其德布罗意波长为 $2.0\times 10^{-3}\ \mathrm{nm}$，已知该粒子所带的电荷量与电子电荷量相等，求这粒子的质量。}
+\sol 粒子动能 $E_k = eU = 206\ \mathrm{eV}$（远小于核子静能，按非相对论处理）。由 $\lambda = \frac{h}{\sqrt{2meU}}$ 得
+\[
+    m = \frac{h^2}{2eU\lambda^2} = \frac{(6.626\times 10^{-34})^2}{2\times 1.602\times 10^{-19}\times 206\times (2.0\times 10^{-12})^2} \approx 1.66\times 10^{-27}\ \mathrm{kg}\quad (\text{即质子质量 } \approx 1.67\times 10^{-27}\ \mathrm{kg}).
+\]
+\end{prob}
+
+\begin{prob}{14-15}{一个电子的动能等于它的静能，试求该电子的速率和德布罗意波长。}
+\sol 由 $E_k = (\gamma - 1)m_0 c^2 = m_0 c^2$，得洛伦兹因子 $\gamma = \frac{1}{\sqrt{1 - (v/c)^2}} = 2$，于是
+\[
+    v = \frac{\sqrt{3}}{2}c \approx 0.866\times 2.998\times 10^8 \approx 2.60\times 10^8\ \mathrm{m/s}.
+\]
+电子动量 $p = \gamma m_0 v = 2 m_0\left(\frac{\sqrt{3}}{2}c\right) = \sqrt{3}\,m_0 c$，故德布罗意波长
+\[
+    \lambda = \frac{h}{p} = \frac{h}{\sqrt{3}\,m_0 c} = \frac{\lambda_c}{\sqrt{3}} = \frac{2.426\times 10^{-12}}{\sqrt{3}} \approx 1.40\times 10^{-12}\ \mathrm{m}.
+\]
+\end{prob}
+
+\subsection{不确定性关系}
+
+\begin{prob}{14-16}{设粒子沿 $x$ 轴运动时，速率的不确定量为 $\Delta v = 1\ \mathrm{cm/s} = 0.01\ \mathrm{m/s}$，试估算下列情况下坐标的不确定量 $\Delta x$：（1）电子；（2）质量为 $10^{-13}\ \mathrm{kg}$ 的布朗粒子；（3）质量为 $10^{-4}\ \mathrm{kg}$ 的小弹丸。}
+\sol 由海森堡不确定性关系 $\Delta x\cdot \Delta p_x \ge \frac{\hbar}{2} = \frac{h}{4\pi}$，得坐标不确定量下限 $\Delta x_{\min} = \frac{h}{4\pi m\,\Delta v}$：
+\begin{enumerate}[leftmargin=2em, itemsep=2pt]
+    \item 电子（$m = 9.109\times 10^{-31}\ \mathrm{kg}$）：
+    \[
+        \Delta x_1 \ge \frac{6.626\times 10^{-34}}{4\pi\times 9.109\times 10^{-31}\times 0.01} \approx 5.79\times 10^{-3}\ \mathrm{m}.
+    \]
+    \item 布朗粒子（$m = 10^{-13}\ \mathrm{kg}$）：
+    \[
+        \Delta x_2 \ge \frac{6.626\times 10^{-34}}{4\pi\times 10^{-13}\times 0.01} \approx 5.27\times 10^{-20}\ \mathrm{m}\quad (\text{约 } 5.28\times 10^{-20}\ \mathrm{m}).
+    \]
+    \item 小弹丸（$m = 10^{-4}\ \mathrm{kg}$）：
+    \[
+        \Delta x_3 \ge \frac{6.626\times 10^{-34}}{4\pi\times 10^{-4}\times 0.01} \approx 5.27\times 10^{-29}\ \mathrm{m}\quad (\text{约 } 5.28\times 10^{-29}\ \mathrm{m}).
+    \]
+\end{enumerate}
+\end{prob}
+
+\begin{prob}{14-17}{试证：如果粒子位置的不确定量等于其德布罗意波长，则其速度的不确定量大于或等于其速度（不确定性关系：$\Delta x\cdot \Delta p \ge h$）。}
+\proofbegin 已知 $\Delta x = \lambda = \frac{h}{p} = \frac{h}{mv}$，代入题给不确定性关系 $\Delta x\cdot \Delta p \ge h$（其中 $\Delta p = m\Delta v$）：
+\[
+    \frac{h}{mv}\cdot (m\Delta v) \ge h \implies \frac{\Delta v}{v} \ge 1 \implies \Delta v \ge v.
+\]
+即速度的不确定量大于或等于粒子的速度。
+\end{prob}
+
+\begin{prob}{14-18}{一个光子的波长为 $3.0\times 10^{-7}\ \mathrm{m}$，如果测定此波长的精确度 $\frac{\Delta\lambda}{\lambda} = 10^{-6}$，试求测定此光子位置的不确定量。}
+\sol 光子动量 $p = \frac{h}{\lambda}$，取微元大小 $\Delta p = \frac{h}{\lambda^2}\Delta\lambda = \frac{h}{\lambda}\cdot\frac{\Delta\lambda}{\lambda}$。由不确定性关系 $\Delta x\cdot \Delta p \ge \frac{\hbar}{2} = \frac{h}{4\pi}$：
+\[
+    \Delta x \ge \frac{h}{4\pi \Delta p} = \frac{\lambda}{4\pi (\Delta\lambda / \lambda)} = \frac{3.0\times 10^{-7}}{4\pi\times 10^{-6}} \approx 0.0239\ \mathrm{m} \approx 0.024\ \mathrm{m}.
+\]
+\end{prob}
+
+\subsection{波函数与薛定谔方程}
+
+\begin{prob}{14-19}{一维无限深势阱中粒子的定态波函数为 $\psi_n = \sqrt{\frac{2}{a}}\sin\frac{n\pi}{a}x$。试求下列两种情况下在 $x=0$ 到 $x=\frac{a}{3}$ 之间找到粒子的概率：（1）粒子处于基态时；（2）粒子处于第一激发态时。}
+\sol 在 $[0, a/3]$ 内找到粒子的概率为
+\[
+    P = \int_0^{a/3} |\psi_n(x)|^2\,\dd x = \frac{2}{a}\int_0^{a/3} \sin^2\left(\frac{n\pi x}{a}\right)\dd x = \frac{1}{a}\int_0^{a/3}\left(1 - \cos\frac{2n\pi x}{a}\right)\dd x = \frac{1}{3} - \frac{1}{2n\pi}\sin\left(\frac{2n\pi}{3}\right).
+\]
+\begin{enumerate}[leftmargin=2em, itemsep=2pt]
+    \item 基态（$n=1$）：
+    \[
+        P_1 = \frac{1}{3} - \frac{1}{2\pi}\sin\frac{2\pi}{3} = \frac{1}{3} - \frac{\sqrt{3}}{4\pi} \approx 0.3333 - 0.1378 = 0.1955 \approx 0.196.
+    \]
+    \item 第一激发态（$n=2$）：
+    \[
+        P_2 = \frac{1}{3} - \frac{1}{4\pi}\sin\frac{4\pi}{3} = \frac{1}{3} + \frac{\sqrt{3}}{8\pi} \approx 0.3333 + 0.0689 = 0.4022 \approx 0.402.
+    \]
+\end{enumerate}
+\end{prob}
+
+\begin{prob}{14-20}{一维运动的粒子处于如下波函数所描述的状态：$\psi(x) = \begin{cases} Ax\ee^{-\lambda x} & (x\ge 0),\\ 0 & (x<0), \end{cases}$ 式中 $\lambda > 0$。求：（1）波函数 $\psi(x)$ 的归一化常数 $A$；（2）粒子的概率密度函数；（3）发现粒子概率的最大位置。（积分公式：$\int_0^\infty x^2\ee^{-bx}\,\dd x = 2/b^3$）}
+\sol
+\begin{enumerate}[leftmargin=2em, itemsep=2pt]
+    \item 由归一化条件 $\int_{-\infty}^{+\infty} |\psi(x)|^2\,\dd x = 1$：
+    \[
+        \int_0^\infty A^2 x^2 \ee^{-2\lambda x}\,\dd x = A^2 \cdot \frac{2}{(2\lambda)^3} = \frac{A^2}{4\lambda^3} = 1 \implies A = 2\lambda^{3/2}.
+    \]
+    \item 粒子的概率密度函数为 $w(x) = |\psi(x)|^2$：
+    \[
+        w(x) = \begin{cases} 4\lambda^3 x^2 \ee^{-2\lambda x} & (x \ge 0),\\ 0 & (x < 0). \end{cases}
+    \]
+    \item 令 $\frac{\dd w}{\dd x} = 0$ 求极大值位置（$x>0$）：
+    \[
+        \frac{\dd}{\dd x}\left(x^2 \ee^{-2\lambda x}\right) = (2x - 2\lambda x^2)\ee^{-2\lambda x} = 2x(1 - \lambda x)\ee^{-2\lambda x} = 0 \implies x = \frac{1}{\lambda}.
+    \]
+    （验证：$0<x<1/\lambda$ 时 $w'>0$，$x>1/\lambda$ 时 $w'<0$，故 $x = \frac{1}{\lambda}$ 确为发现粒子概率的最大位置。）
+\end{enumerate}
+\end{prob}
+
+\end{document}

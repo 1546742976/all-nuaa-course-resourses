@@ -1,0 +1,197 @@
+\documentclass[zihao=5,a4paper,UTF8]{ctexart}
+
+% ==================== 页面与版式 ====================
+\usepackage[top=2.0cm, bottom=2.0cm, left=1.8cm, right=1.8cm]{geometry}
+\usepackage{amsmath, amssymb, bm}
+\usepackage{booktabs, array, tabularx}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+
+% ==================== 颜色定义 ====================
+\definecolor{navy}{HTML}{1B365D}
+\definecolor{tealaccent}{HTML}{006D77}
+\definecolor{warnred}{HTML}{9E2A2B}
+\definecolor{softbg}{HTML}{F4F7FA}
+\definecolor{tipbg}{HTML}{F0F7F7}
+\definecolor{bordergray}{HTML}{CBD5E1}
+
+% ==================== 超链接与页眉页脚 ====================
+\hypersetup{
+    colorlinks=true,
+    linkcolor=navy,
+    urlcolor=tealaccent,
+    pdftitle={2019 ～ 2020 学年第 1 学期补考试题参考解答}
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\color{gray} 2019 ～ 2020 学年第 1 学期补考试题参考解答}
+\fancyhead[R]{\small\color{gray} \leftmark}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\ctexset{
+    section = {
+        format = \Large\bfseries\color{navy},
+        beforeskip = 14pt,
+        afterskip = 6pt
+    },
+    subsection = {
+        format = \large\bfseries\color{tealaccent},
+        beforeskip = 10pt,
+        afterskip = 4pt
+    }
+}
+
+% ==================== 题目与解答环境 ====================
+\newenvironment{prob}[2]{%
+    \par\vspace{5pt}\noindent\textbf{\color{navy}#1} \textbf{#2}\par\nopagebreak\vspace{2pt}%
+}{%
+    \par\vspace{3pt}%
+}
+
+\newcommand{\sol}{\noindent\textbf{\color{tealaccent}【解】}\ }
+\newcommand{\proofbegin}{\noindent\textbf{\color{tealaccent}【证明】}\ }
+
+% ==================== 常用物理宏 ====================
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\ee}{\mathrm{e}}
+\newcommand{\vect}[1]{\bm{#1}}
+
+\begin{document}
+
+\begin{center}
+    {\Large\bfseries\color{navy} 2019 $\sim$ 2020 学年第 1 学期补考试题参考解答}\\[4pt]
+    {\small\color{gray} 共 26 题（含选择题 10 题、填空题 11 题、计算题 5 题）}
+\end{center}
+\vspace{2pt}\hrule\vspace{6pt}
+
+% =====================================================================
+
+\section*{一、选择题（每题 3 分，共 30 分）}
+
+\begin{prob}{第 1 题}{弹簧振子总能量 $E$，振幅增为 $2$ 倍，质量增为 $4$ 倍，总能量变为多少。}
+\sol \textbf{答案：B（$4E$）}。弹簧振子总能量 $E = \frac{1}{2}kA^2$，仅与 $k$ 和 $A$ 有关，与质量 $m$ 无关。振幅增为 $2$ 倍，故 $E' = 4E$。
+\end{prob}
+
+\begin{prob}{第 2 题}{互相垂直同频率谐振动合成逆时针椭圆，已知 $x = 6\cos(\omega t + \pi/2)$，求 $y$。}
+\sol \textbf{答案：C（$y = 9\cos\omega t$）}。$t=0$ 时，$x(0) = 6\cos(\pi/2) = 0$ 且 $\dot{x}(0) < 0$（向左运动）。在椭圆顶部 $(0, 9)$ 处向左运动对应逆时针旋转，故 $t=0$ 时 $y(0) = +9$，即 $\varphi_y = 0$，$y = 9\cos\omega t$。
+\end{prob}
+
+\begin{prob}{第 3 题}{两相同物体同温度，周围温度不同，比较单位时间内辐射的能量 $E(A)$、$E(B)$。}
+\sol \textbf{答案：C（$E(A) = E(B)$）}。物体本身的热辐射功率仅取决于自身温度和表面性质，与周围环境温度无关。
+\end{prob}
+
+\begin{prob}{第 4 题}{玻璃（$n_3=1.60$）表面镀 $\mathrm{MgF_2}$（$n_2=1.38$）增透膜，$\lambda=500\ \mathrm{nm}$，求最小厚度 $e$。}
+\sol \textbf{答案：D（$90.6\ \mathrm{nm}$）}。两反射面均有半波损失，增透（反射相消）最小厚度为 $e_{\min} = \frac{\lambda}{4n_2} = \frac{500}{4\times 1.38} \approx 90.6\ \mathrm{nm}$。
+\end{prob}
+
+\begin{prob}{第 5 题}{平面简谐波传播中，质元从最大位移回到平衡位置时的能量变化。}
+\sol \textbf{答案：C（从相邻质元获得能量，能量逐渐增加）}。行波中质元动能与势能同相位变化，在最大位移处动能和势能均为零，回到平衡位置时动能和势能均达最大，故总机械能增加。
+\end{prob}
+
+\begin{prob}{第 6 题}{自然光 $I_0$ 过两偏振片后光强为 $I_0/8$，求两偏振片夹角。}
+\sol \textbf{答案：A（$\pi/3$）}。$\frac{1}{2}I_0\cos^2\theta = \frac{I_0}{8} \implies \cos\theta = \frac{1}{2} \implies \theta = \frac{\pi}{3}$。
+\end{prob}
+
+\begin{prob}{第 7 题}{单缝衍射中单缝向透镜平移，条纹变化。}
+\sol \textbf{答案：C（不发生变化）}。
+\end{prob}
+
+\begin{prob}{第 8 题}{两静质量 $m_0$ 的粒子均以速度 $v$ 相向运动碰撞合为一粒子，求静质量 $M_0$（相对论）。}
+\sol \textbf{答案：D（$\frac{2m_0}{\sqrt{1-(v/c)^2}}$）}。总动量为零，总能量 $E = \frac{2m_0c^2}{\sqrt{1-(v/c)^2}} = M_0c^2$，故 $M_0 = \frac{2m_0}{\sqrt{1-(v/c)^2}}$。
+\end{prob}
+
+\begin{prob}{第 9 题}{用不确定关系估计宽度 $a$ 一维无限深势阱中粒子的零点能量。}
+\sol \textbf{答案：B（$\hbar^2/(2ma^2)$）}。取 $\Delta x \sim a$，由 $\Delta p \sim \frac{\hbar}{a}$，零点能量 $E \sim \frac{(\Delta p)^2}{2m} = \frac{\hbar^2}{2ma^2}$。
+\end{prob}
+
+\begin{prob}{第 10 题}{自然光以布儒斯特角 $i_0$ 入射平板玻璃，界面 2（玻璃$\to$空气）的反射光偏振态。}
+\sol \textbf{答案：B（线偏振光且光矢量振动方向垂直于入射面）}。由折射定律和光路可逆性，在界面 2 处的入射角正好是玻璃到空气的布儒斯特角，故界面 2 的反射光也是振动垂直于入射面的完全线偏振光。
+\end{prob}
+
+\section*{二、填空题（共 36 分）}
+
+\begin{prob}{第 11 题}{双棱镜上支路插入 $n=1.33$ 膜后，零级移到原第 5 级极大处，求膜厚（$\lambda=589.3\ \mathrm{nm}$）。}
+\sol $(n-1)e = 5\lambda \implies e = \frac{5\times 589.3\times 10^{-9}}{1.33 - 1} \approx 8.93\times 10^{-6}\ \mathrm{m}\ (8.9\ \mu\mathrm{m})$。
+\end{prob}
+
+\begin{prob}{第 12 题}{入射波 $y_1 = A\cos\left[2\pi\left(\nu t - \frac{x}{\lambda}\right) + \phi\right]$ 在 $x=L$ 固定端反射，求驻波表达式。}
+\sol 反射波 $y_2 = A\cos\left[2\pi\left(\nu t - \frac{2L-x}{\lambda}\right) + \phi + \pi\right]$。叠加得：
+\[
+    y = 2A\cos\left(2\pi\frac{x-L}{\lambda} - \frac{\pi}{2}\right)\cos\left(2\pi\nu t + \phi - 2\pi\frac{L}{\lambda} + \frac{\pi}{2}\right)
+\]
+（或等价写成 $2A\sin\frac{2\pi(L-x)}{\lambda}\sin\left(2\pi\nu t + \phi - \frac{2\pi L}{\lambda}\right)$）。
+\end{prob}
+
+\begin{prob}{第 13 题}{简谐振动由平衡位置到最大位移处及 $1/2$ 最大位移处的时间。}
+\sol 分别对应旋转矢量转过 $\pi/2$ 和 $\pi/6$，故时间为 \textbf{$T/4$} 与 \textbf{$T/12$}。
+\end{prob}
+
+\begin{prob}{第 14 题}{球形碗底微振动（同练习册 11-4）。}
+\sol $\theta = \frac{v_0}{\sqrt{Rg}}\cos\left(\sqrt{\frac{g}{R}}t - \frac{\pi}{2}\right)$。
+\end{prob}
+
+\begin{prob}{第 15 题}{两同方向同频率振动 $A_1=5\ \mathrm{cm},\varphi_1=0.75\pi$；$A_2=6\ \mathrm{cm},\varphi_2=0.25\pi$，求合振幅。}
+\sol 相位差 $\pi/2$，故 $A = \sqrt{5^2 + 6^2} = \sqrt{61}\ \mathrm{cm}$。
+\end{prob}
+
+\begin{prob}{第 16 题}{牛顿环实验第 1 级和第 4 级暗环距离 $\Delta \propto \sqrt{\lambda}$，已知 $\lambda_1=589.3\ \mathrm{nm}, \Delta_1=4.00\ \mathrm{mm}, \Delta_2=3.85\ \mathrm{mm}$。}
+\sol $\lambda_2 = \lambda_1\left(\frac{\Delta_2}{\Delta_1}\right)^2 = 589.3\times\left(\frac{3.85}{4.00}\right)^2 \approx 545.9\ \mathrm{nm}$。
+\end{prob}
+
+\begin{prob}{第 17 题}{驻波 $y = 0.5\cos\frac{\pi x}{3}\cos 40\pi t\ (\mathrm{cm,s})$，求成分波振幅、周期、波速、相邻波节距。}
+\sol $A = 0.5/2 = 0.25\ \mathrm{cm}$；$T = \frac{2\pi}{40\pi} = 0.05\ \mathrm{s}$；$\frac{2\pi}{\lambda} = \frac{\pi}{3} \implies \lambda = 6\ \mathrm{cm}$，波速 $u = \frac{\lambda}{T} = 120\ \mathrm{cm/s}$；相邻波节距 $\frac{\lambda}{2} = 3\ \mathrm{cm}$。
+\end{prob}
+
+\begin{prob}{第 18 题}{$\lambda=600.0\ \mathrm{nm}$，$d=3600\ \mathrm{nm}$，求第 3 级衍射角及使衍射角为 $45^\circ$ 时的入射角。}
+\sol $\sin\theta_3 = \frac{3\times 600}{3600} = 0.5 \implies \theta_3 = 30^\circ$。斜入射时 $d(\sin 45^\circ + \sin i) = 3\lambda \implies \sin i = 0.5 - \frac{\sqrt{2}}{2} \approx -0.2071 \implies i \approx -11.95^\circ$（负号表示入射角与衍射角在法线\textbf{异}侧，入射角大小为 $11.95^\circ$）。
+\end{prob}
+
+\begin{prob}{第 19 题}{普朗克量子假说的提出背景。}
+\sol \textbf{黑体辐射}。
+\end{prob}
+
+\begin{prob}{第 20 题}{飞船速度 $c/2$，相对飞船向前发射火箭速度 $c/2$，求地面测得火箭速率（相对论）。}
+\sol $u = \frac{c/2 + c/2}{1 + (c/2)(c/2)/c^2} = \frac{4}{5}c$。
+\end{prob}
+
+\begin{prob}{第 21 题}{电子以 $v = 0.6c$ 运动，求德布罗意波长和频率。}
+\sol $\gamma = \frac{1}{\sqrt{1-0.6^2}} = \frac{5}{4}$，动量 $p = \gamma m_0 v = \frac{3}{4}m_0 c$，故 $\lambda = \frac{h}{p} = \frac{4h}{3m_0c}$；物质波频率 $\nu = \frac{E}{h} = \frac{\gamma m_0c^2}{h} = \frac{5m_0c^2}{4h}$。
+\end{prob}
+
+\section*{三、计算题（共 34 分）}
+
+\begin{prob}{第 22 题}{（10 分）滑轮弹簧振子系统（同练习册 11-3）。}
+\sol 详见练习册第 11-3 题解答：
+（1）建立方程 $\ddot{x} + \frac{k}{m + J/R^2}x = 0$；（2）$T = 2\pi\sqrt{\frac{m+J/R^2}{k}}$；（3）$x = \frac{mg}{k}\cos\left(\sqrt{\frac{k}{m+J/R^2}}t + \pi\right)$。
+\end{prob}
+
+\begin{prob}{第 23 题}{（6 分）两同方向同频率简谐振动曲线合振动（同练习册 11-9）。}
+\sol 详见练习册第 11-9 题解答：
+（a）$A = |A_2 - A_1|$，$x = |A_2 - A_1|\cos\left(\omega t + \frac{\pi}{2}\right)$（$A_2 > A_1$）；\\
+（b）$A = \sqrt{A_1^2 + A_2^2}$，$x = \sqrt{A_1^2 + A_2^2}\cos\left(\omega t + \arctan\frac{A_1}{A_2}\right)$。
+\end{prob}
+
+\begin{prob}{第 24 题}{（7 分）单缝 $a=0.60\ \mathrm{mm}$，$f=400\ \mathrm{mm}$，白光（$400\sim 760\ \mathrm{nm}$）照射，$P$ 点距中心 $1.4\ \mathrm{mm}$。}
+\sol 详见练习册第 13-18 题解答：$\Delta = a\sin\theta = 2100\ \mathrm{nm}$。在 $400\sim 760\ \mathrm{nm}$ 内：（1）$\lambda = 600.0\ \mathrm{nm}\ (k=3)$ 与 $466.7\ \mathrm{nm}\ (k=4)$；（2）级次分别为 $3$ 和 $4$；（3）半波带数分别为 $7$ 和 $9$。
+\end{prob}
+
+\begin{prob}{第 25 题}{（6 分）空气中薄油膜（$n=1.30$），$30^\circ$ 角观察呈 $480\ \mathrm{nm}$ 蓝色光，求最小厚度及法向观察颜色。}
+\sol $\cos\theta_2 = \sqrt{1 - \left(\frac{\sin 30^\circ}{1.30}\right)^2} = \frac{1.20}{1.30} = \frac{12}{13}$。最薄厚度满足 $2nd_{\min}\cos\theta_2 = \frac{\lambda}{2}$：
+\[
+    d_{\min} = \frac{480}{4\times 1.30\times (12/13)} = 100\ \mathrm{nm}.
+\]
+法向观察时，$\lambda' = 4nd_{\min} = 4\times 1.30\times 100 = 520\ \mathrm{nm}$（\textbf{绿色}）。
+\end{prob}
+
+\begin{prob}{第 26 题}{（5 分）电子动能等于静能，求速率与德布罗意波长（同练习册 14-15）。}
+\sol 详见练习册第 14-15 题解答：$v = \frac{\sqrt{3}}{2}c \approx 2.60\times 10^8\ \mathrm{m/s}$，$\lambda = \frac{h}{\sqrt{3}m_0c} \approx 1.40\times 10^{-12}\ \mathrm{m}$。
+\end{prob}
+
+% =====================================================================
+
+\end{document}

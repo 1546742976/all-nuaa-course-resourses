@@ -1,0 +1,337 @@
+\documentclass[zihao=5,a4paper,UTF8]{ctexart}
+
+% ==================== 页面与版式 ====================
+\usepackage[top=2.1cm, bottom=2.1cm, left=1.9cm, right=1.9cm]{geometry}
+\usepackage{amsmath, amssymb, bm}
+\usepackage{booktabs, array, tabularx}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+
+% ==================== 颜色定义 ====================
+\definecolor{navy}{HTML}{1B365D}
+\definecolor{tealaccent}{HTML}{006D77}
+\definecolor{warnred}{HTML}{9E2A2B}
+\definecolor{softbg}{HTML}{F4F7FA}
+\definecolor{warnbg}{HTML}{FDF3F2}
+\definecolor{tipbg}{HTML}{F0F7F7}
+\definecolor{bordergray}{HTML}{CBD5E1}
+
+% ==================== 超链接与页眉页脚 ====================
+\hypersetup{
+    colorlinks=true,
+    linkcolor=navy,
+    urlcolor=tealaccent,
+    pdftitle={大学物理（下）期末复习讲义}
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\color{gray} 大学物理（下）期末复习讲义}
+\fancyhead[R]{\small\color{gray} \leftmark}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\ctexset{
+    section = {
+        format = \Large\bfseries\color{navy},
+        beforeskip = 14pt,
+        afterskip = 6pt
+    },
+    subsection = {
+        format = \large\bfseries\color{tealaccent},
+        beforeskip = 10pt,
+        afterskip = 4pt
+    }
+}
+
+% ==================== 自定义盒子 ====================
+\newtcolorbox{formulabox}[1][核心公式与基本规律]{
+    enhanced, breakable,
+    colback=softbg, colframe=navy,
+    coltitle=white, fonttitle=\bfseries,
+    title=#1,
+    boxrule=0.8pt, arc=3pt,
+    left=8pt, right=8pt, top=6pt, bottom=6pt
+}
+
+\newtcolorbox{typebox}[1][题型分析]{
+    enhanced, breakable,
+    colback=tipbg, colframe=tealaccent,
+    coltitle=white, fonttitle=\bfseries,
+    title=#1,
+    boxrule=0.8pt, arc=3pt,
+    left=8pt, right=8pt, top=6pt, bottom=6pt
+}
+
+\newtcolorbox{warnbox}[1][高频易错辨析]{
+    enhanced, breakable,
+    colback=warnbg, colframe=warnred,
+    coltitle=white, fonttitle=\bfseries,
+    title=#1,
+    boxrule=0.8pt, arc=3pt,
+    left=8pt, right=8pt, top=6pt, bottom=6pt
+}
+
+% ==================== 常用物理宏 ====================
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\vect}[1]{\bm{#1}}
+\newcommand{\eps}{\varepsilon}
+
+\setlist[itemize]{leftmargin=1.5em, itemsep=2pt, parsep=0pt, topsep=3pt}
+\setlist[enumerate]{leftmargin=1.8em, itemsep=2pt, parsep=0pt, topsep=3pt}
+
+% ==================== 标题 ====================
+\title{\vspace{-1cm}\textbf{\Huge\color{navy} 大学物理（下）期末复习讲义}\\[0.4em]
+\large\color{tealaccent} 机械振动与机械波 · 波动光学 · 量子力学初步}
+\author{}
+\date{2026年11月}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\begin{center}
+\fcolorbox{bordergray}{softbg}{\parbox{0.94\textwidth}{
+\textbf{内容导航：}本讲义涵盖《大学物理（下）》全部三部分内容——\textbf{机械振动与机械波}、\textbf{波动光学}、\textbf{量子力学初步}，每部分均按“核心公式 $\to$ 题型化分析”编排，便于系统梳理概念与快速规范解题。
+}}
+\end{center}
+
+\tableofcontents
+\vspace{0.5em}
+
+% =====================================================================
+\section{机械振动与机械波}
+% =====================================================================
+
+\subsection{机械振动}
+
+\begin{formulabox}[简谐运动与振动合成核心公式]
+\begin{itemize}
+    \item \textbf{动力学方程与运动学方程：} $\frac{\dd^2 x}{\dd t^2} + \omega^2 x = 0 \implies x = A\cos(\omega t + \varphi_0)$。
+    \item \textbf{速度与加速度：} $v = -\omega A\sin(\omega t + \varphi_0)$，$a = -\omega^2 x = -\omega^2 A\cos(\omega t + \varphi_0)$。
+    \item \textbf{固有角频率：} 弹簧振子 $\omega = \sqrt{\frac{k}{m}}$；单摆（小角）$\omega = \sqrt{\frac{g}{l}}$。
+    \item \textbf{简谐运动能量：} $E = E_k + E_p = \frac{1}{2}kA^2 = \frac{1}{2}m\omega^2 A^2$（势能与动能相等位置为 $x = \pm\frac{\sqrt{2}}{2}A$）。
+    \item \textbf{同方向同频率谐振动合成：}
+    \[
+        A = \sqrt{A_1^2 + A_2^2 + 2A_1 A_2\cos(\varphi_{20} - \varphi_{10})}, \qquad \tan\varphi_0 = \frac{A_1\sin\varphi_{10} + A_2\sin\varphi_{20}}{A_1\cos\varphi_{10} + A_2\cos\varphi_{20}}
+    \]
+    \item \textbf{同方向不同频率合成（拍）：} 拍频 $\nu_{\text{拍}} = |\nu_1 - \nu_2|$。
+\end{itemize}
+\end{formulabox}
+
+\begin{typebox}[机械振动常见题型分析]
+\begin{enumerate}
+    \item \textbf{题型一：简谐运动方程的建立与状态求解}
+    \begin{itemize}
+        \item \textbf{考察核心：} 由初条件（$t=0$ 时的 $x_0, v_0$）、$x\text{-}t$ 图像或碰撞/能量过程确定振幅 $A$、角频率 $\omega$ 和初相 $\varphi_0$，并求任意时刻的位移、速度、加速度或经过某位置的时间。
+        \item \textbf{标准解法：} (1) 由系统参数或周期求 $\omega = \frac{2\pi}{T}$；(2) 若涉及碰撞或压缩弹簧，先用动量守恒求共速，再用机械能守恒求 $A$（或直接用 $A = \sqrt{x_0^2 + (v_0/\omega)^2}$）；(3) 用\textbf{旋转矢量法}标出 $t=0$ 与目标状态矢量角，由 $\Delta t = \frac{\Delta\varphi}{2\pi}T$ 求时间间隔，避免三角函数多值漏解。
+    \end{itemize}
+    \item \textbf{题型二：动力学法证明简谐运动并求周期}
+    \begin{itemize}
+        \item \textbf{考察核心：} 针对弹簧-滑轮-重物耦合系统、光滑曲面（如球形碗底）小角度摆动等模型，证明其作简谐运动并求角频率与表达式。
+        \item \textbf{标准解法：} (1) 确定平衡位置并建立坐标（令平衡位置为原点 $x=0$ 或 $\theta=0$）；(2) 在任意偏离位置列牛顿第二定律、转动定律（$M = J\alpha$，绳不打滑时 $a = R\alpha$），小角度下作近似 $\sin\theta \approx \theta$；(3) 消去内力（如绳张力）与平衡位置静力项，化为 $\ddot{x} + \omega^2 x = 0$，即得 $\omega$ 与 $T = \frac{2\pi}{\omega}$；(4) 结合初始释放位置（如弹簧无伸缩静止释放，则 $x_0 = -\frac{mg}{k}, v_0 = 0$）定 $A$ 和 $\varphi_0$。
+    \end{itemize}
+    \item \textbf{题型三：同方向简谐运动的合成}
+    \begin{itemize}
+        \item \textbf{考察核心：} 已知两分振动表达式或 $x\text{-}t$ 曲线求合振动表达式，或已知合振动与分振动参数反求另一分振动，以及三振动中调节初相使合振幅最大/最小。
+        \item \textbf{标准解法：} 统一化为同角频率的余弦形式，利用\textbf{旋转矢量图解法}（平行四边形/三角形法则，结合余弦定理）求解；同相（$\Delta\varphi = 2k\pi$）时振幅最大，反相（$\Delta\varphi = (2k+1)\pi$）时振幅最小。
+    \end{itemize}
+\end{enumerate}
+\end{typebox}
+
+\subsection{机械波}
+
+\begin{formulabox}[平面简谐波、能量、干涉、驻波与多普勒效应]
+\begin{itemize}
+    \item \textbf{平面简谐波波函数：} 设波源（$x=0$）振动为 $y_0(t) = A\cos(\omega t + \varphi_0)$，沿 $+x$（取 $-$）或 $-x$（取 $+$）方向以波速 $u$ 传播：
+    \[
+        y(x,t) = A\cos\left[\omega\left(t \mp \frac{x}{u}\right) + \varphi_0\right] = A\cos\left[2\pi\left(\frac{t}{T} \mp \frac{x}{\lambda}\right) + \varphi_0\right]
+    \]
+    \item \textbf{波的能量与能流密度：} 体积元总机械能 $E = E_k + E_p$（动能与势能同相位同时达最大），平均能量密度 $\bar{w} = \frac{1}{2}\rho\omega^2 A^2$，能流密度（波强）$I = \bar{w}u = \frac{1}{2}\rho u\omega^2 A^2$，相邻同相面（间距 $\lambda$）柱体内的总能量 $E_{\lambda} = \bar{w} S \lambda$。
+    \item \textbf{波的干涉：} 相干条件（频率相同、振动方向相同、相位差恒定）。两波源在点 $P$ 的相位差：
+    \[
+        \Delta\varphi = (\varphi_{20} - \varphi_{10}) - \frac{2\pi}{\lambda}(r_2 - r_1)
+    \]
+    当 $\Delta\varphi = 2k\pi$ 时干涉加强（$A = A_1 + A_2$）；当 $\Delta\varphi = (2k+1)\pi$ 时干涉减弱（$A = |A_1 - A_2|$）。
+    \item \textbf{驻波：} 两列振幅、频率相同沿相反方向传播的波叠加：$y = 2A\cos\left(\frac{2\pi x}{\lambda}\right)\cos(\omega t)$。相邻波节（或波腹）间距为 $\frac{\lambda}{2}$；波从波疏介质垂直入射波密介质反射时产生\textbf{半波损失}（相位突变 $\pi$，等价于波程差附加 $\frac{\lambda}{2}$）。
+    \item \textbf{多普勒效应：} 设波源速度 $v_S$，观察者速度 $v_O$，接收频率：
+    \[
+        f' = \frac{u \pm v_O}{u \mp v_S} f_0 \qquad \text{（相互靠近频率升高，分子取 $+$，分母取 $-$；相互远离反之）}
+    \]
+\end{itemize}
+\end{formulabox}
+
+\begin{typebox}[机械波常见题型分析]
+\begin{enumerate}
+    \item \textbf{题型四：平面简谐波波函数的建立与波形分析}
+    \begin{itemize}
+        \item \textbf{考察核心：} 由波源（或非原点 $A$ 点）的振动方程写波函数；由某时刻 $y\text{-}x$ 波形图求初相与波函数；由波函数求波速、波长、质点振动速度/加速度及两点相位差。
+        \item \textbf{标准解法：} (1) 若已知 $x=x_0$ 处质点振动方程 $y_{x_0}(t)$，沿 $+x$ 传播时将 $t$ 替换为 $t - \frac{x - x_0}{u}$（向 $-x$ 传播用 $+$ 号）；(2) 由波形图求初相时，用\textbf{波形微平移法}（将波形沿传播方向微移确定质点下一时刻运动方向，从而判断正负速度并唯一确定初相）。
+    \end{itemize}
+    \item \textbf{题型五：波的干涉与驻波分析}
+    \begin{itemize}
+        \item \textbf{考察核心：} 求两相干波源连线上/外侧/中垂线上的干涉加强或减弱点；由驻波方程求分波振幅与波速、波腹波节位置；已知入射波写自由端/固定端反射波方程与合成驻波方程。
+        \item \textbf{标准解法：} (1) 干涉问题分区域写距离差 $r_2 - r_1$（如连线外侧 $r_2 - r_1 = \pm d$ 恒定，连线内 $r_2 - r_1 = 2x - d$），代入 $\Delta\varphi$ 令其等于 $(2k+1)\pi$ 或 $2k\pi$；近轴中垂线移动问题常用几何近似 $r_1^2 - r_2^2 \approx 2L(r_1 - r_2)$；(2) 驻波反射问题先写到反射面处的相位，自由端反射波相位\textbf{不加 $\pi$}，固定端反射波相位\textbf{加 $\pi$}，反向传播项 $x$ 变号。
+    \end{itemize}
+    \item \textbf{题型六：多普勒效应及反射拍频应用}
+    \begin{itemize}
+        \item \textbf{考察核心：} 单程频移计算（求源速或接收频率），以及波源静止、运动目标反射回波与原波产生拍频的测速问题。
+        \item \textbf{标准解法：} 反射回波分两步计算：(1) 目标作为观察者接收频率 $\nu' = \frac{u \pm v}{u}\nu_s$；(2) 目标作为波源发出频率 $\nu'$ 的波，静止接收器收到 $\nu'' = \frac{u}{u \mp v}\nu'$，拍频 $\nu_b = |\nu'' - \nu_s|$。
+    \end{itemize}
+\end{enumerate}
+\end{typebox}
+
+% =====================================================================
+\section{波动光学}
+% =====================================================================
+
+\subsection{光的干涉}
+
+\begin{formulabox}[光的干涉核心公式]
+\begin{itemize}
+    \item \textbf{光程与光程差：} 光程 $\delta = nr$，相位差 $\Delta\varphi = \frac{2\pi}{\lambda}\Delta\delta$（$\lambda$ 为真空波长）。
+    \item \textbf{杨氏双缝干涉：} $\Delta\delta = d\sin\theta \approx d\frac{x}{D}$，条纹间距 $\Delta x = \frac{D}{d}\lambda$。明纹 $x_k = \pm k\frac{D}{d}\lambda$，暗纹 $x_k = \pm(2k-1)\frac{D\lambda}{2d}$。
+    \item \textbf{薄膜干涉（折射率 $n$，厚度 $e$）：}
+    \begin{itemize}
+        \item 等倾干涉：$\Delta\delta = 2ne\cos\gamma\ (+ \frac{\lambda}{2}\ \text{若有单侧半波损失})$。
+        \item 劈尖干涉（倾角 $\theta$）：垂直入射 $\Delta\delta = 2ne + \frac{\lambda}{2}$（空气劈尖），相邻明/暗纹间距 $\Delta l = \frac{\lambda}{2n\theta}$；棱边处为暗纹。
+        \item 牛顿环（曲率半径 $R$，空气膜）：$e \approx \frac{r^2}{2R}$，暗环半径 $r_k = \sqrt{kR\lambda}\ (k=0,1,2,\dots)$，中心为暗斑。
+    \end{itemize}
+    \item \textbf{迈克耳孙干涉仪：} 反射镜 $M_1$ 移动距离 $d$ 时，视场中条纹移动数目 $N = \frac{2d}{\lambda}$（即 $d = N\frac{\lambda}{2}$）。
+\end{itemize}
+\end{formulabox}
+
+\begin{typebox}[光的干涉常见题型分析]
+\begin{enumerate}
+    \item \textbf{题型一：分波阵面干涉（双缝与洛埃镜）的条纹计算与移动}
+    \begin{itemize}
+        \item \textbf{考察核心：} 求条纹间距、波长或明暗纹位置；光源偏置、斜入射或双缝覆透明薄片后零级明纹的移动方向与距离；利用半波损失分析洛埃镜干涉条纹。
+        \item \textbf{标准解法：} 写出总光程差 $\Delta\delta = \Delta\delta_{\text{入射}} + d\frac{x}{D} + (n_2 - n_1)e\ (+ \frac{\lambda}{2}\ \text{若有掠入射反射})$，令 $\Delta\delta = 0$ 即得零级明纹新位置。插入薄片时，零级明纹向\textbf{光程增加（折射率较大）}的一侧移动，移动距离 $\Delta x_0 = \frac{D}{d}(n-1)e$，条纹间距 $\Delta x$ 不变。
+    \end{itemize}
+    \item \textbf{题型二：薄膜等倾干涉（色散分析与膜厚测定）}
+    \begin{itemize}
+        \item \textbf{考察核心：} 白光照射薄膜时反射光与透射光的增强/减弱波长；已知可见光波段内相邻消光波长或相邻极值波长反求膜厚。
+        \item \textbf{标准解法：} (1) 先判断上下两表面折射率大小关系，确定是否仅有单侧半波损失（若 $n_1 < n_2 < n_3$ 或 $n_1 > n_2 > n_3$，两侧均有或均无半波损失，\textbf{无附加 $\frac{\lambda}{2}$}；透射光与反射光呈互补色）；(2) 若已知连续波长中仅 $\lambda_1, \lambda_2$（$\lambda_1 > \lambda_2$）相邻消光（或极大），设其干涉级次分别为 $k$ 与 $k+1$，联立 $k\lambda_1 = (k+1)\lambda_2$（或 $(k-\frac{1}{2})\lambda_1 = (k+\frac{1}{2})\lambda_2$）先解整数 $k$，再求膜厚 $e$。
+    \end{itemize}
+    \item \textbf{题型三：薄膜等厚干涉（劈尖、牛顿环）与微小量测量}
+    \begin{itemize}
+        \item \textbf{考察核心：} 劈尖测金属丝直径、条纹总数、热膨胀移过条纹数、工件表面凹凸判定与深度计算；牛顿环测波长或曲率半径、充液或存在缝隙 $d_0$ 时的暗环半径变化。
+        \item \textbf{标准解法：} (1) 找准等厚面厚度公式 $e(x)$（劈尖 $e=x\theta$，牛顿环 $e=d_0 + \frac{r^2}{2R}$）及半波损失情况；(2) 劈尖测凹凸时，条纹向棱边弯为\textbf{凹}、向厚端弯为\textbf{凸}，深度 $H = \frac{a}{b}\frac{\lambda}{2}$；(3) 空气层充入折射率 $n$ 的液体后，条纹间距（或暗环半径）缩小为原来的 $\frac{1}{n}$（或 $r' = \sqrt{\frac{kR\lambda}{n}}$）。
+    \end{itemize}
+    \item \textbf{题型四：迈克耳孙干涉仪光程差分析}
+    \begin{itemize}
+        \item \textbf{考察核心：} 反射镜移动测波长，或光路中插入透明薄片引起的条纹移动数。
+        \item \textbf{标准解法：} 光束往返两次通过该臂，移动距离 $d$ 时 $\Delta\delta = 2d = N\lambda$；插入折射率 $n$、厚 $d$ 的薄片时，光程差改变量为 $\Delta\delta = 2(n-1)d = N\lambda$。
+    \end{itemize}
+\end{enumerate}
+\end{typebox}
+
+\subsection{光的衍射与偏振}
+
+\begin{formulabox}[光的衍射与偏振核心公式]
+\begin{itemize}
+    \item \textbf{单缝夫琅禾费衍射（缝宽 $a$）：}
+    \[
+        a\sin\theta = \begin{cases} 0 & \text{中央明纹中心}\\ \pm k\lambda\ (k=1,2,\dots) & \text{暗纹条件}\\ \pm(2k+1)\frac{\lambda}{2}\ (k=1,2,\dots) & \text{明纹中心条件} \end{cases}
+    \]
+    中央明纹角宽度 $\Delta\theta_0 = \frac{2\lambda}{a}$，线宽度 $\Delta x_0 = \frac{2f\lambda}{a}$（其余明纹宽为中央明纹一半）。
+    \item \textbf{圆孔衍射与分辨本领：} 爱里斑半角宽 $\theta_0 = 1.22\frac{\lambda}{D}$；瑞利判据最小分辨角 $\theta_{\min} = 1.22\frac{\lambda}{D}$，光学仪器分辨本领 $R = \frac{1}{\theta_{\min}} = \frac{D}{1.22\lambda}$。
+    \item \textbf{光栅衍射（光栅常数 $d = a+b$）：}
+    \begin{itemize}
+        \item 光栅方程（主极大）：$(a+b)\sin\theta = \pm k\lambda\ (k=0,1,2,\dots)$。
+        \item \textbf{缺级条件：} 光栅主极大与单缝衍射暗纹重合时缺级，即 $\frac{a+b}{a} = \frac{k}{k'}$（$k'$ 为整数）。
+        \item \textbf{最高级次：} 由 $|\sin\theta| < 1$ 得 $k_{\max} = \lfloor \frac{a+b}{\lambda} \rfloor$（注意检查边界是否缺级或恰在 $\pm 90^\circ$）。
+    \end{itemize}
+    \item \textbf{光的偏振：} 自然光过起偏器 $I_1 = \frac{1}{2}I_0$；\textbf{马吕斯定律} $I_2 = I_1\cos^2\alpha$；\textbf{布儒斯特定律} $\tan i_B = \frac{n_2}{n_1}$（此时 $i_B + r_B = \frac{\pi}{2}$，反射光为垂直于入射面的完全线偏振光）。
+\end{itemize}
+\end{formulabox}
+
+\begin{typebox}[光的衍射与偏振常见题型分析]
+\begin{enumerate}
+    \item \textbf{题型五：单缝衍射与斜入射分析}
+    \begin{itemize}
+        \item \textbf{考察核心：} 求中央明纹宽度、各级明/暗纹位置或波长；复色光/白光照射下屏上某点满足亮/暗纹条件的波长及半波带数；斜入射时的衍射条纹分布。
+        \item \textbf{标准解法：} (1) 小角近似下 $\sin\theta \approx \tan\theta = \frac{x}{f}$；(2) 半波带数 $N = \frac{a\sin\theta}{\lambda/2}$（偶数为暗纹，奇数为明纹）；(3) 斜入射角为 $\varphi$ 时，光程差变为 $a(\sin\theta \pm \sin\varphi)$，零级明纹移至 $f\tan\varphi$ 处。
+    \end{itemize}
+    \item \textbf{题型六：光栅衍射综合计算（含双缝调制）}
+    \begin{itemize}
+        \item \textbf{考察核心：} 求光栅常数、衍射角、最高级次、总明纹条数、缺级级次与缝宽 $a$，以及斜入射光栅和双缝-单缝调制下中央包络内主极大数目。
+        \item \textbf{标准解法：} (1) 先用光栅方程求出 $k_{\max} = \lfloor \frac{d}{\lambda} \rfloor$（斜入射时用 $d(\sin\theta \pm \sin\theta_0) = k\lambda$，两侧最高级次需分别按 $\theta = \pm 90^\circ$ 计算）；(2) 再用 $\frac{d}{a} = \frac{k}{k'}$ 找出所有缺级级次并剔除（特别注意 $a=b$ 时所有偶数级缺级）；(3) 统计总条纹数时不要遗漏 $k=0$ 级。
+    \end{itemize}
+    \item \textbf{题型七：圆孔衍射与光学仪器分辨本领}
+    \begin{itemize}
+        \item \textbf{考察核心：} 求望远镜、人眼或显微镜恰好能分辨两物点时的最大距离或最小线距。
+        \item \textbf{标准解法：} 由瑞利判据 $\theta_{\min} = 1.22\frac{\lambda}{D} = \frac{l}{L}$（$l$ 为两物点间距，$L$ 为物到孔径距离）直接联立求解。
+    \end{itemize}
+    \item \textbf{题型八：光的偏振与布儒斯特定律}
+    \begin{itemize}
+        \item \textbf{考察核心：} 多片偏振片连续透射光强计算、旋转偏振片的光强调制（含自然光与线偏振光混合光强比测定）、布儒斯特角与反射/折射光偏振态判断。
+        \item \textbf{标准解法：} (1) 自然光遇第一片偏振片光强减半，之后每过一片用一次马吕斯定律 $I' = I\cos^2\alpha$（注意 $\alpha$ 是相邻两偏振片透振方向夹角）；(2) 混合光旋转偏振片一周，$I_{\max} = \frac{1}{2}I_{\text{自}} + I_{\text{线}}$，$I_{\min} = \frac{1}{2}I_{\text{自}}$；(3) 界面反射问题先检算是否满足 $\tan i_B = \frac{n_2}{n_1}$，并注意光路可逆性（以折射角从介质 $2$ 逆向入射介质 $1$ 仍满足布儒斯特角）。
+    \end{itemize}
+\end{enumerate}
+\end{typebox}
+
+% =====================================================================
+\section{量子力学初步}
+% =====================================================================
+
+\subsection{早期量子论与波粒二象性}
+
+\begin{formulabox}[早期量子论核心公式]
+\begin{itemize}
+    \item \textbf{黑体辐射：} 斯特藩-玻尔兹曼定律 $M_B(T) = \sigma T^4$；维恩位移定律 $\lambda_m T = b$；普朗克能量子假设 $\eps = h\nu$。
+    \item \textbf{光电效应：} 爱因斯坦光电方程 $h\nu = \frac{1}{2}mv_m^2 + A = eU_a + A$；红限频率 $\nu_0 = \frac{A}{h}$。
+    \item \textbf{康普顿效应：} 散射波长偏移 $\Delta\lambda = \lambda' - \lambda = \frac{h}{m_e c}(1 - \cos\theta) = \lambda_C(1 - \cos\theta)$（$\lambda_C = 2.426\times 10^{-12}\ \mathrm{m}$）。
+    \item \textbf{德布罗意波：} $E = h\nu$，$p = \frac{h}{\lambda}$；通用公式 $\lambda = \frac{hc}{\sqrt{E_k^2 + 2E_k m_0 c^2}}$；非相对论（$E_k \ll m_0 c^2$）退化为 $\lambda = \frac{h}{\sqrt{2m_0 E_k}}$（电子加速电压 $U$ 时 $\lambda = \frac{h}{\sqrt{2m_e e U}}$）；极端相对论（$E_k \gg m_0 c^2$）退化为 $\lambda \approx \frac{hc}{E_k}$。
+    \item \textbf{海森堡不确定性原理：} $\Delta x\,\Delta p_x \ge \frac{\hbar}{2}$，$\Delta E\,\Delta t \ge \frac{\hbar}{2}$。
+\end{itemize}
+\end{formulabox}
+
+\subsection{波函数与一维定态薛定谔方程}
+
+\begin{formulabox}[波函数与一维无限深势阱核心公式]
+\begin{itemize}
+    \item \textbf{波函数统计诠释：} $|\psi(\vect{r},t)|^2$ 为概率密度；归一化条件 $\int |\psi|^2\,\dd V = 1$；标准条件为单值、有限、连续。
+    \item \textbf{定态薛定谔方程（一维）：} $-\frac{\hbar^2}{2m}\frac{\dd^2\psi(x)}{\dd x^2} + U(x)\psi(x) = E\psi(x)$。
+    \item \textbf{一维无限深势阱（$0 < x < a$ 内 $U=0$，外 $U=\infty$）：}
+    \[
+        \psi_n(x) = \sqrt{\frac{2}{a}}\sin\left(\frac{n\pi x}{a}\right), \qquad E_n = \frac{n^2 h^2}{8ma^2} = \frac{n^2\pi^2\hbar^2}{2ma^2}\quad (n=1,2,3,\dots)
+    \]
+    在 $[0, x_0]$ 区间内找到粒子的概率：$P = \int_0^{x_0} \frac{2}{a}\sin^2\left(\frac{n\pi x}{a}\right)\dd x = \frac{x_0}{a} - \frac{1}{2n\pi}\sin\left(\frac{2n\pi x_0}{a}\right)$。
+\end{itemize}
+\end{formulabox}
+
+\begin{typebox}[量子力学初步常见题型分析]
+\begin{enumerate}
+    \item \textbf{题型一：黑体辐射规律与辐射平衡计算}
+    \begin{itemize}
+        \item \textbf{考察核心：} 由峰值波长变化求温度与总辐出度变化，或平行黑体板达辐射平衡时的稳定温度。
+        \item \textbf{标准解法：} (1) 联立 $\lambda_m T = b$ 与 $M_B = \sigma T^4$ 得 $\frac{M_{B2}}{M_{B1}} = \left(\frac{\lambda_{m1}}{\lambda_{m2}}\right)^4$；(2) 黑体单位面积辐射功率只取决于自身温度，辐射平衡问题列“单位时间吸收总辐射功率 = 单位时间自身向外辐射总功率”（如夹在温度为 $T_1, T_3$ 的两黑体板间的平行板：$S\sigma(T_1^4 + T_3^4) = 2S\sigma T_2^4$）。
+    \end{itemize}
+    \item \textbf{题型二：光电效应方程与实验规律分析}
+    \begin{itemize}
+        \item \textbf{考察核心：} 已知入射波长/频率求逸出功、红限、遏止电压或普朗克常数 $h$；结合磁场偏转半径求最大初动能；比较不同频率与光强下的饱和光电流。
+        \item \textbf{标准解法：} (1) 由 $eU_a = h\nu - A$ 作线性关系计算（$h = e\frac{\Delta U_a}{\Delta\nu}$）；(2) 电子在匀强磁场 $B$ 中偏转最大半径 $R = \frac{mv_m}{eB} \implies E_{km} = \frac{(eRB)^2}{2m}$；(3) 等光强（$I = n h\nu$）下，频率越高光子数越少，饱和光电流反而越小。
+    \end{itemize}
+    \item \textbf{题型三：康普顿散射（守恒方程与物理机制）}
+    \begin{itemize}
+        \item \textbf{考察核心：} 求散射波长偏移 $\Delta\lambda$、散射角 $\theta$、反冲电子能量及出射角 $\varphi$；证明自由电子不能单独吸收光子；比较轻/重元素散射强度。
+        \item \textbf{标准解法：} (1) 仅求波长偏移或散射角直接用 $\Delta\lambda = \lambda_C(1-\cos\theta)$；(2) 涉及反冲电子能量或出射角时，联立能量守恒 $h\frac{c}{\lambda} + m_0 c^2 = h\frac{c}{\lambda'} + \sqrt{m_0^2 c^4 + p^2 c^2}$ 与动量守恒分量式，得 $\tan\varphi = \frac{\lambda\sin\theta}{\lambda' - \lambda\cos\theta}$；(3) 自由电子吸收光子无法同时满足能量与动量守恒，故不能发生光电效应而只能发生康普顿散射。
+    \end{itemize}
+    \item \textbf{题型四：德布罗意波与不确定性关系}
+    \begin{itemize}
+        \item \textbf{考察核心：} 计算不同动能或加速电压下粒子的德布罗意波长（注意是否需相对论修正）；估算微观/宏观粒子位置或动量的不确定量。
+        \item \textbf{标准解法：} 先比较 $E_k$ 与 $m_0 c^2$（电子静能 $0.511\ \mathrm{MeV}$）决定采用非相对论公式还是相对论通用公式；不确定性估算注意区分 $\Delta p$ 与 $\Delta\lambda$ 的微分关系（光子 $\Delta p = \frac{h}{\lambda^2}\Delta\lambda$）。
+    \end{itemize}
+    \item \textbf{题型五：波函数归一化、概率计算与一维无限深势阱}
+    \begin{itemize}
+        \item \textbf{考察核心：} 求波函数归一化常数（实/复波函数）、最大概率密度位置、给定区间内找到粒子的概率，以及无限深势阱的定态波函数与能级计算。
+        \item \textbf{标准解法：} (1) 由 $\int_{-\infty}^{+\infty}|\psi(x)|^2\,\dd x = \int \psi^*\psi\,\dd x = 1$ 求归一化常数（复波函数必须用 $\psi^*\psi$，不能直接平方）；(2) 令 $\frac{\dd |\psi(x)|^2}{\dd x} = 0$ 求最大概率位置；(3) 对区间概率直接积分 $\int_{x_1}^{x_2}|\psi(x)|^2\,\dd x$，并注意看清势阱边界是 $[0, a]$ 还是 $[-a, a]$。
+    \end{itemize}
+\end{enumerate}
+\end{typebox}
+
+\end{document}

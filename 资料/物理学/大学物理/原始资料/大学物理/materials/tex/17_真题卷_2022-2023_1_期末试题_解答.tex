@@ -1,0 +1,220 @@
+\documentclass[zihao=5,a4paper,UTF8]{ctexart}
+
+% ==================== 页面与版式 ====================
+\usepackage[top=2.0cm, bottom=2.0cm, left=1.8cm, right=1.8cm]{geometry}
+\usepackage{amsmath, amssymb, bm}
+\usepackage{booktabs, array, tabularx}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+
+% ==================== 颜色定义 ====================
+\definecolor{navy}{HTML}{1B365D}
+\definecolor{tealaccent}{HTML}{006D77}
+\definecolor{warnred}{HTML}{9E2A2B}
+\definecolor{softbg}{HTML}{F4F7FA}
+\definecolor{tipbg}{HTML}{F0F7F7}
+\definecolor{bordergray}{HTML}{CBD5E1}
+
+% ==================== 超链接与页眉页脚 ====================
+\hypersetup{
+    colorlinks=true,
+    linkcolor=navy,
+    urlcolor=tealaccent,
+    pdftitle={2022 ～ 2023 学年第 1 学期期末试题参考解答}
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\color{gray} 2022 ～ 2023 学年第 1 学期期末试题参考解答}
+\fancyhead[R]{\small\color{gray} \leftmark}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\ctexset{
+    section = {
+        format = \Large\bfseries\color{navy},
+        beforeskip = 14pt,
+        afterskip = 6pt
+    },
+    subsection = {
+        format = \large\bfseries\color{tealaccent},
+        beforeskip = 10pt,
+        afterskip = 4pt
+    }
+}
+
+% ==================== 题目与解答环境 ====================
+\newenvironment{prob}[2]{%
+    \par\vspace{5pt}\noindent\textbf{\color{navy}#1} \textbf{#2}\par\nopagebreak\vspace{2pt}%
+}{%
+    \par\vspace{3pt}%
+}
+
+\newcommand{\sol}{\noindent\textbf{\color{tealaccent}【解】}\ }
+\newcommand{\proofbegin}{\noindent\textbf{\color{tealaccent}【证明】}\ }
+
+% ==================== 常用物理宏 ====================
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\ee}{\mathrm{e}}
+\newcommand{\vect}[1]{\bm{#1}}
+
+\begin{document}
+
+\begin{center}
+    {\Large\bfseries\color{navy} 2022 $\sim$ 2023 学年第 1 学期期末试题参考解答}\\[4pt]
+    {\small\color{gray} 共 26 题（含选择题 12 题、填空题 10 题、计算题 4 题）}
+\end{center}
+\vspace{2pt}\hrule\vspace{6pt}
+
+% =====================================================================
+
+\section*{一、选择题（每小题 3 分，共 36 分）}
+
+\begin{prob}{第 1 题}{起始时刻位移 $A/2$ 且向 $-x$ 方向运动，求旋转矢量图。}
+\sol \textbf{答案：A}。$x_0 = +A/2 > 0$ 且 $v_0 < 0$，旋转矢量位于第一象限（初相 $+\pi/3$），对应图（A）。
+\end{prob}
+
+\begin{prob}{第 2 题}{光滑球冠形凹槽 $h=0.050\ \mathrm{m}$，$R=20\ \mathrm{m}$，从边缘静止滑到最低点的时间。}
+\sol \textbf{答案：A（$2.24\ \mathrm{s}$）}。因 $h \ll R$，微振动周期等价于摆长 $R$ 的单摆：$T = 2\pi\sqrt{\frac{R}{g}}$，滑到最低点历时 $t = \frac{T}{4} = \frac{\pi}{2}\sqrt{\frac{20}{9.8}} \approx 2.24\ \mathrm{s}$。
+\end{prob}
+
+\begin{prob}{第 3 题}{沿 $+x$ 传播的波在 $t=0$ 时刻波形，图（b）为 $y(0)=0$ 且初始向 $-y$ 运动的振动曲线。}
+\sol \textbf{答案：B（质点 $n$ 的振动曲线）}。波沿 $+x$ 传播，上坡点 $n$ 向下运动（$y_n(0)=0,\ v_n(0)<0$），与图（b）吻合。
+\end{prob}
+
+\begin{prob}{第 4 题}{频率 $100\ \mathrm{Hz}$，波速 $360\ \mathrm{m/s}$，$\varphi_A - \varphi_B = -\pi/3$，求两点距离及哪点离波源近。}
+\sol \textbf{答案：C（$0.6\ \mathrm{m}$，且 $B$ 点距波源较近）}。波长 $\lambda = \frac{360}{100} = 3.6\ \mathrm{m}$。因 $\varphi_B > \varphi_A$，故 $B$ 点相位超前，距波源较近；距离 $\Delta x = \frac{\pi/3}{2\pi}\lambda = \frac{3.6}{6} = 0.6\ \mathrm{m}$。
+\end{prob}
+
+\begin{prob}{第 5 题}{玻璃上镀折射率 $n > n_{\text{玻}}$ 的膜，使透射增强，求最小膜厚。}
+\sol \textbf{答案：B（$\frac{\lambda}{2n}$）}。因 $1 < n > n_{\text{玻}}$，仅空气-膜表面有半波损失，膜-玻璃表面无半波损失，故反射相消条件为 $2ne + \frac{\lambda}{2} = \left(k + \frac{1}{2}\right)\lambda \implies 2ne = k\lambda$，最小厚度（$k=1$）为 $e_{\min} = \frac{\lambda}{2n}$。
+\end{prob}
+
+\begin{prob}{第 6 题}{$\lambda=5000\ \text{\AA}$，$a=0.25\ \mathrm{mm}$，两侧第 3 级暗纹间距 $d=12\ \mathrm{mm}$，求焦距 $f$。}
+\sol \textbf{答案：D（$1\ \mathrm{m}$）}。两侧第 $3$ 级暗纹间距 $d = 2\times \frac{3f\lambda}{a} = \frac{6f\lambda}{a}$，故 $f = \frac{ad}{6\lambda} = \frac{0.25\times 10^{-3}\times 12\times 10^{-3}}{6\times 500\times 10^{-9}} = 1.0\ \mathrm{m}$。
+\end{prob}
+
+\begin{prob}{第 7 题}{双缝衍射中保持缝距 $d$ 不变，加宽缝宽 $a$，中央明纹区及干涉条纹数变化。}
+\sol \textbf{答案：D（中央明纹区变窄，其中包含的干涉条纹数目变少）}。中央明纹宽度 $\propto \frac{1}{a}$，$a$ 增大则变窄；干涉条纹间距 $\propto \frac{1}{d}$ 不变，故包含数目变少。
+\end{prob}
+
+\begin{prob}{第 8 题}{偏振光 $I_0$ 过 $P_1(\alpha)$、$P_2(90^\circ)$，求透射光强。}
+\sol \textbf{答案：C（$\frac{1}{4}I_0\sin^2(2\alpha)$）}。
+\end{prob}
+
+\begin{prob}{第 9 题}{$\lambda = 5000\ \text{\AA}$，$\Delta\lambda = 10^{-3}\ \text{\AA}$，$\Delta p_x \Delta x \ge h$，求 $\Delta x_{\min}$。}
+\sol \textbf{答案：C（$250\ \mathrm{cm}$）}。
+\end{prob}
+
+\begin{prob}{第 10 题}{一维无限深势阱基态在 $[0, a/3]$ 找到粒子的概率。}
+\sol \textbf{答案：B（$0.196$）}。
+\end{prob}
+
+\begin{prob}{第 11 题}{金属片红限 $\lambda_0$，处于磁场 $B$ 中，光电子圆周运动半径 $R$，求入射光子能量。}
+\sol \textbf{答案：A（$\frac{hc}{\lambda_0} + \frac{(eRB)^2}{2m}$）}。由洛伦兹力充当向心力 $evB = m\frac{v^2}{R} \implies mv = eRB$，最大动能 $E_{km} = \frac{(mv)^2}{2m} = \frac{(eRB)^2}{2m}$，结合逸出功 $A = \frac{hc}{\lambda_0}$ 即得 $h\nu = A + E_{km}$。
+\end{prob}
+
+\begin{prob}{第 12 题}{金属红限 $\nu_0$，入射光频率 $\nu > \nu_0$，求逸出光电子德布罗意波长。}
+\sol \textbf{答案：B（$\sqrt{\frac{h}{2m(\nu-\nu_0)}}$）}。
+\end{prob}
+
+\section*{二、填空题（每空 3 分，共 30 分）}
+
+\begin{prob}{第 13 题}{光滑车厢内弹簧连接质量 $m$ 滑块，车厢以恒定加速度 $a_0$ 向右加速，求滑块在车厢内振动的振幅。}
+\sol 在非惯性系中滑块受向左惯性力 $ma_0$，新平衡位置弹簧伸长量为 $x_0 = \frac{ma_0}{k}$。初始时弹簧无伸长且滑块相对车厢静止，即相对新平衡位置偏离 $x_0$ 且初速为零，故振幅 $A = \frac{ma_0}{k}$。
+\end{prob}
+
+\begin{prob}{第 14 题}{两同方向同频率简谐振动曲线（$x_2$ 振幅 $A_2$ 初相 $-\pi/2$，$x_1$ 振幅 $A_1$ 初相 $+\pi/2$，周期 $T$）。}
+\sol 两振动反相，合振动表达式为 $x = (A_2 - A_1)\cos\left(\frac{2\pi}{T}t - \frac{\pi}{2}\right)$（假设 $A_2 > A_1$）。
+\end{prob}
+
+\begin{prob}{第 15 题}{警车以 $v_A=10\ \mathrm{m/s}$ 驶向山壁并鸣笛 $\nu_0=1000\ \mathrm{Hz}$，左侧骑车人以 $v_B=2\ \mathrm{m/s}$ 背向山壁离去，$u=330\ \mathrm{m/s}$，求骑车人接收两列声波的频率差。}
+\sol
+\begin{itemize}[leftmargin=1.5em, itemsep=2pt]
+    \item 警车直接传给骑车人（车驶离人、人驶向车？注意：警车在骑车人右侧且向右驶向山壁，骑车人向左背向山壁离去，故两者互相远离！）：$f_1 = \frac{u - v_B}{u + v_A}\nu_0 = \frac{330 - 2}{330 + 10}\times 1000 \approx 964.71\ \mathrm{Hz}$；
+    \item 警笛经山壁反射再传给骑车人（山壁接收频率 $\frac{u}{u - v_A}\nu_0$，骑车人远离山壁接收）：$f_2 = \frac{u - v_B}{u}\cdot\frac{u}{u - v_A}\nu_0 = \frac{330 - 2}{330 - 10}\times 1000 = 1025.00\ \mathrm{Hz}$。
+\end{itemize}
+频率差 $\Delta f = f_2 - f_1 = 1025.00 - 964.71 \approx 60.3\ \mathrm{Hz}$。
+\end{prob}
+
+\begin{prob}{第 16 题}{入射波 $y_1 = A\cos\left[2\pi\left(\nu t + \frac{x}{\lambda}\right) + \pi\right]$ 在 $x=0$ 固定端反射，求驻波波节坐标。}
+\sol 固定端反射波 $y_2 = A\cos\left[2\pi\left(\nu t - \frac{x}{\lambda}\right) + 2\pi\right]$，叠加后空间因子为 $\sin\frac{2\pi x}{\lambda}$，令其为零得波节坐标 $x = \frac{k}{2}\lambda\ (k=0,1,2,\dots)$（或 $\pm\frac{k}{2}\lambda$）。
+\end{prob}
+
+\begin{prob}{第 17 题}{单缝处波阵面分成 $4$ 个半波带，求第 $1$ 和第 $3$ 条等距光线（相距半个缝宽）在 $P$ 点相遇时的相位差。}
+\sol 整个缝宽对应 $4$ 个半波带（总相位差 $4\pi$），光线 $1$ 和 $3$ 间距为半个缝宽，故光程差为 $2\times\frac{\lambda}{2} = \lambda$，相位差为 $2\pi$。
+\end{prob}
+
+\begin{prob}{第 18 题}{人眼直径 $3\ \mathrm{mm}$，$\lambda=550\ \mathrm{nm}$，细丝间距 $3\ \mathrm{mm}$，求恰能分辨距离。}
+\sol $L = \frac{3\times 10^{-3}\times 3\times 10^{-3}}{1.22\times 550\times 10^{-9}} \approx 13.4\ \mathrm{m}$。
+\end{prob}
+
+\begin{prob}{第 19 题}{自然光真空入射介质，反射光为线偏振光时折射角 $30^\circ$，求折射率。}
+\sol $i_B = 90^\circ - 30^\circ = 60^\circ$，故 $n = \tan 60^\circ = \sqrt{3} \approx 1.732$。
+\end{prob}
+
+\begin{prob}{第 20 题}{金星温度 $773\ \mathrm{K}$、地球温度 $293\ \mathrm{K}$，大小相近，求相同时间内辐射能量之比。}
+\sol $\frac{E_1}{E_2} = \left(\frac{773}{293}\right)^4 \approx 48.4$。
+\end{prob}
+
+\begin{prob}{第 21 题}{波长 $\lambda_1, \lambda_2$ 测得遏止电势差 $U_1, U_2$，求普朗克常数。}
+\sol $h = \frac{e(U_1 - U_2)\lambda_1\lambda_2}{c(\lambda_2 - \lambda_1)}$。
+\end{prob}
+
+\begin{prob}{第 22 题}{康普顿散射沿入射方向动量守恒分量式。}
+\sol $\frac{h\nu}{c} = \frac{h\nu'}{c}\cos\phi + p\cos\theta$。
+\end{prob}
+
+\section*{三、计算题（共 34 分）}
+
+\begin{prob}{第 23 题}{（10 分）平面简谐波 $t=0$ 时刻波形图（$f=250\ \mathrm{Hz}$，半波长 $100\ \mathrm{m}$，$P$ 点向下运动，$y_O(0) = \frac{\sqrt{2}}{2}A$）。求：（1）波函数；（2）$x=100\ \mathrm{m}$ 处振动表达式与速度表达式；（3）$x_1=50\ \mathrm{m}$ 和 $x_2=200\ \mathrm{m}$ 两点相位差。}
+\sol
+\begin{enumerate}[leftmargin=2em, itemsep=2pt]
+    \item 由波形图，$P$ 点向下运动，根据“上下坡法”判定波沿 \textbf{$x$ 轴负方向} 传播。半波长为 $100\ \mathrm{m}$，故 $\lambda = 200\ \mathrm{m}$，$\omega = 2\pi f = 500\pi\ \mathrm{rad/s}$。$t=0$ 时 $y_O = \frac{\sqrt{2}}{2}A$ 且因波向左移 $O$ 点左侧更高/正下坡故 $v_O < 0$，初相 $\varphi_O = \frac{\pi}{4}$。波函数为
+    \[
+        y = A\cos\left[2\pi\left(250t + \frac{x}{200}\right) + \frac{\pi}{4}\right]\ (\mathrm{SI}).
+    \]
+    \item 将 $x = 100\ \mathrm{m}$ 代入波函数，得振动表达式和速度表达式：
+    \[
+        y_1 = A\cos\left(500\pi t + \frac{5\pi}{4}\right)\ (\mathrm{SI}),\qquad v_1 = -500\pi A\sin\left(500\pi t + \frac{5\pi}{4}\right)\ (\mathrm{SI}).
+    \]
+    \item $\Delta\varphi = \varphi_{x_1} - \varphi_{x_2} = -\frac{2\pi}{\lambda}(x_2 - x_1) = -\frac{2\pi}{200}\times 150 = -\frac{3\pi}{2}$（相位差大小为 $\frac{3\pi}{2}$）。
+\end{enumerate}
+\end{prob}
+
+\begin{prob}{第 24 题}{（6 分）双缝覆盖等厚玻璃片 $n_1=1.4, n_2=1.7$，$O$ 处变为第 5 级明纹，$\lambda=480\ \mathrm{nm}$，求 $d$。}
+\sol $(n_2 - n_1)d = 5\lambda \implies d = \frac{5\times 480\times 10^{-9}}{1.7 - 1.4} = 8.0\times 10^{-6}\ \mathrm{m}$。
+\end{prob}
+
+\begin{prob}{第 25 题}{（9 分）牛顿环平凸透镜与平板玻璃有小缝隙 $e_0$，充以折射率 $n$ 的透明液体。（1）求各级暗环半径；（2）证明暗环内疏外密。}
+\sol
+\begin{enumerate}[leftmargin=2em, itemsep=2pt]
+    \item 距中心 $r$ 处，透镜下方空隙厚度为 $e_0 + e \approx e_0 + \frac{r^2}{2R}$。假定 $n < n_{\text{玻}}$，仅下表面有半波损失，暗环条件为
+    \[
+        2n\left(e_0 + \frac{r_k^2}{2R}\right) + \frac{\lambda}{2} = \left(k + \frac{1}{2}\right)\lambda \implies r_k = \sqrt{\frac{R}{n}(k\lambda - 2ne_0)}\quad \left(k > \frac{2ne_0}{\lambda},\ k\in\mathbb{N}^*\right).
+    \]
+    \item \proofbegin 相邻两暗环半径差（间距）为
+    \[
+        r_{k+1} - r_k = \sqrt{\frac{R}{n}[(k+1)\lambda - 2ne_0]} - \sqrt{\frac{R}{n}(k\lambda - 2ne_0)} = \frac{\lambda R/n}{\sqrt{\frac{R}{n}[(k+1)\lambda - 2ne_0]} + \sqrt{\frac{R}{n}(k\lambda - 2ne_0)}}.
+    \]
+    随级数 $k$ 增大（由内向外），分母单调增大而分子 $\lambda R/n$ 为常量，故 $r_{k+1} - r_k$ 单调减小，即暗环分布具有\textbf{内疏外密}的特征。
+\end{enumerate}
+\end{prob}
+
+\begin{prob}{第 26 题}{（9 分）$\lambda=540\ \mathrm{nm}$ 垂直入射光栅，$\sin\theta = 0.30$ 和 $0.60$ 处主极大缺级，$\theta=\arcsin 0.3$ 对应单缝衍射中央明纹边界，两主明纹间有 $5$ 个暗纹。求狭缝总数 $N$、光栅常数 $d$、狭缝宽度 $a$ 及最多观察到的条纹级数。}
+\sol
+\begin{enumerate}[leftmargin=2em, itemsep=2pt]
+    \item 两相邻主极大间有 $N-1$ 个暗纹，已知有 $5$ 个暗纹，故 $N - 1 = 5 \implies N = 6$。
+    \item $\sin\theta = 0.30$ 对应单缝衍射第一级极小（$a\sin\theta = \lambda$），且为缺级处。由图（中央与 $0.30$ 之间有 $2$ 个主极大，即第 $1, 2$ 级，$0.30$ 处为第 $3$ 级缺级），故 $d\times 0.30 = 3\lambda \implies d = 10\lambda = 5.4\times 10^{-6}\ \mathrm{m}$。
+    \item 由缺级比 $\frac{d}{a} = 3$，得狭缝宽度 $a = \frac{d}{3} = 1.8\times 10^{-6}\ \mathrm{m}$。
+    \item 最大级次上限 $\frac{d}{\lambda} = 10$（$\sin\theta < 1$ 故 $\pm 10$ 级不出现），允许 $|k| \le 9$；扣除 $3$ 的整数倍缺级（$\pm 3, \pm 6, \pm 9$），最多可观察到的级数为：
+    \[
+        k = 0,\, \pm 1,\, \pm 2,\, \pm 4,\, \pm 5,\, \pm 7,\, \pm 8.
+    \]
+\end{enumerate}
+\end{prob}
+
+\end{document}

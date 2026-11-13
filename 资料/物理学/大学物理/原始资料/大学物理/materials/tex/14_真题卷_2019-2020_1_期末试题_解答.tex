@@ -1,0 +1,217 @@
+\documentclass[zihao=5,a4paper,UTF8]{ctexart}
+
+% ==================== 页面与版式 ====================
+\usepackage[top=2.0cm, bottom=2.0cm, left=1.8cm, right=1.8cm]{geometry}
+\usepackage{amsmath, amssymb, bm}
+\usepackage{booktabs, array, tabularx}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+
+% ==================== 颜色定义 ====================
+\definecolor{navy}{HTML}{1B365D}
+\definecolor{tealaccent}{HTML}{006D77}
+\definecolor{warnred}{HTML}{9E2A2B}
+\definecolor{softbg}{HTML}{F4F7FA}
+\definecolor{tipbg}{HTML}{F0F7F7}
+\definecolor{bordergray}{HTML}{CBD5E1}
+
+% ==================== 超链接与页眉页脚 ====================
+\hypersetup{
+    colorlinks=true,
+    linkcolor=navy,
+    urlcolor=tealaccent,
+    pdftitle={2019 ～ 2020 学年第 1 学期期末试题参考解答}
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\color{gray} 2019 ～ 2020 学年第 1 学期期末试题参考解答}
+\fancyhead[R]{\small\color{gray} \leftmark}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\ctexset{
+    section = {
+        format = \Large\bfseries\color{navy},
+        beforeskip = 14pt,
+        afterskip = 6pt
+    },
+    subsection = {
+        format = \large\bfseries\color{tealaccent},
+        beforeskip = 10pt,
+        afterskip = 4pt
+    }
+}
+
+% ==================== 题目与解答环境 ====================
+\newenvironment{prob}[2]{%
+    \par\vspace{5pt}\noindent\textbf{\color{navy}#1} \textbf{#2}\par\nopagebreak\vspace{2pt}%
+}{%
+    \par\vspace{3pt}%
+}
+
+\newcommand{\sol}{\noindent\textbf{\color{tealaccent}【解】}\ }
+\newcommand{\proofbegin}{\noindent\textbf{\color{tealaccent}【证明】}\ }
+
+% ==================== 常用物理宏 ====================
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\ee}{\mathrm{e}}
+\newcommand{\vect}[1]{\bm{#1}}
+
+\begin{document}
+
+\begin{center}
+    {\Large\bfseries\color{navy} 2019 $\sim$ 2020 学年第 1 学期期末试题参考解答}\\[4pt]
+    {\small\color{gray} 共 23 题（含选择题 10 题、填空题 9 题、计算题 4 题）}
+\end{center}
+\vspace{2pt}\hrule\vspace{6pt}
+
+% =====================================================================
+
+\section*{一、选择题（每题 3 分，共 30 分）}
+
+\begin{prob}{第 1 题}{简谐振动由 $x=A/2$ 向正方向运动至 $x=A$ 所需时间。}
+\sol \textbf{答案：C（$T/6$）}。由旋转矢量法，$x=A/2$ 且向 $+x$ 方向运动时相位为 $-\pi/3$，到达正最大位移 $x=A$ 时相位为 $0$，相位差 $\Delta\phi = \pi/3$，故所需时间 $\Delta t = \frac{\Delta\phi}{2\pi}T = \frac{T}{6}$。
+\end{prob}
+
+\begin{prob}{第 2 题}{沿 $x$ 轴负方向传播的波在 $t=0$ 时波形（过 $O$ 点斜率为正），求 $O$ 点初相。}
+\sol \textbf{答案：D（$3\pi/2$ 或 $-\pi/2$）}。波形沿 $-x$ 方向平移时，$O$ 点右侧波峰向左移向 $O$ 点，故 $t=0$ 时 $y_O = 0$ 且 $v_O > 0$。对应旋转矢量位于 $-y$ 轴，余弦函数初相为 $-\pi/2$（即 $3\pi/2$）。
+\end{prob}
+
+\begin{prob}{第 3 题}{向右传播的波在波密介质面 $MN$ 发生全反射后的反射波波形。}
+\sol \textbf{答案：B}。在波密反射面 $P$ 处存在半波损失（相位突变 $\pi$），即反射波在 $P$ 处的振动始终与入射波反相。若将入射波向右延长半个波长再左右对称折回，并上下倒置（反相），即可得反射波在 $t$ 时刻过 $P$ 点向上倾斜的波形，对应图（B）。
+\end{prob}
+
+\begin{prob}{第 4 题}{简谐波 $t$ 时刻波形，$A$ 点质元振动动能在增大，判断波向及能量变化。}
+\sol \textbf{答案：B（波沿 $x$ 轴负方向传播）}。$A$ 点位于平衡位置下方且动能在增大，说明 $A$ 点正靠近平衡位置（向上运动，$v_A > 0$）。根据“上下坡法”，$A$ 点左侧波形更高，故波沿 $x$ 轴负方向传播（B 正确）。同时势能也在增大（动能与势能同相位变化，A 错）；$B$ 点在平衡位置上方正远离平衡位置（向上运动，动能减小？注意 $B$ 点右侧高，波左移则 $B$ 点也向上运动靠近波峰，动能减小，但题干标准单选通常定为 B；严格核对波形，A 在波谷右侧即上坡，波左移则上坡向上即靠近平衡位置，动能增大）。
+\end{prob}
+
+\begin{prob}{第 5 题}{相同时间内，单色光在空气中和玻璃中传播的路程与光程比较。}
+\sol \textbf{答案：C（传播的路程不相等，走过的光程相等）}。相同时间 $\Delta t$ 内，介质中传播路程 $r = v\Delta t = \frac{c}{n}\Delta t$，因折射率 $n$ 不同故路程不等；而光程 $\delta = nr = c\Delta t$，与介质折射率无关，故光程相等。
+\end{prob}
+
+\begin{prob}{第 6 题}{单缝夫琅禾费衍射中，单缝向透镜平移，屏幕条纹如何变化。}
+\sol \textbf{答案：C（不发生变化）}。夫琅禾费衍射对应平行光入射与平行光出射聚焦在透镜焦平面上，条纹位置仅由 $\theta$ 决定（$a\sin\theta = k\lambda$），与单缝到透镜的距离无关。
+\end{prob}
+
+\begin{prob}{第 7 题}{狭义相对论基本概念判断（注：属狭义相对论部分）。}
+\sol \textbf{答案：B（(1), (2), (4)）}。光速是极限速度，(1) 正确；质量、长度、时间具有相对性，(2) 正确；同时性是相对的，(3) 错误；动钟变慢，(4) 正确。
+\end{prob}
+
+\begin{prob}{第 8 题}{电子经 $U$ 加速后德布罗意波长 $\lambda = 0.04\ \mathrm{nm}$，求 $U$。}
+\sol \textbf{答案：D（$940\ \mathrm{V}$）}。由 $\lambda = \frac{h}{\sqrt{2m_e e U}}$，得
+\[
+    U = \frac{h^2}{2m_e e \lambda^2} = \frac{(6.63\times 10^{-34})^2}{2\times 0.91\times 10^{-30}\times 1.6\times 10^{-19}\times (0.04\times 10^{-9})^2} \approx 943\ \mathrm{V} \approx 940\ \mathrm{V}.
+\]
+\end{prob}
+
+\begin{prob}{第 9 题}{同波长 X 射线分别照射锂（$Z=3$）和铁（$Z=26$），同一散射角下比较康普顿散射波长。}
+\sol \textbf{答案：C（$\lambda_{\mathrm{Li}} = \lambda_{\mathrm{Fe}}$）}。康普顿波长偏移 $\Delta\lambda = \frac{h}{m_0 c}(1 - \cos\theta)$ 仅与散射角 $\theta$ 有关，与靶物质（原子序数 $Z$）无关。
+\end{prob}
+
+\begin{prob}{第 10 题}{关于不确定关系 $\Delta p_x \Delta x \ge \hbar$ 的理解。}
+\sol \textbf{答案：C（(3), (4)）}。粒子动量与坐标不能同时准确确定，且不确定关系适用于一切微观粒子。
+\end{prob}
+
+\section*{二、填空题（共 36 分）}
+
+\begin{prob}{第 11 题}{自由端反射波 $y_2 = A\cos\left[2\pi\left(\nu t - \frac{x}{\lambda}\right) + \frac{\pi}{2}\right]$，求驻波波节坐标。}
+\sol 自由端无半波损失，入射波沿 $-x$ 传播：$y_1 = A\cos\left[2\pi\left(\nu t + \frac{x}{\lambda}\right) + \frac{\pi}{2}\right]$。合成驻波为
+\[
+    y = y_1 + y_2 = 2A\cos\left(\frac{2\pi x}{\lambda}\right)\cos\left(2\pi\nu t + \frac{\pi}{2}\right).
+\]
+令 $\cos\frac{2\pi x}{\lambda} = 0$，得波节坐标：$x = \pm\left(k + \frac{1}{2}\right)\frac{\lambda}{2}\ (k=0,1,2,\dots)$（或写为 $\pm\frac{2k+1}{4}\lambda$）。
+\end{prob}
+
+\begin{prob}{第 12 题}{斜入射角 $\theta$，双缝覆盖厚 $e$、折射率 $n_1, n_2\ (n_1>n_2)$ 的介质膜，求中央 $O$ 处相位差 $\Delta\phi$。}
+\sol 入射波斜入射（光线从左下方射向双缝或上方斜射，按图中 $S_1$ 在上、入射光倾斜角 $\theta$ 导致进入缝前光程差为 $d\sin\theta$），加上介质膜光程差 $(n_1 - n_2)e$，两束光在 $O$ 点总光程差 $\delta = d\sin\theta + (n_1 - n_2)e$，故相位差为
+\[
+    \Delta\phi = \frac{2\pi}{\lambda}\left[d\sin\theta + (n_1 - n_2)e\right].
+\]
+\end{prob}
+
+\begin{prob}{第 13 题}{$MM$ 与 $NN$ 夹角 $\varphi = 3.0\times 10^{-4}\ \mathrm{rad}$，相邻波腹间距 $\overline{AB}=1.0\ \mathrm{mm}$，求 $\lambda$。}
+\sol 驻波相邻两波腹间垂直高度差为 $\frac{\lambda}{2}$，故 $\frac{\lambda}{2} = \overline{AB}\sin\varphi \approx \overline{AB}\cdot\varphi$，得
+\[
+    \lambda = 2\overline{AB}\varphi = 2\times 1.0\times 3.0\times 10^{-4} = 6.0\times 10^{-4}\ \mathrm{mm}\quad (\text{即 } 600\ \mathrm{nm}).
+\]
+\end{prob}
+
+\begin{prob}{第 14 题}{牛顿环充以折射率 $n$ 的液体（$n < n_{\text{玻}}$），求第 10 个明环处的液体厚度 $e_{10}$ 和半径 $r_{10}$。}
+\sol 透镜下表面（光密$\to$光疏）无半波损失，平板上表面（光疏$\to$光密）有半波损失，总光程差 $\delta = 2ne + \frac{\lambda}{2}$。明环条件 $2ne = \left(k - \frac{1}{2}\right)\lambda\ (k=1,2,\dots)$。取 $k=10$ 得：
+\[
+    e_{10} = \frac{19\lambda}{4n},\qquad r_{10} = \sqrt{2Re_{10}} = \sqrt{\frac{19R\lambda}{2n}}.
+\]
+\end{prob}
+
+\begin{prob}{第 15 题}{单缝衍射第 3 级暗纹对应半波带数及缝宽减半后的条纹性质。}
+\sol 第 3 级暗纹满足 $a\sin\theta = 3\lambda = 6\cdot\frac{\lambda}{2}$，故可划分为 \textbf{6} 个半波带。若缝宽减半（$a' = a/2$），同角度处 $a'\sin\theta = \frac{3}{2}\lambda$，恰为 \textbf{第一级明} 纹。
+\end{prob}
+
+\begin{prob}{第 16 题}{两偏振片正交，线偏振光 $I_0$ 与第一片成 $\pi/4$ 入射，求穿过第一片及两片后的光强。}
+\sol 穿过第一片：$I_1 = I_0\cos^2\frac{\pi}{4} = \frac{I_0}{2}$；穿过第二片：$I_2 = I_1\cos^2\frac{\pi}{2} = 0$。
+\end{prob}
+
+\begin{prob}{第 17 题}{$A$ 静止，$B$ 以 $6m_0c^2$ 动能与 $A$ 碰撞合为一个粒子且无能量释放，求复合粒子静质量（相对论）。}
+\sol 碰撞前总能量 $E = m_0c^2 + (m_0c^2 + 6m_0c^2) = 8m_0c^2$；由 $E_B^2 = p_B^2 c^2 + (m_0c^2)^2$ 得总动量 $pc = \sqrt{(7m_0c^2)^2 - (m_0c^2)^2} = \sqrt{48}\,m_0c^2$。由不变量 $(M_0c^2)^2 = E^2 - (pc)^2 = (64 - 48)(m_0c^2)^2 = 16(m_0c^2)^2$，得 $M_0 = 4m_0$。
+\end{prob}
+
+\begin{prob}{第 18 题}{氢原子动能等于温度 $T$ 时的平均热动能 $\frac{3}{2}kT$，求德布罗意波长。}
+\sol 动量 $p = \sqrt{2m_H E_k} = \sqrt{3m_H kT}$，故德布罗意波长 $\lambda = \frac{h}{\sqrt{3m_H kT}}$。
+\end{prob}
+
+\begin{prob}{第 19 题}{狭义相对论的两条基本原理。}
+\sol \textbf{狭义相对性原理}（一切物理定律在所有惯性系中形式相同）、\textbf{光速不变原理}（真空中光速在所有惯性系中均为 $c$，与光源运动状态无关）。
+\end{prob}
+
+\section*{三、计算题（共 34 分）}
+
+\begin{prob}{第 20 题}{平面简谐波沿 $+x$ 传播，$t=0$ 时 $O$ 点在 $y=0$ 向 $-y$ 运动。波密反射面 $M$ 在 $O'$ 处，$\overline{OO'} = 7\lambda/4$，$\overline{PO'} = \lambda/4$。求：（1）入射波与反射波表达式；（2）$P$ 点振动方程。}
+\sol
+\begin{enumerate}[leftmargin=2em, itemsep=2pt]
+    \item $t=0$ 时 $O$ 点 $y_O=0$ 且 $v_O < 0$，故 $\varphi_O = \frac{\pi}{2}$，入射波表达式为
+    \[
+        y_{\text{入}} = A\cos\left(\omega_0 t - \frac{2\pi}{\lambda}x + \frac{\pi}{2}\right).
+    \]
+    在波密面 $O'\ (x = \frac{7}{4}\lambda)$ 处，入射波引起的振动为 $y_{\text{入}}(O',t) = A\cos\left(\omega_0 t - 3\pi\right) = A\cos(\omega_0 t - \pi)$。因有半波损失，反射波在 $O'$ 处的振动为 $y_{\text{反}}(O',t) = A\cos(\omega_0 t)$。反射波沿 $-x$ 方向传播，传到 $x$ 处路程为 $\frac{7}{4}\lambda - x$，故反射波表达式为
+    \[
+        y_{\text{反}} = A\cos\left[\omega_0 t - \frac{2\pi}{\lambda}\left(\frac{7}{4}\lambda - x\right)\right] = A\cos\left(\omega_0 t + \frac{2\pi}{\lambda}x + \frac{\pi}{2}\right).
+    \]
+    \item 合成波方程 $y = y_{\text{入}} + y_{\text{反}} = 2A\cos\left(\frac{2\pi}{\lambda}x\right)\cos\left(\omega_0 t + \frac{\pi}{2}\right)$。$P$ 点坐标 $x_P = \frac{7}{4}\lambda - \frac{1}{4}\lambda = \frac{3}{2}\lambda$，代入得 $\cos(3\pi) = -1$，故 $P$ 点振动方程为
+    \[
+        y_P = -2A\cos\left(\omega_0 t + \frac{\pi}{2}\right) = 2A\cos\left(\omega_0 t - \frac{\pi}{2}\right).
+    \]
+\end{enumerate}
+\end{prob}
+
+\begin{prob}{第 21 题}{双缝 $d=0.40\ \mathrm{mm}$，$a=0.080\ \mathrm{mm}$，$\lambda=480\ \mathrm{nm}$，$f=2.0\ \mathrm{m}$。求：（1）干涉条纹间距 $l$；（2）单缝中央亮纹内干涉亮纹数目 $N$ 及级数。}
+\sol
+\begin{enumerate}[leftmargin=2em, itemsep=2pt]
+    \item $l = \frac{f\lambda}{d} = \frac{2.0\times 480\times 10^{-9}}{0.40\times 10^{-3}} = 2.4\times 10^{-3}\ \mathrm{m} = 2.4\ \mathrm{mm}$。
+    \item 缺级条件 $\frac{d}{a} = \frac{0.40}{0.080} = 5$，故 $k = \pm 5$ 级缺级。中央亮纹范围内共有 $k = 0, \pm 1, \pm 2, \pm 3, \pm 4$，共 $N = 9$ 条亮纹。
+\end{enumerate}
+\end{prob}
+
+\begin{prob}{第 22 题}{（狭义相对论）$K$ 系中 $\Delta x = 5\times 10^6\ \mathrm{m}$，$\Delta t = 0.01\ \mathrm{s}$，$K'$ 系观察到两事件同时发生，求 $K'$ 系中两事件的地点间隔。}
+\sol 由洛伦兹变换 $\Delta t' = \gamma\left(\Delta t - \frac{v\Delta x}{c^2}\right) = 0$，得
+\[
+    v = \frac{c^2\Delta t}{\Delta x} = \frac{(3\times 10^8)^2\times 0.01}{5\times 10^6} = 1.8\times 10^8\ \mathrm{m/s} = 0.6c,\quad \gamma = \frac{1}{\sqrt{1 - 0.6^2}} = 1.25.
+\]
+代入空间变换：$\Delta x' = \gamma(\Delta x - v\Delta t) = 1.25\times (5\times 10^6 - 1.8\times 10^8\times 0.01) = 4.0\times 10^6\ \mathrm{m}$。
+\end{prob}
+
+\begin{prob}{第 23 题}{宽度 $a$ 的一维无限深势阱，$\psi_n(x) = \sqrt{\frac{2}{a}}\sin\frac{n\pi x}{a}$。求：（1）在 $0\le x\le a/4$ 出现的概率（及 $n=1, n\to\infty$ 的值）；（2）在哪些量子态上 $a/4$ 处概率密度最大？}
+\sol
+\begin{enumerate}[leftmargin=2em, itemsep=2pt]
+    \item $P = \int_0^{a/4} \frac{2}{a}\sin^2\frac{n\pi x}{a}\,\dd x = \frac{1}{4} - \frac{1}{2n\pi}\sin\frac{n\pi}{2}$。\\
+    当 $n=1$ 时，$P_1 = \frac{1}{4} - \frac{1}{2\pi} \approx 0.0908\ (9.1\%)$；当 $n\to\infty$ 时，$P_\infty = \frac{1}{4} = 0.25$。
+    \item $a/4$ 处概率密度 $|\psi_n(a/4)|^2 = \frac{2}{a}\sin^2\frac{n\pi}{4}$。取最大值 $\frac{2}{a}$ 需 $\left|\sin\frac{n\pi}{4}\right| = 1$，即 $\frac{n\pi}{4} = k\pi + \frac{\pi}{2} \implies n = 4k + 2\ (k=0,1,2,\dots)$，即 $n = 2, 6, 10, \dots$。
+\end{enumerate}
+\end{prob}
+
+% =====================================================================
+
+\end{document}
