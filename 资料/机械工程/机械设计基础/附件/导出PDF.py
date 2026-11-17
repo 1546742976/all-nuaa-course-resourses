@@ -33,7 +33,7 @@ def esc(s):
 md=MarkdownIt('commonmark',{'html':True}).enable('table')
 pending=[];out=[];hlevel=0;skip_heading=False;table_cols=0
 def inline(tokens):
- r=[]
+ r=[]; links=[]
  for t in tokens or []:
   if t.type=='text':r.append(esc(t.content))
   elif t.type in ('softbreak','hardbreak'):r.append('\n')
@@ -41,8 +41,18 @@ def inline(tokens):
   elif t.type=='strong_open':r.append(r'\textbf{')
   elif t.type=='em_open':r.append(r'\emph{')
   elif t.type in ('strong_close','em_close'):r.append('}')
-  elif t.type=='link_open':r.append('')
-  elif t.type=='link_close':r.append('')
+  elif t.type=='link_open':
+   href=t.attrGet('href') or ''
+   valid=re.fullmatch(r'#[ckp]-\d+',href,re.I)
+   links.append(bool(valid))
+   if valid:r.append(r'\hyperref['+href[1:]+']{')
+  elif t.type=='link_close':
+   if links.pop():r.append('}')
+  elif t.type=='image':
+   name=Path(t.attrGet('src') or '').name
+   if name not in {'q28.png','a28.png','q29.png','a29.png'}:raise ValueError('Unexpected image '+name)
+   shutil.copy2(ROOT/'附件'/'试题原图'/name,WORK/name)
+   r.append(r'\begin{center}\includegraphics[width=.8\linewidth,height=8cm,keepaspectratio]{'+name+r'}\end{center}')
   elif t.type=='html_inline':pending.extend(re.findall(r'<a\s+id="([^"]+)"\s*>',t.content))
   else:raise ValueError('Unsupported inline '+t.type)
  return ''.join(r)
@@ -126,7 +136,7 @@ preamble=r'''\documentclass[zihao=5,a4paper,UTF8,fontset=fandol]{ctexart}
 \ctexset{section={format=\Large\bfseries\color{navy}},subsection={format=\large\bfseries\color{tealaccent}},subsubsection={format=\normalsize\bfseries}}
 \pagestyle{fancy}\fancyhf{}
 \fancyhead[L]{\small\color{gray}机械设计基础课程讲义}
-\fancyhead[R]{\small\color{gray}资料整理版 0.3}
+\fancyhead[R]{\small\color{gray}资料整理版 0.5}
 \fancyfoot[C]{\thepage}
 \emergencystretch=2em
 \allowdisplaybreaks
