@@ -1,0 +1,41 @@
+\contentsline {section}{C-3400｜阅读说明}{2}{section*.2}%
+\contentsline {section}{C-3401｜基本概念与强度}{2}{section*.3}%
+\contentsline {section}{C-3402｜平面机构自由度}{2}{section*.4}%
+\contentsline {section}{C-3403｜螺旋传动}{2}{section*.5}%
+\contentsline {section}{C-3404｜平面连杆机构（用户笔记“丝杆形式”，待核对）}{2}{section*.6}%
+\contentsline {section}{C-3405｜凸轮、齿轮与轮系}{2}{section*.7}%
+\contentsline {section}{C-3406｜带、连接、轴承和轴}{3}{section*.8}%
+\contentsline {section}{C-3407｜用户指定范围与待核对事项}{3}{section*.9}%
+\contentsline {section}{C-3408｜公式与例题补充（初步识别，待图文复核）}{3}{section*.10}%
+\contentsline {subsection}{K-3409｜螺旋传动的力与效率}{3}{subsection*.11}%
+\contentsline {subsection}{K-3410｜曲柄摇杆行程速比}{3}{subsection*.12}%
+\contentsline {subsection}{K-3411｜标准直齿圆柱齿轮尺寸}{3}{subsection*.13}%
+\contentsline {subsection}{K-3412｜轮系计算步骤}{4}{subsection*.14}%
+\contentsline {subsection}{K-3413｜螺栓组与预紧}{4}{subsection*.15}%
+\contentsline {subsection}{K-3414｜滚动轴承寿命}{4}{subsection*.16}%
+\contentsline {subsection}{K-3415｜带传动及轴结构易错点}{4}{subsection*.17}%
+\contentsline {section}{C-3416｜补充解题方法与自检}{5}{section*.18}%
+\contentsline {subsection}{K-3417｜轴的载荷和弯扭组合（整理说明）}{5}{subsection*.19}%
+\contentsline {subsection}{K-3418｜滚子凸轮作图（整理说明，参照资料 1 第 5—6 页与资料 2 第 4、11 页）}{5}{subsection*.20}%
+\contentsline {subsection}{K-3419｜定轴与周转轮系自编练习}{5}{subsection*.21}%
+\contentsline {subsection}{K-3420｜热处理与材料自检（整理说明，资料 1 第 1 页仅列工艺名）}{5}{subsection*.22}%
+\contentsline {subsection}{K-3421｜平衡（用户指定范围；自编解释，原件未见对应完整计算）}{5}{subsection*.23}%
+\contentsline {subsection}{K-3422｜资料 1 第 1—4 页的补充与审校}{6}{subsection*.24}%
+\contentsline {section}{C-3423｜扩展知识与原件审校}{6}{section*.25}%
+\contentsline {subsection}{K-3424｜凸轮运动规律和原式勘误}{6}{subsection*.26}%
+\contentsline {subsection}{K-3425｜齿轮几何、受力与失效}{6}{subsection*.27}%
+\contentsline {subsection}{K-3426｜带传动设计与计算}{7}{subsection*.28}%
+\contentsline {subsection}{K-3427｜连接、键和联轴器}{7}{subsection*.29}%
+\contentsline {subsection}{K-3428｜滑动轴承、滚动轴承及定位}{7}{subsection*.30}%
+\contentsline {section}{C-3435｜图解与计算训练}{8}{section*.31}%
+\contentsline {subsection}{K-3436｜曲柄摇杆机构：极位和行程图解}{8}{subsection*.32}%
+\contentsline {subsection}{K-3437｜V 带轮槽截面、接触和张紧}{8}{subsection*.33}%
+\contentsline {subsection}{K-3438｜轴的支反力、两平面弯矩和扭矩图}{9}{subsection*.34}%
+\contentsline {subsection}{K-3439｜轴承题查表与参考答案修订}{9}{subsection*.35}%
+\contentsline {subsection}{K-3440｜直齿轮和蜗杆受力：可执行判向步骤}{10}{subsection*.36}%
+\contentsline {section}{C-3429｜2019—2020 学年第 1 学期 A 卷：试题及参考答案（资料 2）}{10}{section*.37}%
+\contentsline {subsection}{K-3430｜一、选择题（每题 1 分，共 10 分）}{10}{subsection*.38}%
+\contentsline {subsection}{K-3431｜二、填空题（每空 1 分，共 15 分）}{11}{subsection*.39}%
+\contentsline {subsection}{K-3432｜三、简答题（共 20 分）}{11}{subsection*.40}%
+\contentsline {subsection}{K-3433｜四、作图与计算题}{12}{subsection*.41}%
+\contentsline {section}{C-3434｜来源与附件说明}{12}{section*.42}%
