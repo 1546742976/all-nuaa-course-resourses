@@ -121,7 +121,7 @@ preamble=r'''\documentclass[zihao=5,a4paper,UTF8,fontset=fandol]{ctexart}
 \ctexset{section={format=\Large\bfseries\color{navy}},subsection={format=\large\bfseries\color{tealaccent}},subsubsection={format=\normalsize\bfseries}}
 \pagestyle{fancy}\fancyhf{}
 \fancyhead[L]{\small\color{gray}电路理论基础课程讲义}
-\fancyhead[R]{\small\color{gray}资料整理版 1.0}
+\fancyhead[R]{\small\color{gray}资料整理版 1.1}
 \fancyfoot[C]{\thepage}
 \emergencystretch=2em
 \allowdisplaybreaks
