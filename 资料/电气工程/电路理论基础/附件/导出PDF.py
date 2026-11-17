@@ -117,17 +117,17 @@ preamble=r'''\documentclass[zihao=5,a4paper,UTF8,fontset=fandol]{ctexart}
 \setlist[itemize]{leftmargin=1.5em}
 \setlist[enumerate]{leftmargin=2em}
 \setcounter{tocdepth}{1}
-\setcounter{secnumdepth}{1}
+\setcounter{secnumdepth}{0}
 \ctexset{section={format=\Large\bfseries\color{navy}},subsection={format=\large\bfseries\color{tealaccent}},subsubsection={format=\normalsize\bfseries}}
 \pagestyle{fancy}\fancyhf{}
 \fancyhead[L]{\small\color{gray}电路理论基础课程讲义}
-\fancyhead[R]{\small\color{gray}资料整理版 1.1}
+\fancyhead[R]{\small\color{gray}资料整理版 1.2}
 \fancyfoot[C]{\thepage}
 \emergencystretch=2em
 \allowdisplaybreaks
 \title{\textbf{电路理论基础课程讲义}\\[.4em]\large 核心知识 · 例题详解 · 习题与参考答案}
 \author{课程资料整理版}
-\date{2026年11月17日}
+\date{2026年11月18日}
 \begin{document}
 \maketitle
 \tableofcontents
