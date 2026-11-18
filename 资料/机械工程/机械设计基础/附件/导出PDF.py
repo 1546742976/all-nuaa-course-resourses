@@ -50,7 +50,7 @@ def inline(tokens):
    if links.pop():r.append('}')
   elif t.type=='image':
    name=Path(t.attrGet('src') or '').name
-   if name not in {'q28.png','a28.png','q29.png','a29.png'}:raise ValueError('Unexpected image '+name)
+   if name not in {'q28.png','a28.png','q29.png','a29.png','q30.png','a30.png','q31.png','q33.png','q34.png','a34.png'}:raise ValueError('Unexpected image '+name)
    shutil.copy2(ROOT/'附件'/'试题原图'/name,WORK/name)
    r.append(r'\begin{center}\includegraphics[width=.8\linewidth,height=8cm,keepaspectratio]{'+name+r'}\end{center}')
   elif t.type=='html_inline':pending.extend(re.findall(r'<a\s+id="([^"]+)"\s*>',t.content))
@@ -72,7 +72,10 @@ for i,t in enumerate(tokens):
   skip_heading=False
  elif typ=='inline':
   if not skip_heading:out.append(inline(t.children))
- elif typ=='paragraph_open':out.append('\n')
+ elif typ=='paragraph_open':
+  if i+4<len(tokens) and tokens[i+1].type=='inline' and tokens[i+1].content.startswith('【') and tokens[i+3].type=='paragraph_open' and tokens[i+4].type=='inline' and any(c.type=='image' for c in (tokens[i+4].children or [])):
+   out.append('\n\\Needspace{9cm}\n')
+  out.append('\n')
  elif typ=='paragraph_close':out.append('\n\n')
  elif typ in ('bullet_list_open','ordered_list_open'):
   out.append('\n\\begin{'+('itemize' if typ=='bullet_list_open' else 'enumerate')+'}\n')
@@ -105,7 +108,7 @@ assert not re.search(r'CIR(?:RAW|MATH)\d+',body)
 assert not re.search(r'\\(?:input|include|write|openout|read|catcode|csname|directlua|usepackage)\b',body)
 preamble=r'''\documentclass[zihao=5,a4paper,UTF8,fontset=fandol]{ctexart}
 \usepackage[top=2.0cm,bottom=2.0cm,left=1.8cm,right=1.8cm,headheight=15pt]{geometry}
-\usepackage{amsmath,amssymb,bm,booktabs,array,tabularx,longtable,enumitem,xcolor,tikz,fancyhdr}
+\usepackage{amsmath,amssymb,bm,booktabs,array,tabularx,longtable,enumitem,xcolor,tikz,fancyhdr,needspace}
 \usepackage[most]{tcolorbox}
 \usepackage{hyperref}
 \definecolor{navy}{HTML}{1B365D}
@@ -136,7 +139,7 @@ preamble=r'''\documentclass[zihao=5,a4paper,UTF8,fontset=fandol]{ctexart}
 \ctexset{section={format=\Large\bfseries\color{navy}},subsection={format=\large\bfseries\color{tealaccent}},subsubsection={format=\normalsize\bfseries}}
 \pagestyle{fancy}\fancyhf{}
 \fancyhead[L]{\small\color{gray}机械设计基础课程讲义}
-\fancyhead[R]{\small\color{gray}资料整理版 0.5}
+\fancyhead[R]{\small\color{gray}资料整理版 0.6}
 \fancyfoot[C]{\thepage}
 \emergencystretch=2em
 \allowdisplaybreaks

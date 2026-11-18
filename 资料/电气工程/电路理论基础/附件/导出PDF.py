@@ -31,7 +31,7 @@ def esc(s):
 md=MarkdownIt('commonmark',{'html':True}).enable('table')
 pending=[];out=[];hlevel=0;skip_heading=False;table_cols=0
 def inline(tokens):
- r=[]
+ r=[];links=[]
  for t in tokens or []:
   if t.type=='text':r.append(esc(t.content))
   elif t.type in ('softbreak','hardbreak'):r.append('\n')
@@ -39,8 +39,18 @@ def inline(tokens):
   elif t.type=='strong_open':r.append(r'\textbf{')
   elif t.type=='em_open':r.append(r'\emph{')
   elif t.type in ('strong_close','em_close'):r.append('}')
-  elif t.type=='link_open':r.append('')
-  elif t.type=='link_close':r.append('')
+  elif t.type=='link_open':
+   href=t.attrGet('href') or ''
+   valid=re.fullmatch(r'#[ckp]-\d+',href,re.I)
+   links.append(bool(valid))
+   if valid:r.append(r'\hyperref['+href[1:]+']{')
+  elif t.type=='link_close':
+   if links.pop():r.append('}')
+  elif t.type=='image':
+   name=Path(t.attrGet('src') or '').name
+   if name not in {'c30101.png','c30102.png'}:raise ValueError('Unexpected image '+name)
+   shutil.copy2(ROOT/'附件'/'试题原图'/name,WORK/name)
+   r.append(r'\begin{center}\includegraphics[width=.65\linewidth,height=6cm,keepaspectratio]{'+name+r'}\end{center}')
   elif t.type=='html_inline':pending.extend(re.findall(r'<a\s+id="([^"]+)"\s*>',t.content))
   else:raise ValueError('Unsupported inline '+t.type)
  return ''.join(r)
@@ -60,7 +70,10 @@ for i,t in enumerate(tokens):
   skip_heading=False
  elif typ=='inline':
   if not skip_heading:out.append(inline(t.children))
- elif typ=='paragraph_open':out.append('\n')
+ elif typ=='paragraph_open':
+  if i+4<len(tokens) and tokens[i+1].type=='inline' and tokens[i+1].content.startswith('【') and tokens[i+3].type=='paragraph_open' and tokens[i+4].type=='inline' and any(c.type=='image' for c in (tokens[i+4].children or [])):
+   out.append('\n\\Needspace{7cm}\n')
+  out.append('\n')
  elif typ=='paragraph_close':out.append('\n\n')
  elif typ in ('bullet_list_open','ordered_list_open'):out.append('\n\\begin{'+('itemize' if typ=='bullet_list_open' else 'enumerate')+'}\n')
  elif typ in ('bullet_list_close','ordered_list_close'):out.append('\n\\end{'+('itemize' if typ=='bullet_list_close' else 'enumerate')+'}\n')
@@ -90,7 +103,7 @@ assert not re.search(r'CIR(?:RAW|MATH)\d+',body)
 assert not re.search(r'\\(?:input|include|write|openout|read|catcode|csname|directlua|usepackage)\b',body)
 preamble=r'''\documentclass[zihao=5,a4paper,UTF8,fontset=fandol]{ctexart}
 \usepackage[top=2.0cm,bottom=2.0cm,left=1.8cm,right=1.8cm,headheight=15pt]{geometry}
-\usepackage{amsmath,amssymb,bm,booktabs,array,tabularx,longtable,enumitem,xcolor,tikz,fancyhdr}
+\usepackage{amsmath,amssymb,bm,booktabs,array,tabularx,longtable,enumitem,xcolor,tikz,fancyhdr,needspace}
 \usepackage[most]{tcolorbox}
 \usepackage{hyperref}
 \definecolor{navy}{HTML}{1B365D}
@@ -121,7 +134,7 @@ preamble=r'''\documentclass[zihao=5,a4paper,UTF8,fontset=fandol]{ctexart}
 \ctexset{section={format=\Large\bfseries\color{navy}},subsection={format=\large\bfseries\color{tealaccent}},subsubsection={format=\normalsize\bfseries}}
 \pagestyle{fancy}\fancyhf{}
 \fancyhead[L]{\small\color{gray}电路理论基础课程讲义}
-\fancyhead[R]{\small\color{gray}资料整理版 1.2}
+\fancyhead[R]{\small\color{gray}资料整理版 1.3}
 \fancyfoot[C]{\thepage}
 \emergencystretch=2em
 \allowdisplaybreaks
