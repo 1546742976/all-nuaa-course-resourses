@@ -50,7 +50,7 @@ def inline(tokens):
    name=Path(t.attrGet('src') or '').name
    if not re.fullmatch(r'c\d{5}(?:-\d+)?\.png',name):raise ValueError('Unexpected image '+name)
    shutil.copy2(ROOT/'附件'/'试题原图'/name,WORK/name)
-   r.append(r'\begin{center}\includegraphics[width=.65\linewidth,height=6cm,keepaspectratio]{'+name+r'}\end{center}')
+   r.append(r'\begin{center}\includegraphics[width=.92\linewidth,height=6cm,keepaspectratio]{'+name+r'}\end{center}')
   elif t.type=='html_inline':pending.extend(re.findall(r'<a\s+id="([^"]+)"\s*>',t.content))
   else:raise ValueError('Unsupported inline '+t.type)
  return ''.join(r)
@@ -134,7 +134,7 @@ preamble=r'''\documentclass[zihao=5,a4paper,UTF8,fontset=fandol]{ctexart}
 \ctexset{section={format=\Large\bfseries\color{navy}},subsection={format=\large\bfseries\color{tealaccent}},subsubsection={format=\normalsize\bfseries}}
 \pagestyle{fancy}\fancyhf{}
 \fancyhead[L]{\small\color{gray}电路理论基础课程讲义}
-\fancyhead[R]{\small\color{gray}资料整理版 1.5}
+\fancyhead[R]{\small\color{gray}资料整理版 1.6}
 \fancyfoot[C]{\thepage}
 \emergencystretch=2em
 \allowdisplaybreaks
