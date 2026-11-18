@@ -48,7 +48,7 @@ def inline(tokens):
    if links.pop():r.append('}')
   elif t.type=='image':
    name=Path(t.attrGet('src') or '').name
-   if name not in {'c30101.png','c30102.png'}:raise ValueError('Unexpected image '+name)
+   if not re.fullmatch(r'c\d{5}(?:-\d+)?\.png',name):raise ValueError('Unexpected image '+name)
    shutil.copy2(ROOT/'附件'/'试题原图'/name,WORK/name)
    r.append(r'\begin{center}\includegraphics[width=.65\linewidth,height=6cm,keepaspectratio]{'+name+r'}\end{center}')
   elif t.type=='html_inline':pending.extend(re.findall(r'<a\s+id="([^"]+)"\s*>',t.content))
@@ -134,7 +134,7 @@ preamble=r'''\documentclass[zihao=5,a4paper,UTF8,fontset=fandol]{ctexart}
 \ctexset{section={format=\Large\bfseries\color{navy}},subsection={format=\large\bfseries\color{tealaccent}},subsubsection={format=\normalsize\bfseries}}
 \pagestyle{fancy}\fancyhf{}
 \fancyhead[L]{\small\color{gray}电路理论基础课程讲义}
-\fancyhead[R]{\small\color{gray}资料整理版 1.3}
+\fancyhead[R]{\small\color{gray}资料整理版 1.5}
 \fancyfoot[C]{\thepage}
 \emergencystretch=2em
 \allowdisplaybreaks
@@ -151,8 +151,8 @@ for i in range(2):
  p=subprocess.run(['xelatex','-no-shell-escape','-interaction=nonstopmode','-halt-on-error','lecture.tex'],cwd=WORK,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
  (WORK/f'xelatex-pass{i+1}.txt').write_bytes(p.stdout)
  if p.returncode:print(p.stdout[-5000:].decode('utf8',errors='replace'));raise SystemExit(p.returncode)
-shutil.copy2(WORK/'lecture.pdf',ROOT/'讲义.pdf')
 aux=(WORK/'lecture.aux').read_text(encoding='utf8')
 mapping={m[1]:int(m[2]) for m in re.finditer(r'\\newlabel\{([ckp]-\d+)\}\{\{[^}]*\}\{(\d+)\}',aux)}
 (WORK/'pdf_page_map.json').write_text(json.dumps(mapping,ensure_ascii=False,indent=2),encoding='utf8')
+shutil.copy2(WORK/'lecture.pdf',ROOT/'讲义.pdf')
 print('PDF exported; mapped IDs:',len(mapping))
