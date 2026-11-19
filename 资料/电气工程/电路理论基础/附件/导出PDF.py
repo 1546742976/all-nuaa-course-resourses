@@ -134,13 +134,13 @@ preamble=r'''\documentclass[zihao=5,a4paper,UTF8,fontset=fandol]{ctexart}
 \ctexset{section={format=\Large\bfseries\color{navy}},subsection={format=\large\bfseries\color{tealaccent}},subsubsection={format=\normalsize\bfseries}}
 \pagestyle{fancy}\fancyhf{}
 \fancyhead[L]{\small\color{gray}电路理论基础课程讲义}
-\fancyhead[R]{\small\color{gray}资料整理版 1.6}
+\fancyhead[R]{\small\color{gray}概念讲解版}
 \fancyfoot[C]{\thepage}
 \emergencystretch=2em
 \allowdisplaybreaks
-\title{\textbf{电路理论基础课程讲义}\\[.4em]\large 核心知识 · 例题详解 · 习题与参考答案}
+\title{\textbf{电路理论基础课程讲义}\\[.4em]\large 电路现象 · 模型条件 · 公式推导}
 \author{课程资料整理版}
-\date{2026年11月18日}
+\date{2026年11月20日}
 \begin{document}
 \maketitle
 \tableofcontents
