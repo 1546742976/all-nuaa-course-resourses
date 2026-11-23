@@ -145,6 +145,7 @@ de.tex)
 (d:/texlive/2026/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzli
 brarytopaths.code.tex)))
 (d:/texlive/2026/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty)
+(d:/texlive/2026/texmf-dist/tex/latex/needspace/needspace.sty)
 (d:/texlive/2026/texmf-dist/tex/latex/tcolorbox/tcolorbox.sty
 (d:/texlive/2026/texmf-dist/tex/latex/tools/verbatim.sty)
 (d:/texlive/2026/texmf-dist/tex/latex/environ/environ.sty
@@ -217,19 +218,33 @@ Library (tcolorbox): 'tcbposter.code.tex' version '6.10.0'
 (./lecture.aux)
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
-(./lecture.out) (./lecture.out) (./lecture.toc) [1]
+(./lecture.out) (./lecture.out) (./lecture.toc) [1] [2] [3] [4]
+(d:/texlive/2026/texmf-dist/tex/latex/lm/omslmr.fd)
+(d:/texlive/2026/texmf-dist/tex/latex/lm/omslmsy.fd) [5]
 (d:/texlive/2026/texmf-dist/tex/latex/amsfonts/umsa.fd)
-(d:/texlive/2026/texmf-dist/tex/latex/amsfonts/umsb.fd) [2] [3] [4] [5]
-Underfull \hbox (badness 1308) in paragraph at lines 361--362
-[]\TU/FandolSong-Regular(0)/m/n/10.53937 斜 齿 圆 柱 齿 轮 的 法 面 模 数 \TU/lmr/m/n/10.5
-3937 m$[]$\TU/FandolSong-Regular(0)/m/n/10.53937 、|  端 面 模 数 \TU/lmr/m/n/10.539
-37 m$[]$ \TU/FandolSong-Regular(0)/m/n/10.53937 关 系 \TU/lmr/m/n/10.53937 m$[]$=
-m$[]$/cos$\OML/cmm/m/it/10.53937 ^^L$\TU/FandolSong-Regular(0)/m/n/10.53937 ，| 
-\TU/lmr/m/n/10.53937 d=m$[]$z/cos$\OML/cmm/m/it/10.53937 ^^L$\TU/FandolSong-Reg
-ular(0)/m/n/10.53937 ；|  标 准 中 心 距 为
-[6] [7] (d:/texlive/2026/texmf-dist/tex/latex/lm/omslmr.fd)
-(d:/texlive/2026/texmf-dist/tex/latex/lm/omslmsy.fd)
-Underfull \hbox (badness 10000) in paragraph at lines 459--460
+(d:/texlive/2026/texmf-dist/tex/latex/amsfonts/umsb.fd)
+Underfull \hbox (badness 2478) in paragraph at lines 311--312
+[]|\TU/FandolSong-Regular(0)/m/n/10.53937 工 作 应 力 为 \TU/lmr/m/n/10.53937 12000/
+120=100
+
+Underfull \hbox (badness 2478) in paragraph at lines 312--313
+[]|\TU/FandolSong-Regular(0)/m/n/10.53937 面 积 至 少 为 \TU/lmr/m/n/10.53937 12000/
+120=100
+[6] [7] [8] [9] [10]
+Missing character: There is no ₛ (U+209B) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ₛ (U+209B) in font [lmroman10-regular]:mapping=t
+ex-text;!
+[11]
+Underfull \hbox (badness 1629) in paragraph at lines 629--630
+[]|\TU/lmr/m/n/10.53937 9$\OMS/cmsy/m/n/10.53937 ^^@$\TU/lmr/m/n/10.53937 8=1\T
+U/FandolSong-Regular(0)/m/n/10.53937 ，|  给 曲 柄
+
+Underfull \hbox (badness 5490) in paragraph at lines 630--631
+[]|\TU/lmr/m/n/10.53937 12$\OMS/cmsy/m/n/10.53937 ^^@$\TU/lmr/m/n/10.53937 10=2
+\TU/FandolSong-Regular(0)/m/n/10.53937 ，|  只 驱
+[12] [13] [14]
+Underfull \hbox (badness 10000) in paragraph at lines 773--774
 \OML/cmm/m/it/10.53937 ^^M$$[]$\TU/lmr/m/n/10.53937 =(AD$[]$+DC$[]$$\OMS/cmsy/m
 /n/10.53937 ^^@$\TU/lmr/m/n/10.53937 AC$[]$$[]$)/(2 |\TU/FandolSong-Regular(0)/
 m/n/10.53937 ·| \TU/lmr/m/n/10.53937 AD |\TU/FandolSong-Regular(0)/m/n/10.53937
@@ -239,7 +254,72 @@ lmr/m/n/10.53937 cos $\OML/cmm/m/it/10.53937 ^^M$$[]$\TU/lmr/m/n/10.53937 =(AD$
 FandolSong-Regular(0)/m/n/10.53937 ·| \TU/lmr/m/n/10.53937 AD |\TU/FandolSong-R
 egular(0)/m/n/10.53937 ·| \TU/lmr/m/n/10.53937 DC)=7/8\TU/FandolSong-Regular(0)
 /m/n/10.53937 。|  因 此
-[8] [9] [10] [11] [12] (./lecture.aux) )
+[15]
+Missing character: There is no ∠ (U+2220) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ∠ (U+2220) in font [lmroman10-regular]:mapping=t
+ex-text;!
+[16] [17] [18] [19]
+Missing character: There is no ₖ (U+2096) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ₖ (U+2096) in font [lmroman10-regular]:mapping=t
+ex-text;!
+[20]
+Underfull \hbox (badness 1308) in paragraph at lines 1030--1031
+[]\TU/FandolSong-Regular(0)/m/n/10.53937 斜 齿 圆 柱 齿 轮 的 法 面 模 数 \TU/lmr/m/n/10.5
+3937 m$[]$\TU/FandolSong-Regular(0)/m/n/10.53937 、|  端 面 模 数 \TU/lmr/m/n/10.539
+37 m$[]$ \TU/FandolSong-Regular(0)/m/n/10.53937 关 系 \TU/lmr/m/n/10.53937 m$[]$=
+m$[]$/cos$\OML/cmm/m/it/10.53937 ^^L$\TU/FandolSong-Regular(0)/m/n/10.53937 ，| 
+\TU/lmr/m/n/10.53937 d=m$[]$z/cos$\OML/cmm/m/it/10.53937 ^^L$\TU/FandolSong-Reg
+ular(0)/m/n/10.53937 ；|  标 准 中 心 距 为
+[21]
+Missing character: There is no ₘ (U+2098) in font [lmroman10-regular]:mapping=t
+ex-text;!
+[22] [23]
+Overfull \hbox (3.82555pt too wide) in paragraph at lines 1200--1201
+\TU/lmr/m/n/10.53937 W\TU/FandolSong-Regular(0)/m/n/10.53937 ） 。|  忽 略 离 心 作 用 
+且 \TU/lmr/m/n/10.53937 F$[]$+F$[]$$\OMS/cmsy/m/n/10.53937 ^^Y$\TU/lmr/m/n/10.53
+937 2F$[]$ \TU/FandolSong-Regular(0)/m/n/10.53937 时，|  临 界 打 滑 满 足 \TU/lmr/m/n/
+10.53937 F$[]$/F$[]$=exp(f$\OML/cmm/m/it/10.53937 ^^K$\TU/lmr/m/n/10.53937 )\TU
+/FandolSong-Regular(0)/m/n/10.53937 ，|  故 \TU/lmr/m/n/10.53937 F$[]$,max$\OMS/c
+msy/m/n/10.53937 ^^Y$\TU/lmr/m/n/10.53937 2F$[]$[exp(f$\OML/cmm/m/it/10.53937 ^
+^K$\TU/lmr/m/n/10.53937 )$\OMS/cmsy/m/n/10.53937 ^^@$\TU/lmr/m/n/10.53937 1]/[e
+xp(f$\OML/cmm/m/it/10.53937 ^^K$\TU/lmr/m/n/10.53937 )+1]\TU/FandolSong-Regular
+(0)/m/n/10.53937 。|
+[24]
+Missing character: There is no χ (U+03C7) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no χ (U+03C7) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ₚ (U+209A) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no τ (U+03C4) in font [lmroman10-regular]:mapping=t
+ex-text;!
+[25] [26]
+Missing character: There is no ᵋ (U+1D4B) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ₚ (U+209A) in font [lmroman10-regular]:mapping=t
+ex-text;!
+[27] [28]
+Underfull \hbox (badness 1168) in paragraph at lines 1481--1482
+[]|\TU/FandolSong-Regular(0)/m/n/10.53937 查 挡 圈 与 端 面 是 否 有 有 效 搭
+[29]
+Missing character: There is no τ (U+03C4) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no τ (U+03C4) in font [lmroman10-regular]:mapping=t
+ex-text;!
+[30]
+Missing character: There is no ᵢ (U+1D62) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ⃗ (U+20D7) in font [lmroman10-regular]:mapping=t
+ex-text;!
+Missing character: There is no ᵢ (U+1D62) in font [lmroman10-regular]:mapping=t
+ex-text;!
+[31] [32] [33] [34] [35] [36] [37] [38] (./lecture.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ )
 (see the transcript file for additional information)
-Output written on lecture.pdf (12 pages).
+Output written on lecture.pdf (38 pages).
 Transcript written on lecture.log.

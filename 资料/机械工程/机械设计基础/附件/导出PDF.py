@@ -3,9 +3,11 @@ from pathlib import Path
 import re,sys,subprocess,shutil,json
 from markdown_it import MarkdownIt
 ROOT=Path(__file__).resolve().parents[1]
-WORK=Path(sys.argv[1]) if len(sys.argv)>1 else ROOT/'附件'/'构建临时'
+book = len(sys.argv)>1 and sys.argv[1]=='--题册'
+name = '题目与解答' if book else '讲义'
+WORK = ROOT/'附件'/'题册构建临时' if book else (Path(sys.argv[1]) if len(sys.argv)>1 else ROOT/'附件'/'构建临时')
 WORK.mkdir(parents=True,exist_ok=True)
-source=(ROOT/'讲义.md').read_text(encoding='utf8')
+source=(ROOT/(name+'.md')).read_text(encoding='utf8')
 raw={};math={}
 def protect_raw(m):
  key=f'CIRRAW{len(raw):05d}';raw[key]=m[1];return '\n\n'+key+'\n\n'
@@ -151,12 +153,15 @@ preamble=r'''\documentclass[zihao=5,a4paper,UTF8,fontset=fandol]{ctexart}
 \tableofcontents
 \clearpage
 '''
+if book:
+ preamble=preamble.replace('机械设计基础课程讲义','机械设计基础综合挑战题').replace('核心知识 · 例题详解 · 习题与参考答案','六道自编综合题 · 独立作答与评分').replace('2026年11月18日','2026年11月23日')
+ body=body.replace(r'\section{解答与自测}',r'\clearpage\section{解答与自测}')
 (WORK/'lecture.tex').write_text(preamble+body+'\n\\end{document}\n',encoding='utf8')
 for i in range(2):
  p=subprocess.run(['xelatex','-no-shell-escape','-interaction=nonstopmode','-halt-on-error','lecture.tex'],cwd=WORK,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
  (WORK/f'xelatex-pass{i+1}.txt').write_bytes(p.stdout)
  if p.returncode:print(p.stdout[-5000:].decode('utf8',errors='replace'));raise SystemExit(p.returncode)
-shutil.copy2(WORK/'lecture.pdf',ROOT/'讲义.pdf')
+shutil.copy2(WORK/'lecture.pdf',ROOT/(name+'.pdf'))
 aux=(WORK/'lecture.aux').read_text(encoding='utf8')
 mapping={m[1]:int(m[2]) for m in re.finditer(r'\\newlabel\{([ckp]-\d+)\}\{\{[^}]*\}\{(\d+)\}',aux)}
 (WORK/'pdf_page_map.json').write_text(json.dumps(mapping,ensure_ascii=False,indent=2),encoding='utf8')

@@ -1,0 +1,14 @@
+\contentsline {section}{试题（自编，100 分）}{2}{section*.2}%
+\contentsline {subsection}{1．导杆逆设计与可制造范围（15 分）}{2}{subsection*.3}%
+\contentsline {subsection}{2．偏置滑块的可行性陷阱（20 分）}{2}{subsection*.4}%
+\contentsline {subsection}{3．凸轮压力角约束的反设计（20 分）}{2}{subsection*.5}%
+\contentsline {subsection}{4．复合轮系反推与功率核对（15 分）}{2}{subsection*.6}%
+\contentsline {subsection}{5．齿轮轴：危险截面可能换位置（15 分）}{2}{subsection*.7}%
+\contentsline {subsection}{6．两面平衡的安装限制（15 分）}{2}{subsection*.8}%
+\contentsline {section}{解答与自测}{3}{section*.9}%
+\contentsline {subsection}{1．先画切线（5＋5＋5 分）}{3}{subsection*.10}%
+\contentsline {subsection}{2．先交轨迹，再验分支（5＋5＋5＋5 分）}{3}{subsection*.11}%
+\contentsline {subsection}{3．最大斜率处未必是最大压力角处（各 5 分）}{3}{subsection*.12}%
+\contentsline {subsection}{4．方向、约束与功率（各 5 分）}{3}{subsection*.13}%
+\contentsline {subsection}{5．要比较应力（各 5 分）}{3}{subsection*.14}%
+\contentsline {subsection}{6．同时消除合力和合力偶（各 5 分）}{3}{subsection*.15}%
