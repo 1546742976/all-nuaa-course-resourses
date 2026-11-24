@@ -315,52 +315,56 @@ LaTeX Warning: Hyper reference `k-3414' on page 39 undefined on input line 1889
 LaTeX Warning: Hyper reference `k-3433' on page 39 undefined on input line 1889
 .
 
-[39] [40] [41]
+[39] [40]
+Underfull \hbox (badness 1168) in paragraph at lines 1983--1983
+[]|\TU/FandolSong-Regular(0)/m/n/10.53937 滚 道 或 滚 动 体 反 复 受 接 触 应
+[41]
 
-LaTeX Warning: Hyper reference `k-3417' on page 42 undefined on input line 2008
+LaTeX Warning: Hyper reference `k-3417' on page 42 undefined on input line 2030
 .
 
 
-LaTeX Warning: Hyper reference `k-3438' on page 42 undefined on input line 2008
+LaTeX Warning: Hyper reference `k-3438' on page 42 undefined on input line 2030
 .
 
 
-LaTeX Warning: Hyper reference `k-3433' on page 42 undefined on input line 2008
-.
-
-
-LaTeX Warning: Hyper reference `k-3433' on page 42 undefined on input line 2096
+LaTeX Warning: Hyper reference `k-3433' on page 42 undefined on input line 2030
 .
 
 [42]
-Underfull \hbox (badness 1168) in paragraph at lines 2124--2125
-[]|\TU/FandolSong-Regular(0)/m/n/10.53937 查 挡 圈 与 端 面 是 否 有 有 效 搭
 
-Underfull \hbox (badness 1168) in paragraph at lines 2141--2141
-[]|\TU/FandolSong-Regular(0)/m/n/10.53937 两 端 分 别 抵 住 相 邻 零 件 或 轴
-[43] [44] [45]
-Underfull \hbox (badness 1168) in paragraph at lines 2250--2251
-[]|\TU/FandolSong-Regular(0)/m/n/10.53937 检 测 转 速 变 化 并 调 整 驱 动 输
-[46] [47]
-
-LaTeX Warning: Hyper reference `k-3439' on page 48 undefined on input line 2375
+LaTeX Warning: Hyper reference `k-3433' on page 43 undefined on input line 2118
 .
 
 
-Underfull \hbox (badness 3713) in paragraph at lines 2390--2390
+Underfull \hbox (badness 1168) in paragraph at lines 2146--2147
+[]|\TU/FandolSong-Regular(0)/m/n/10.53937 查 挡 圈 与 端 面 是 否 有 有 效 搭
+[43]
+Underfull \hbox (badness 1168) in paragraph at lines 2163--2163
+[]|\TU/FandolSong-Regular(0)/m/n/10.53937 两 端 分 别 抵 住 相 邻 零 件 或 轴
+[44] [45]
+Underfull \hbox (badness 1168) in paragraph at lines 2272--2273
+[]|\TU/FandolSong-Regular(0)/m/n/10.53937 检 测 转 速 变 化 并 调 整 驱 动 输
+[46] [47]
+
+LaTeX Warning: Hyper reference `k-3439' on page 48 undefined on input line 2397
+.
+
+[48]
+Underfull \hbox (badness 3713) in paragraph at lines 2412--2412
 []|\TU/lmr/m/n/10.53937 S1 \TU/FandolSong-Regular(0)/m/n/10.53937 第 \TU/lmr/m/n
 /10.53937 5 \TU/FandolSong-Regular(0)/m/n/10.53937 页 等 加 速 与 等 减
 
-Underfull \hbox (badness 1168) in paragraph at lines 2390--2390
+Underfull \hbox (badness 1168) in paragraph at lines 2412--2412
 \TU/FandolSong-Regular(0)/m/n/10.53937 速 公 式 的 加 速 度 分 子 少 一 个
 
-Underfull \hbox (badness 3449) in paragraph at lines 2390--2390
+Underfull \hbox (badness 3449) in paragraph at lines 2412--2412
 \OML/cmm/m/it/10.53937 !$\TU/FandolSong-Regular(0)/m/n/10.53937 ；|  由 速 度 对 时 间
  求 导 应 为
 
-Underfull \hbox (badness 1168) in paragraph at lines 2398--2399
+Underfull \hbox (badness 1168) in paragraph at lines 2420--2421
 \TU/FandolSong-Regular(0)/m/n/10.53937 号 与 题 图 轴 向 力 方 向 仍 需 核
-[48] [49] [50] (./lecture.aux)
+[49] [50] (./lecture.aux)
 
 LaTeX Warning: There were undefined references.
 
