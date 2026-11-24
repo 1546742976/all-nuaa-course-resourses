@@ -1,7 +1,9 @@
 """尝试将权威 Markdown 排成审校预览；结果需人工检查，非正式交付。"""
 from pathlib import Path
+from datetime import datetime
 import json
 import re
+import hashlib
 from urllib.parse import unquote
 import pymupdf as pdf
 from fontTools.ttLib import TTFont
@@ -12,12 +14,30 @@ outdir = root / '附件' / '构建临时' / 'MuPDF审校预览'
 outdir.mkdir(parents=True, exist_ok=True)
 archive = pdf.Archive(r'C:\Windows\Fonts')
 archive.add(str(outdir))
+archive.add(str(root))
 song_path = outdir / 'simsun-preview.ttf'
 song = TTFont(r'C:\Windows\Fonts\simsun.ttc', fontNumber=0)
 song_chars = set(song.getBestCmap())
 if not song_path.exists():
     song.save(song_path)
 song.close()
+# Story uses a raster placeholder to reserve each image's layout. After page
+# layout, replace each placeholder with the corresponding vector SVG as PDF.
+overview_svg = root / '附件' / '图示' / '离散数学总览.svg'
+overview_raster = outdir / '离散数学总览_高分辨率.png'
+with pdf.open(str(overview_svg)) as overview_doc:
+    overview_doc[0].get_pixmap(matrix=pdf.Matrix(2.5, 2.5), alpha=False).save(str(overview_raster))
+set_map_svg = root / '附件' / '图示' / '集合知识地图.svg'
+set_map_raster = outdir / '集合知识地图_高分辨率.png'
+with pdf.open(str(set_map_svg)) as set_map_doc:
+    set_map_doc[0].get_pixmap(matrix=pdf.Matrix(2.5, 2.5), alpha=False).save(str(set_map_raster))
+for map_name in ('关系', '函数', '图论', '数理逻辑', '代数系统'):
+    with pdf.open(str(root / '附件' / '图示' / f'{map_name}知识地图.svg')) as map_doc:
+        map_doc[0].get_pixmap(matrix=pdf.Matrix(2.5, 2.5), alpha=False).save(str(outdir / f'{map_name}知识地图_高分辨率.png'))
+with pdf.open(str(root / '附件' / '图示' / '图论度数示例.svg')) as example_doc:
+    example_doc[0].get_pixmap(matrix=pdf.Matrix(2.5, 2.5), alpha=False).save(str(outdir / '图论度数示例_高分辨率.png'))
+with pdf.open(str(root / '附件' / '图示' / '整除偏序哈斯图.svg')) as example_doc:
+    example_doc[0].get_pixmap(matrix=pdf.Matrix(2.5, 2.5), alpha=False).save(str(outdir / '整除偏序哈斯图_高分辨率.png'))
 css = '''
 @font-face { font-family: uni; src: url(ARIALUNI.ttf); }
 @font-face { font-family: song; src: url(simsun-preview.ttf); }
@@ -42,10 +62,27 @@ for build_pass in (1, 2):
         source = (root / (name + '.md')).read_text(encoding='utf-8')
         expected = {x.upper() for x in re.findall(r'<a id="([kcp]-\d+)"></a>', source)}
         html = md.render(source)
+        html = re.sub(r'(<img\s+[^>]*src=")([^"]+)', lambda m: m.group(1) + unquote(m.group(2)), html)
+        html = html.replace('src="附件/图示/离散数学总览.svg"', 'src="离散数学总览_高分辨率.png"')
+        html = html.replace('src="附件/图示/集合知识地图.svg"', 'src="集合知识地图_高分辨率.png"')
+        for map_name in ('关系', '函数', '图论', '数理逻辑', '代数系统'):
+            html = html.replace(f'src="附件/图示/{map_name}知识地图.svg"', f'src="{map_name}知识地图_高分辨率.png"')
+        html = html.replace('src="附件/图示/图论度数示例.svg"', 'src="图论度数示例_高分辨率.png"')
+        html = html.replace('src="附件/图示/整除偏序哈斯图.svg"', 'src="整除偏序哈斯图_高分辨率.png"')
         # These headings were visually verified to be stranded at page ends.
-        forced = ('K-3524 ', 'K-3547 ') if name == '讲义' else ('C-34035 ', 'C-34069 ', 'C-34079 ', 'C-34084 ')
+        forced = ('K-3548 ', 'K-3549 ', 'K-3551 ', 'K-3552 ', 'K-3522 ', 'K-3524 ', 'K-3526 ', 'K-3529 ', 'K-3530 ', 'K-3531 ', 'K-3534 ', 'K-3541 ', 'K-3542 ', 'K-3544 ', 'K-3545 ', 'K-3547 ') if name == '讲义' else ('C-34035 ', 'C-34069 ', 'C-34075 ', 'C-34079 ', 'C-34084 ')
         for item in forced:
             html = re.sub(r'<(h[23])>(' + re.escape(item) + ')', r'<\1 style="page-break-before: always">\2', html)
+        if name == '讲义':
+            html = html.replace('<h2>核对手记</h2>', '<h2 style="page-break-before: always">核对手记</h2>', 1)
+            html = html.replace('<h3>K-3553 原表核对</h3>', '<h3 style="page-break-before: always">K-3553 原表核对</h3>', 1)
+            html = html.replace('<h2>来源与附件说明</h2>', '<h2 style="page-break-before: always">来源与附件说明</h2>', 1)
+            html = html.replace('<h3>课件原件副本</h3>', '<h3 style="page-break-before: always">课件原件副本</h3>', 1)
+            html = html.replace('<p><strong>方法卡｜Huffman 合并</strong>', '<p style="page-break-before: always"><strong>方法卡｜Huffman 合并</strong>', 1)
+            html = html.replace('<p><strong>自编对照例｜同一张图，两种目标：</strong>', '<p style="page-break-before: always"><strong>自编对照例｜同一张图，两种目标：</strong>', 1)
+            html = html.replace('<p><strong>自编过程例｜距离会怎样更新：</strong>', '<p style="page-break-before: always"><strong>自编过程例｜距离会怎样更新：</strong>', 1)
+            html = html.replace('<p><strong>方法卡｜Kruskal 选边</strong>', '<p style="page-break-before: always"><strong>方法卡｜Kruskal 选边</strong>', 1)
+            html = html.replace('<p>图 4 按这些覆盖边', '<p style="page-break-before: always">图 4 按这些覆盖边', 1)
         def balance_table(match):
             table = match.group(0)
             header = table.split('</thead>', 1)[0]
@@ -61,13 +98,25 @@ for build_pass in (1, 2):
                 paragraph, label = match.group(0), match.group(1)
                 if label in core_labels:
                     box_counter[0] += 1
-                    pagebreak = ' style="page-break-before: always"' if label == '合成关系。' else ''
-                    return f'<div class="corebox" id="corebox-{box_counter[0]}"{pagebreak}><div class="coretitle" id="coretitle-{box_counter[0]}">核心知识</div>' + paragraph + '</div>'
+                    return f'<div class="corebox" id="corebox-{box_counter[0]}"><div class="coretitle" id="coretitle-{box_counter[0]}">核心知识</div>' + paragraph + '</div>'
                 if label.startswith('使用步骤'):
                     box_counter[0] += 1
                     return f'<div class="methodbox" id="methodbox-{box_counter[0]}"><div class="methodtitle" id="methodtitle-{box_counter[0]}">方法与步骤</div>' + paragraph + '</div>'
                 return paragraph
             html = re.sub(r'<p><strong>(.*?)</strong>.*?</p>', add_box, html, flags=re.S)
+            # Put a brief, substantive first paragraph of each section in a
+            # knowledge box. Long paragraphs stay unboxed for manual review.
+            def box_section(match):
+                lead, paragraph = match.group(1), match.group(2)
+                text_only = re.sub(r'<[^>]+>', '', paragraph)
+                if len(text_only) > 240 or text_only.startswith('以下 a、b、c'):
+                    return match.group(0)
+                box_counter[0] += 1
+                i = box_counter[0]
+                return lead + f'<div class="corebox" id="corebox-{i}"><div class="coretitle" id="coretitle-{i}">核心知识</div>' + paragraph + '</div>'
+            html = re.sub(r'(<h2(?:\s[^>]*)?>K-\d+[^<]*</h2>\s*<p><strong>学习目标与先修：</strong>(?:(?!</p>).)*</p>\s*)(<p>(?:(?!</p>).)*</p>)', box_section, html, flags=re.S)
+        else:
+            html = re.sub(r'【(原参考答案思路|原参考答案|整理补充解答|整理校正|整理补充|整理说明|解|证明)】', r'<span class="answerlabel">【\1】</span>', html)
         # The record remains a Markdown file rather than a PDF destination.
         html = html.replace('<a href="%E6%95%B4%E7%90%86%E8%AE%B0%E5%BD%95.md">', '<a>')
         # Font fallback only for visible text: do not alter link targets or HTML tags.
@@ -80,7 +129,8 @@ for build_pass in (1, 2):
             )
         html = ''.join(parts)
         output = outdir / (name + '-审校预览.pdf')
-        story = pdf.Story(html=html, user_css=css, archive=archive)
+        style = css + ('\nh3 { color: #1B365D; font-weight: bold; } span.answerlabel { color: #006D77; font-weight: bold; }' if name == '题目与解答' else '')
+        story = pdf.Story(html=html, user_css=style, archive=archive)
         writer = pdf.DocumentWriter(str(output))
         more = True
         link_positions = []
@@ -100,6 +150,18 @@ for build_pass in (1, 2):
             writer.end_page()
         writer.close()
         doc = pdf.open(output)
+        # Consecutive forced breaks can create truly empty pages. Remove only
+        # pages with no text, drawings, images, or recorded link/box positions,
+        # then translate all recorded body-page numbers before adding links.
+        empty = [i + 1 for i, p in enumerate(doc) if not p.get_text().strip() and not p.get_drawings() and not p.get_images()]
+        if any(n in empty for n, _, _ in link_positions + box_positions):
+            raise ValueError(f'{name}: 空白页含定位信息，不能自动移除 {empty}')
+        def revised_page(number):
+            return number - sum(x < number for x in empty)
+        link_positions = [(revised_page(n), href, rect) for n, href, rect in link_positions]
+        box_positions = [(revised_page(n), ident, rect) for n, ident, rect in box_positions]
+        for n in reversed(empty):
+            doc.delete_page(n - 1)
         # Draw backgrounds behind the already-laid-out text. MuPDF's CSS
         # backgrounds can otherwise paint a continuation stripe over text.
         for box_page, box_id, rect in sorted(box_positions, key=lambda item: 'box-' in item[1]):
@@ -135,7 +197,7 @@ for build_pass in (1, 2):
                     toc.append([2, line, page_no + 2])
         if name == '题目与解答' and set(sections) != set(section_names):
             raise ValueError(f'未找到目录章节: {set(section_names) - set(sections)}')
-        for title in ('重点与易错点', '当前缺口'):
+        for title in ('重点与易错点', '核对手记', '来源与附件说明', '当前缺口'):
             for page_no, p in enumerate(doc, 1):
                 if title in p.get_text().splitlines():
                     sections[title] = page_no + 2
@@ -148,13 +210,15 @@ for build_pass in (1, 2):
         cover.insert_font(fontname='song', fontfile=str(song_path))
         cover.insert_textbox(pdf.Rect(60, 215, page.width - 60, 280), f'离散数学{name}', fontname='song', fontsize=25, align=1, color=(.106,.212,.365))
         cover.insert_textbox(pdf.Rect(65, 300, page.width - 65, 345), '审校预览 · 非最终交付', fontname='song', fontsize=14, align=1, color=(0,.427,.467))
-        cover.insert_textbox(pdf.Rect(65, 565, page.width - 65, 620), '来源：期末速成课讲义资料\n整理日期：2026 年 11 月 23 日', fontname='song', fontsize=11, align=1)
+        generated_date = datetime.now().astimezone().strftime('%Y 年 %m 月 %d 日')
+        cover.insert_textbox(pdf.Rect(65, 565, page.width - 65, 620), f'来源：期末速成课讲义资料\n预览生成日期：{generated_date}', fontname='song', fontsize=11, align=1)
         contents = doc[1]
         contents.insert_font(fontname='song', fontfile=str(song_path))
         contents.insert_text((51, 86), '目录', fontname='song', fontsize=18, color=(.106,.212,.365))
         if name == '讲义':
             groups = [('集合与集合运算','K-3548'), ('关系及其性质','K-3551'), ('关系运算与闭包','K-3522'), ('等价、偏序与函数','K-3524'), ('图的基本概念','K-3529'), ('图的矩阵与路径','K-3532'), ('欧拉图和哈密顿图','K-3535'), ('树、匹配与平面图','K-3537'), ('数理逻辑','K-3541'), ('代数系统','K-3545'), ('重点与易错点','P-3504')]
             entries = [(title, mapping[item]) for title, item in groups]
+            entries += [(title, sections[title]) for title in ('核对手记', '来源与附件说明', '当前缺口') if title in sections]
         else:
             entries = [(title, sections[title]) for title in section_names]
         for i, (title, target) in enumerate(entries):
@@ -187,6 +251,9 @@ for build_pass in (1, 2):
                 target = other_map.get(key) if fragment else 1
                 if target:
                     spec = {'kind': pdf.LINK_GOTOR, 'file': other + '-带定位审校预览.pdf', 'page': target-1, 'to': pdf.Point(0, 0)}
+            elif path.startswith('原始资料/') and (root / path).is_file():
+                target = 1
+                spec = {'kind': pdf.LINK_GOTOR, 'file': '../../../' + path, 'page': 0, 'to': pdf.Point(0, 0)}
             if target:
                 doc[body_no+1].insert_link({'from': rect, **spec})
                 linked += 1
@@ -203,6 +270,23 @@ for build_pass in (1, 2):
             p.insert_text((page.width / 2 - 5, page.height - 28), str(page_no), fontsize=9)
         if toc:
             doc.set_toc(toc)
+        if name == '讲义':
+            for map_name in ('离散数学总览', '集合知识地图', '关系知识地图', '函数知识地图', '图论知识地图', '数理逻辑知识地图', '代数系统知识地图', '图论度数示例', '整除偏序哈斯图'):
+                raster = pdf.Pixmap(str(outdir / f'{map_name}_高分辨率.png'))
+                fingerprint = (raster.width, raster.height, raster.n, hashlib.sha256(raster.samples).digest())
+                placements = []
+                for page_no, map_page in enumerate(doc):
+                    for image in map_page.get_images(full=True):
+                        pix = pdf.Pixmap(doc, image[0])
+                        if (pix.width, pix.height, pix.n, hashlib.sha256(pix.samples).digest()) == fingerprint:
+                            placements.extend((page_no, image[0], rect) for rect in map_page.get_image_rects(image[0]))
+                if len(placements) != 1:
+                    raise ValueError(f'{map_name}: 预期恰有一处图像占位，实际 {len(placements)}')
+                page_no, xref, rect = placements[0]
+                with pdf.open(str(root / '附件' / '图示' / f'{map_name}.svg')) as svg_doc:
+                    with pdf.open('pdf', svg_doc.convert_to_pdf()) as vector_doc:
+                        doc[page_no].delete_image(xref)
+                        doc[page_no].show_pdf_page(rect, vector_doc, 0)
         final = outdir / (name + '-带定位审校预览.pdf')
         doc.subset_fonts()
         doc.save(final, garbage=4, deflate=True)
@@ -210,11 +294,10 @@ for build_pass in (1, 2):
         # PDF file specifications need a UTF-16 Unicode filename for viewers that
         # do not interpret the UTF-8 bytes in a legacy /F entry correctly.
         doc = pdf.open(final)
-        unicode_file = pdf.get_pdf_str(other + '-带定位审校预览.pdf')
         for p in doc:
             for link in p.get_links():
                 if link['kind'] == pdf.LINK_GOTOR:
-                    doc.xref_set_key(link['xref'], 'A/F/UF', unicode_file)
+                    doc.xref_set_key(link['xref'], 'A/F/UF', pdf.get_pdf_str(unquote(link['file'])))
         doc.saveIncr()
         (outdir / (name + '-条目页码.json')).write_text(json.dumps(mapping, ensure_ascii=False, indent=2), encoding='utf-8')
         print(f'{name}: {len(doc)} 页, 定位条目 {len(mapping)}/{len(expected)}, 缺失 {sorted(expected - mapping.keys())}, 正文链接 {linked}, 尚未处理 {sorted(set(unresolved))}, 提取字符 {sum(len(p.get_text()) for p in doc)}')

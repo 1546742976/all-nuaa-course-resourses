@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="340" viewBox="0 0 1000 340">
+<title>机械设计基础全书知识地图</title>
+<defs><marker id="a" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#006d77"/></marker></defs>
+<rect x="1" y="1" width="998" height="338" rx="14" fill="#f4f7fa" stroke="#1b365d" stroke-width="2"/>
+<g fill="#f0f7f7" stroke="#006d77" stroke-width="2"><rect x="32" y="62" width="204" height="65" rx="8"/><rect x="275" y="62" width="204" height="65" rx="8"/><rect x="518" y="62" width="204" height="65" rx="8"/><rect x="761" y="62" width="204" height="65" rx="8"/><rect x="155" y="214" width="240" height="64" rx="8"/><rect x="605" y="214" width="240" height="64" rx="8"/></g>
+<g font-family="Microsoft YaHei, sans-serif" text-anchor="middle" fill="#1b365d"><text text-anchor="middle" x="500" y="38" font-size="25" font-weight="bold">先看运动，再传力，最后检查零件</text><text text-anchor="middle" x="134" y="101" font-size="21">零件与材料</text><text text-anchor="middle" x="377" y="101" font-size="21">受力与强度</text><text text-anchor="middle" x="620" y="101" font-size="21">机构与运动</text><text text-anchor="middle" x="863" y="101" font-size="21">传动与轮系</text><text text-anchor="middle" x="275" y="252" font-size="21">连接、轴承与轴</text><text text-anchor="middle" x="725" y="252" font-size="21">平衡与综合练习</text><text text-anchor="middle" x="500" y="315" font-size="20">先读概念和方法，再结合图示与题册练习；虚线为复核关系</text></g>
+<g stroke="#006d77" stroke-width="3" fill="none" marker-end="url(#a)"><path d="M238 94H269"/><path d="M481 94H512"/><path d="M724 94H755"/><path d="M862 130V169H275V207"/><path d="M397 246H598"/></g><path d="M276 208V170H377V132" stroke="#788c94" stroke-width="2" stroke-dasharray="7 6" fill="none" marker-end="url(#a)"/>
+<g fill="#006d77"><path d="M270 89L277 94L270 99Z M513 89L520 94L513 99Z M756 89L763 94L756 99Z M270 202L275 210L280 202Z M596 241L604 246L596 251Z"/><path d="M372 137L377 129L382 137Z" fill="#788c94"/></g>
+</svg>

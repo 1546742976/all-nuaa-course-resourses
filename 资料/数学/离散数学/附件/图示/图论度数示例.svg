@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="300" viewBox="0 0 900 300">
+  <rect width="900" height="300" fill="white"/>
+  <g fill="none" stroke="#1B365D" stroke-width="4">
+    <path d="M190 135 C260 75 350 75 420 135"/>
+    <path d="M190 135 C260 195 350 195 420 135"/>
+    <path d="M190 135 C75 25 75 245 190 135"/>
+    <path d="M420 135 L690 135"/>
+  </g>
+  <g fill="#006D77" stroke="white" stroke-width="3"><circle cx="190" cy="135" r="11"/><circle cx="420" cy="135" r="11"/><circle cx="690" cy="135" r="11"/></g>
+  <g font-family="SimSun, serif" fill="#1B365D" font-size="24">
+    <text x="179" y="170">a</text><text x="410" y="170">b</text><text x="680" y="170">c</text>
+    <text x="284" y="76">e₁</text><text x="284" y="210">e₂</text><text x="70" y="141">e₃</text><text x="545" y="122">e₄</text>
+    <text x="80" y="260" fill="#006D77">e₁、e₂ 为平行边；e₃ 为自环；e₄ 连接 b 与 c。</text>
+  </g>
+</svg>

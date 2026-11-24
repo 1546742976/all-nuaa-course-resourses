@@ -1,6 +1,7 @@
 """从唯一权威源稿讲义.md导出PDF；需要Python markdown-it-py及XeLaTeX。"""
 from pathlib import Path
-import re,sys,subprocess,shutil,json
+import re,sys,subprocess,shutil,json,os
+from urllib.parse import unquote
 from markdown_it import MarkdownIt
 ROOT=Path(__file__).resolve().parents[1]
 book = len(sys.argv)>1 and sys.argv[1]=='--题册'
@@ -16,11 +17,12 @@ def protect_math(m):
  key=f'CIRMATH{len(math):05d}';math[key]=m[0];return key
 source=re.sub(r'\$\$.*?\$\$|(?<!\\)\$[^$\n]+?(?<!\\)\$|\\\[.*?\\\]|\\\(.*?\\\)',protect_math,source,flags=re.S)
 def esc(s):
+ if '√' in s:raise ValueError('请将根号及其被开方量写为 LaTeX 数学公式')
  s=s.replace('Ⅰ','I')
  s=''.join({'\\':r'\textbackslash{}','&':r'\&','%':r'\%','$':r'\$','#':r'\#','_':r'\_','{':r'\{','}':r'\}','~':r'\textasciitilde{}','^':r'\textasciicircum{}'}.get(c,c) for c in s)
  s=s.replace('≤',r'$\le$').replace('≥',r'$\ge$').replace('→',r'$\to$').replace('π',r'$\pi$').replace('λ',r'$\lambda$').replace('θ',r'$\theta$')
  s=s.replace('μ',r'$\mu$').replace('△',r'$\triangle$').replace('∶',':').replace('′',r'${}^{\prime}$')
- symbols={'γ':r'$\gamma$','−':r'$-$','≈':r'$\approx$','×':r'$\times$','√':r'$\sqrt{\quad}$','ρ':r'$\rho$','η':r'$\eta$','β':r'$\beta$','α':r'$\alpha$','ω':r'$\omega$','ε':r'$\varepsilon$','σ':r'$\sigma$','φ':r'$\varphi$','δ':r'$\delta$','ψ':r'$\psi$','₀':r'$_{0}$','₁':r'$_{1}$','₂':r'$_{2}$','₃':r'$_{3}$','₄':r'$_{4}$','₅':r'$_{5}$','ₕ':r'$_{h}$','ₐ':r'$_{a}$','ₜ':r'$_{t}$','ᵣ':r'$_{r}$','ₙ':r'$_{n}$','ₑ':r'$_{e}$','ᵥ':r'$_{v}$','ᵦ':r'$_{b}$','ᶠ':r'$^{f}$','ᴴ':r'$^{H}$','²':r'$^{2}$','³':r'$^{3}$','⁶':r'$^{6}$','⁻':r'$^{-}$','¹':r'$^{1}$'}
+ symbols={'γ':r'$\gamma$','−':r'$-$','≈':r'$\approx$','×':r'$\times$','ρ':r'$\rho$','η':r'$\eta$','β':r'$\beta$','α':r'$\alpha$','ω':r'$\omega$','ε':r'$\varepsilon$','σ':r'$\sigma$','φ':r'$\varphi$','χ':r'$\chi$','τ':r'$\tau$','∠':r'$\angle$','δ':r'$\delta$','ψ':r'$\psi$','₀':r'$_{0}$','₁':r'$_{1}$','₂':r'$_{2}$','₃':r'$_{3}$','₄':r'$_{4}$','₅':r'$_{5}$','₆':r'$_{6}$','₇':r'$_{7}$','₈':r'$_{8}$','₉':r'$_{9}$','ₕ':r'$_{h}$','ₐ':r'$_{a}$','ₜ':r'$_{t}$','ᵣ':r'$_{r}$','ₙ':r'$_{n}$','ₛ':r'$_{s}$','ₖ':r'$_{k}$','ₘ':r'$_{m}$','ₚ':r'$_{p}$','ᵢ':r'$_{i}$','ᵋ':r'$^{\epsilon}$','ₑ':r'$_{e}$','ᵥ':r'$_{v}$','ᵦ':r'$_{b}$','ᶠ':r'$^{f}$','ᴴ':r'$^{H}$','²':r'$^{2}$','³':r'$^{3}$','⁶':r'$^{6}$','⁰':r'$^{0}$','⁴':r'$^{4}$','⁵':r'$^{5}$','⁷':r'$^{7}$','⁸':r'$^{8}$','⁹':r'$^{9}$','⁻':r'$^{-}$','¹':r'$^{1}$'}
  for c,v in symbols.items():s=s.replace(c,v)
  for n,c in enumerate('①②③④⑤⑥⑦⑧⑨',1):s=s.replace(c,r'\textcircled{'+str(n)+'}')
  for key,val in math.items():
@@ -51,9 +53,17 @@ def inline(tokens):
   elif t.type=='link_close':
    if links.pop():r.append('}')
   elif t.type=='image':
-   name=Path(t.attrGet('src') or '').name
-   if name not in {'q28.png','a28.png','q29.png','a29.png','q30.png','a30.png','q31.png','q33.png','q34.png','a34.png'}:raise ValueError('Unexpected image '+name)
-   shutil.copy2(ROOT/'附件'/'试题原图'/name,WORK/name)
+   name=Path(unquote(t.attrGet('src') or '')).name
+   vector_names={'全书知识地图.svg':'course-map-vector.pdf','B091自由度例题6.svg':'b091-example6-vector.pdf','B091自由度例题7.svg':'b091-example7-vector.pdf','B091四杆杆长分类题.svg':'b091-linkage-example10.pdf','三位置反求轴心示意.svg':'three-position-vector.pdf','急回辅助圆自检.svg':'quick-return-circle-vector.pdf','B091凸轮例题8题图.svg':'b091-cam8-question.pdf','B091凸轮例题8解图.svg':'b091-cam8-answer.pdf','B091偏置凸轮例题9题图.svg':'b091-cam9-question.pdf','B091偏置凸轮例题9解图.svg':'b091-cam9-answer.pdf','凸轮四段反转对应示意.svg':'b091-cam-segments-vector.pdf','曲柄滑块瞬心示意.svg':'instant-center-vector.pdf','第27题机构演化示意.svg':'q27-vector.pdf','第28题凸轮题图.svg':'q28-vector.pdf','第33题轴承受力示意.svg':'q33-vector.pdf','第33题轴承原图轮廓.svg':'q33-profile-vector.pdf','第31题轮系题图.svg':'q31-vector.pdf','第30题机构运动简图.svg':'q30-vector.pdf','第28题参考答案示意.svg':'a28-vector.pdf','第29题传动系统题图.svg':'q29-vector.pdf','第29题参考答案示意.svg':'a29-vector.pdf','第34题轴系结构图.svg':'q34-vector.pdf','第34题原答案位置示意.svg':'a34-vector.pdf'}
+   if name in vector_names or re.fullmatch(r'第(?:0[1-9]|1[0-5])章知识地图\.svg',name):
+    import pymupdf
+    target=vector_names.get(name, 'chapter-map-'+name[1:3]+'.pdf')
+    with pymupdf.open(str(ROOT/'附件'/'图示'/name)) as image_doc:
+     (WORK/target).write_bytes(image_doc.convert_to_pdf())
+    name=target
+   elif name in set():
+    shutil.copy2(ROOT/'附件'/'试题原图'/name,WORK/name)
+   else:raise ValueError('Unexpected image '+name)
    r.append(r'\begin{center}\includegraphics[width=.8\linewidth,height=8cm,keepaspectratio]{'+name+r'}\end{center}')
   elif t.type=='html_inline':pending.extend(re.findall(r'<a\s+id="([^"]+)"\s*>',t.content))
   else:raise ValueError('Unsupported inline '+t.type)
@@ -154,14 +164,15 @@ preamble=r'''\documentclass[zihao=5,a4paper,UTF8,fontset=fandol]{ctexart}
 \clearpage
 '''
 if book:
- preamble=preamble.replace('机械设计基础课程讲义','机械设计基础综合挑战题').replace('核心知识 · 例题详解 · 习题与参考答案','六道自编综合题 · 独立作答与评分').replace('2026年11月18日','2026年11月23日')
+ preamble=preamble.replace('机械设计基础课程讲义','机械设计基础题目与解答').replace('核心知识 · 例题详解 · 习题与参考答案','自编综合题 · 原卷与参考答案').replace('2026年11月18日','2026年11月23日')
  body=body.replace(r'\section{解答与自测}',r'\clearpage\section{解答与自测}')
 (WORK/'lecture.tex').write_text(preamble+body+'\n\\end{document}\n',encoding='utf8')
-for i in range(2):
+for i in range(3):
  p=subprocess.run(['xelatex','-no-shell-escape','-interaction=nonstopmode','-halt-on-error','lecture.tex'],cwd=WORK,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
  (WORK/f'xelatex-pass{i+1}.txt').write_bytes(p.stdout)
  if p.returncode:print(p.stdout[-5000:].decode('utf8',errors='replace'));raise SystemExit(p.returncode)
-shutil.copy2(WORK/'lecture.pdf',ROOT/(name+'.pdf'))
+destination = WORK / (name+'-审校预览.pdf') if os.environ.get('MECH_PDF_PREVIEW') == '1' else ROOT / (name+'.pdf')
+shutil.copy2(WORK/'lecture.pdf',destination)
 aux=(WORK/'lecture.aux').read_text(encoding='utf8')
 mapping={m[1]:int(m[2]) for m in re.finditer(r'\\newlabel\{([ckp]-\d+)\}\{\{[^}]*\}\{(\d+)\}',aux)}
 (WORK/'pdf_page_map.json').write_text(json.dumps(mapping,ensure_ascii=False,indent=2),encoding='utf8')

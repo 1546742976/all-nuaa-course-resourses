@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="440" viewBox="0 0 420 440">
+<title>第31题轮系图，按 S2 第6页重绘</title>
+<defs><pattern id="support" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="5" height="5" fill="#20aec1"/><path d="M0 0V5" stroke="#18304a" stroke-width="2"/></pattern><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#b62828"/></marker></defs>
+<rect width="420" height="440" fill="white"/>
+<g fill="none" stroke="#222" stroke-width="2.5" stroke-linecap="square" stroke-linejoin="round">
+<path d="M80 196V378 M74 196H87 M74 378H87 M74 250H87 M74 304H87"/>
+<path d="M144 173V391 M138 173H151 M138 391H151 M138 304H151"/>
+<path d="M263 31V95 M257 48H269 M257 95H269 M263 108V289 M257 108H269 M257 155H269 M257 289H269"/>
+<path d="M81 223H240V31H263 M81 230H240V418H263V400H257 M263 100H312V223H396"/>
+<path d="M15 276H81 M30 342H144 M144 230H263 M81 223L87 217 M81 223L75 217 M81 223L87 229 M81 223L75 229 M263 223L269 217 M263 223L257 217 M263 223L269 229 M263 223L257 229 M81 276L87 270 M81 276L75 270 M81 276L87 282 M81 276L75 282 M81 342L87 336 M81 342L75 336 M81 342L87 348 M81 342L75 348 M144 342L150 336 M144 342L138 336 M144 342L150 348 M144 342L138 348"/>
+</g>
+<g fill="#31b7c7" stroke="#222" stroke-width="1.5"><rect x="26" y="266" width="34" height="9"/><rect x="26" y="280" width="34" height="9"/><rect x="97" y="330" width="33" height="9"/><rect x="97" y="344" width="33" height="9"/><rect x="178" y="202" width="33" height="9"/><rect x="178" y="235" width="33" height="9"/><rect x="335" y="212" width="33" height="9"/><rect x="335" y="226" width="33" height="9"/></g>
+<path d="M158 370V333" stroke="#b62828" stroke-width="2"/><path d="M158 326L154 335L162 335Z" fill="#b62828"/>
+<g font-family="Times New Roman,serif" font-size="20" font-weight="bold" fill="#111"><text x="70" y="179">1′</text><text x="135" y="162">3′</text><text x="280" y="29">3</text><text x="280" y="84">2</text><text x="280" y="279">1</text><text x="324" y="155">H</text><text x="378" y="204">II</text><text x="101" y="282">5</text><text x="75" y="408">4</text><text x="143" y="415">4′</text><text x="39" y="368">I</text></g>
+</svg>

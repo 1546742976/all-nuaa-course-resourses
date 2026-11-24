@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 340" width="850" height="340">
+<title>第30题机构运动简图，按 S2 第6页重绘</title>
+<rect width="850" height="340" fill="white"/>
+<g fill="none" stroke="#172d47" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+<ellipse cx="117" cy="201" rx="84" ry="122" transform="rotate(6 117 201)"/>
+<path d="M212 121L414 62L534 62L764 200 M212 121L306 282 M414 62L378 282 M534 62L498 282 M396 176L518 176"/>
+<path d="M733 220V181H793V220 M688 220H826 M704 220L696 239 M724 220L716 239 M744 220L736 239 M764 220L756 239 M784 220L776 239 M804 220L796 239"/>
+<path d="M84 272H135 M92 272L87 284 M104 272L99 284 M116 272L111 284 M128 272L123 284 M281 298H333 M289 298L284 310 M301 298L296 310 M313 298L308 310 M325 298L320 310 M352 298H404 M360 298L355 310 M372 298L367 310 M384 298L379 310 M396 298L391 310 M472 298H524 M480 298L475 310 M492 298L487 310 M504 298L499 310 M516 298L511 310"/>
+</g>
+<g stroke="#172d47" fill="white" stroke-width="5"><circle cx="212" cy="121" r="23"/><circle cx="212" cy="121" r="8"/><circle cx="414" cy="62" r="10"/><circle cx="534" cy="62" r="10"/><circle cx="396" cy="176" r="16"/><circle cx="396" cy="176" r="7"/><circle cx="518" cy="176" r="16"/><circle cx="518" cy="176" r="7"/><circle cx="109" cy="257" r="9"/><circle cx="306" cy="282" r="9"/><circle cx="378" cy="282" r="9"/><circle cx="498" cy="282" r="9"/><circle cx="764" cy="200" r="9"/></g>
+<g font-family="Times New Roman,serif" font-weight="bold" font-size="25" fill="#172d47"><text x="106" y="120">1</text><text x="266" y="195">2</text><text x="299" y="81">3</text><text x="470" y="50">4</text><text x="384" y="137">5</text><text x="460" y="163">6</text><text x="538" y="143">7</text><text x="661" y="117">8</text><text x="804" y="205">9</text><text x="134" y="254">A</text><text x="220" y="84">B</text><text x="260" y="291">C</text><text x="418" y="38">D</text><text x="547" y="47">E</text><text x="351" y="183">F</text><text x="546" y="191">G</text><text x="404" y="291">H</text><text x="522" y="291">I</text><text x="756" y="159">K</text></g>
+</svg>

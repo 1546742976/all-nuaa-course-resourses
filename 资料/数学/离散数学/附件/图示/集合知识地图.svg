@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="300" viewBox="0 0 1100 300">
+  <rect width="1100" height="300" fill="white"/>
+  <g font-family="SimSun, serif">
+    <g fill="#F4F7FA" stroke="#1B365D" stroke-width="3">
+      <rect x="20" y="42" width="230" height="88" rx="8"/><rect x="300" y="42" width="230" height="88" rx="8"/>
+      <rect x="580" y="42" width="230" height="88" rx="8"/><rect x="860" y="42" width="220" height="88" rx="8"/>
+    </g>
+    <g fill="#1B365D" font-size="27"><text x="80" y="78">对象与集合</text><text x="360" y="78">子集与幂集</text><text x="640" y="78">集合运算</text><text x="915" y="78">包含排斥</text></g>
+    <g fill="#333" font-size="19"><text x="55" y="109">元素 ∈ 集合</text><text x="335" y="109">子集 ⊆ 集合</text><text x="593" y="109">并、交、补、对称差</text><text x="900" y="109">修正重复计数</text></g>
+    <path d="M250 86h40m-10-8 10 8-10 8 M530 86h40m-10-8 10 8-10 8 M810 86h40m-10-8 10 8-10 8" stroke="#006D77" stroke-width="4" fill="none"/>
+    <rect x="74" y="190" width="952" height="70" rx="8" fill="#F0F7F7" stroke="#006D77" stroke-width="3"/>
+    <text x="265" y="220" fill="#006D77" font-size="22">易混：元素与子集不同；补集要先指定全集</text>
+    <text x="285" y="246" fill="#333" font-size="19">学完集合，可以用有序对和集合描述下一部分的关系。</text>
+  </g>
+</svg>

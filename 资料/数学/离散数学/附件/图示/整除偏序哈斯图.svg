@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="340" viewBox="0 0 800 340">
+  <rect width="800" height="340" fill="white"/>
+  <g fill="none" stroke="#1B365D" stroke-width="4">
+    <path d="M400 265 L250 195 M400 265 L550 195 M250 195 L250 105 M550 195 L550 105 M250 105 L400 35 M550 105 L400 35"/>
+  </g>
+  <path d="M250.0 195.0 L259.2 192.2 M266.7 190.0 L275.8 187.2 M283.3 185.0 L292.5 182.2 M300.0 180.0 L309.2 177.2 M316.7 175.0 L325.8 172.2 M333.3 170.0 L342.5 167.2 M350.0 165.0 L359.2 162.2 M366.7 160.0 L375.8 157.2 M383.3 155.0 L392.5 152.2 M400.0 150.0 L409.2 147.2 M416.7 145.0 L425.8 142.2 M433.3 140.0 L442.5 137.2 M450.0 135.0 L459.2 132.2 M466.7 130.0 L475.8 127.2 M483.3 125.0 L492.5 122.2 M500.0 120.0 L509.2 117.2 M516.7 115.0 L525.8 112.2 M533.3 110.0 L542.5 107.2" fill="none" stroke="#006D77" stroke-width="4"/>
+  <g fill="#F4F7FA" stroke="#1B365D" stroke-width="3">
+    <circle cx="400" cy="265" r="22"/><circle cx="250" cy="195" r="22"/><circle cx="550" cy="195" r="22"/>
+    <circle cx="250" cy="105" r="22"/><circle cx="550" cy="105" r="22"/><circle cx="400" cy="35" r="22"/>
+  </g>
+  <g font-family="SimSun, serif" font-size="26" fill="#1B365D">
+    <text x="394" y="274">1</text><text x="244" y="204">2</text><text x="544" y="204">3</text>
+    <text x="244" y="114">4</text><text x="544" y="114">6</text><text x="387" y="44">12</text>
+    <text x="185" y="325" font-size="22" fill="#006D77">虚线 2—6 是按整除关系补出的覆盖边。</text>
+  </g>
+</svg>
