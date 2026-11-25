@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1250" height="145" viewBox="0 0 1250 145">
+<rect width="1250" height="145" fill="white"/>
+<rect x="8" y="25" width="220" height="92" rx="10" fill="#F0F7F7" stroke="#006D77" stroke-width="2"/>
+<text x="118" y="62" text-anchor="middle" font-family="Microsoft YaHei" font-weight="bold" font-size="23" fill="#1B365D">判别函数</text>
+<text x="118" y="94" text-anchor="middle" font-family="Microsoft YaHei" font-size="19" fill="#1B365D">权重与偏置</text>
+
+<rect x="258" y="25" width="220" height="92" rx="10" fill="#F0F7F7" stroke="#006D77" stroke-width="2"/>
+<text x="368" y="62" text-anchor="middle" font-family="Microsoft YaHei" font-weight="bold" font-size="23" fill="#1B365D">超平面</text>
+<text x="368" y="94" text-anchor="middle" font-family="Microsoft YaHei" font-size="19" fill="#1B365D">方向与距离</text>
+
+<rect x="508" y="25" width="220" height="92" rx="10" fill="#F0F7F7" stroke="#006D77" stroke-width="2"/>
+<text x="618" y="62" text-anchor="middle" font-family="Microsoft YaHei" font-weight="bold" font-size="23" fill="#1B365D">感知准则</text>
+<text x="618" y="94" text-anchor="middle" font-family="Microsoft YaHei" font-size="19" fill="#1B365D">调整权向量</text>
+
+<rect x="758" y="25" width="220" height="92" rx="10" fill="#F0F7F7" stroke="#006D77" stroke-width="2"/>
+<text x="868" y="62" text-anchor="middle" font-family="Microsoft YaHei" font-weight="bold" font-size="23" fill="#1B365D">支持向量机</text>
+<text x="868" y="94" text-anchor="middle" font-family="Microsoft YaHei" font-size="19" fill="#1B365D">最大间隔</text>
+
+<rect x="1008" y="25" width="220" height="92" rx="10" fill="#F0F7F7" stroke="#006D77" stroke-width="2"/>
+<text x="1118" y="62" text-anchor="middle" font-family="Microsoft YaHei" font-weight="bold" font-size="23" fill="#1B365D">模型评价</text>
+<text x="1118" y="94" text-anchor="middle" font-family="Microsoft YaHei" font-size="19" fill="#1B365D">交叉验证</text>
+</svg>

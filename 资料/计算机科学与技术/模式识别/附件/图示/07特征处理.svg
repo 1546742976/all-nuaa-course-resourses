@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1250" height="145" viewBox="0 0 1250 145">
+<rect width="1250" height="145" fill="white"/>
+<rect x="8" y="25" width="220" height="92" rx="10" fill="#F0F7F7" stroke="#006D77" stroke-width="2"/>
+<text x="118" y="62" text-anchor="middle" font-family="Microsoft YaHei" font-weight="bold" font-size="23" fill="#1B365D">原始特征</text>
+<text x="118" y="94" text-anchor="middle" font-family="Microsoft YaHei" font-size="19" fill="#1B365D">确定目标</text>
+
+<rect x="258" y="25" width="220" height="92" rx="10" fill="#F0F7F7" stroke="#006D77" stroke-width="2"/>
+<text x="368" y="62" text-anchor="middle" font-family="Microsoft YaHei" font-weight="bold" font-size="23" fill="#1B365D">特征选择</text>
+<text x="368" y="94" text-anchor="middle" font-family="Microsoft YaHei" font-size="19" fill="#1B365D">保留原有含义</text>
+
+<rect x="508" y="25" width="220" height="92" rx="10" fill="#F0F7F7" stroke="#006D77" stroke-width="2"/>
+<text x="618" y="62" text-anchor="middle" font-family="Microsoft YaHei" font-weight="bold" font-size="23" fill="#1B365D">分支定界</text>
+<text x="618" y="94" text-anchor="middle" font-family="Microsoft YaHei" font-size="19" fill="#1B365D">可靠上界剪枝</text>
+
+<rect x="758" y="25" width="220" height="92" rx="10" fill="#F0F7F7" stroke="#006D77" stroke-width="2"/>
+<text x="868" y="62" text-anchor="middle" font-family="Microsoft YaHei" font-weight="bold" font-size="23" fill="#1B365D">特征提取</text>
+<text x="868" y="94" text-anchor="middle" font-family="Microsoft YaHei" font-size="19" fill="#1B365D">PCA / K-L</text>
+
+<rect x="1008" y="25" width="220" height="92" rx="10" fill="#F0F7F7" stroke="#006D77" stroke-width="2"/>
+<text x="1118" y="62" text-anchor="middle" font-family="Microsoft YaHei" font-weight="bold" font-size="23" fill="#1B365D">验证结果</text>
+<text x="1118" y="94" text-anchor="middle" font-family="Microsoft YaHei" font-size="19" fill="#1B365D">信息与分类效果</text>
+</svg>

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1250" height="145" viewBox="0 0 1250 145">
+<rect width="1250" height="145" fill="white"/>
+<rect x="8" y="25" width="220" height="92" rx="10" fill="#F0F7F7" stroke="#006D77" stroke-width="2"/>
+<text x="118" y="62" text-anchor="middle" font-family="Microsoft YaHei" font-weight="bold" font-size="23" fill="#1B365D">无标签样本</text>
+<text x="118" y="94" text-anchor="middle" font-family="Microsoft YaHei" font-size="19" fill="#1B365D">选择相似度</text>
+
+<rect x="258" y="25" width="220" height="92" rx="10" fill="#F0F7F7" stroke="#006D77" stroke-width="2"/>
+<text x="368" y="62" text-anchor="middle" font-family="Microsoft YaHei" font-weight="bold" font-size="23" fill="#1B365D">硬 C 均值</text>
+<text x="368" y="94" text-anchor="middle" font-family="Microsoft YaHei" font-size="19" fill="#1B365D">中心与分配</text>
+
+<rect x="508" y="25" width="220" height="92" rx="10" fill="#F0F7F7" stroke="#006D77" stroke-width="2"/>
+<text x="618" y="62" text-anchor="middle" font-family="Microsoft YaHei" font-weight="bold" font-size="23" fill="#1B365D">模糊 C 均值</text>
+<text x="618" y="94" text-anchor="middle" font-family="Microsoft YaHei" font-size="19" fill="#1B365D">隶属度更新</text>
+
+<rect x="758" y="25" width="220" height="92" rx="10" fill="#F0F7F7" stroke="#006D77" stroke-width="2"/>
+<text x="868" y="62" text-anchor="middle" font-family="Microsoft YaHei" font-weight="bold" font-size="23" fill="#1B365D">层次聚类</text>
+<text x="868" y="94" text-anchor="middle" font-family="Microsoft YaHei" font-size="19" fill="#1B365D">选择连接方式</text>
+
+<rect x="1008" y="25" width="220" height="92" rx="10" fill="#F0F7F7" stroke="#006D77" stroke-width="2"/>
+<text x="1118" y="62" text-anchor="middle" font-family="Microsoft YaHei" font-weight="bold" font-size="23" fill="#1B365D">解释与评价</text>
+<text x="1118" y="94" text-anchor="middle" font-family="Microsoft YaHei" font-size="19" fill="#1B365D">结合实际任务</text>
+</svg>

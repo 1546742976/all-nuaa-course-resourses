@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1250" height="145" viewBox="0 0 1250 145">
+<rect width="1250" height="145" fill="white"/>
+<rect x="8" y="25" width="220" height="92" rx="10" fill="#F0F7F7" stroke="#006D77" stroke-width="2"/>
+<text x="118" y="62" text-anchor="middle" font-family="Microsoft YaHei" font-weight="bold" font-size="23" fill="#1B365D">先验概率</text>
+<text x="118" y="94" text-anchor="middle" font-family="Microsoft YaHei" font-size="19" fill="#1B365D">类条件密度</text>
+
+<rect x="258" y="25" width="220" height="92" rx="10" fill="#F0F7F7" stroke="#006D77" stroke-width="2"/>
+<text x="368" y="62" text-anchor="middle" font-family="Microsoft YaHei" font-weight="bold" font-size="23" fill="#1B365D">贝叶斯公式</text>
+<text x="368" y="94" text-anchor="middle" font-family="Microsoft YaHei" font-size="19" fill="#1B365D">归一化</text>
+
+<rect x="508" y="25" width="220" height="92" rx="10" fill="#F0F7F7" stroke="#006D77" stroke-width="2"/>
+<text x="618" y="62" text-anchor="middle" font-family="Microsoft YaHei" font-weight="bold" font-size="23" fill="#1B365D">后验概率</text>
+<text x="618" y="94" text-anchor="middle" font-family="Microsoft YaHei" font-size="19" fill="#1B365D">比较类别</text>
+
+<rect x="758" y="25" width="220" height="92" rx="10" fill="#F0F7F7" stroke="#006D77" stroke-width="2"/>
+<text x="868" y="62" text-anchor="middle" font-family="Microsoft YaHei" font-weight="bold" font-size="23" fill="#1B365D">最小错误率</text>
+<text x="868" y="94" text-anchor="middle" font-family="Microsoft YaHei" font-size="19" fill="#1B365D">最大后验</text>
+
+<rect x="1008" y="25" width="220" height="92" rx="10" fill="#F0F7F7" stroke="#006D77" stroke-width="2"/>
+<text x="1118" y="62" text-anchor="middle" font-family="Microsoft YaHei" font-weight="bold" font-size="23" fill="#1B365D">不同损失</text>
+<text x="1118" y="94" text-anchor="middle" font-family="Microsoft YaHei" font-size="19" fill="#1B365D">比较条件风险</text>
+</svg>
