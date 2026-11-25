@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="480" viewBox="0 0 1200 480">
+<rect width="1200" height="480" rx="16" fill="#f4f7fa"/>
+<g fill="none" stroke="#006d77" stroke-width="3"><path d="M130 240 L400 140 M130 240 L400 340 M445 140 L760 70 M445 140 L760 205 M445 340 L760 275 M445 340 L760 410"/></g>
+<rect x="85" y="215" width="50" height="50" fill="#e7edf5" stroke="#1b365d" stroke-width="3"/><circle cx="425" cy="140" r="24" fill="#e7edf5" stroke="#1b365d" stroke-width="3"/><circle cx="425" cy="340" r="24" fill="#e7edf5" stroke="#1b365d" stroke-width="3"/>
+<g font-family="Microsoft YaHei, sans-serif" font-size="25" fill="#1b365d"><text x="25" y="205">决策点</text><text x="165" y="120">大厂：投资 30 万元</text><text x="165" y="400">小厂：投资 20 万元</text><text x="485" y="70">销路好，概率 0.7</text><text x="485" y="220">销路不好，概率 0.3</text><text x="485" y="275">销路好，概率 0.7</text><text x="485" y="425">销路不好，概率 0.3</text><text x="775" y="80">收益 100 万元</text><text x="775" y="215">亏损 20 万元</text><text x="775" y="285">收益 40 万元</text><text x="775" y="420">收益 30 万元</text></g></svg>

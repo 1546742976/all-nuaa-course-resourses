@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="384" viewBox="0 0 1100 384">
+<rect width="1100" height="384" rx="18" fill="#f4f7fa"/>
+<text x="550" y="52" text-anchor="middle" font-family="Microsoft YaHei, sans-serif" font-size="28" font-weight="bold" fill="#1b365d">互联网与管理：信息变化怎样传导到组织</text>
+<rect x="48" y="75" width="1004" height="58" rx="10" fill="#e5f3f3" stroke="#006d77"/>
+<text x="550" y="112" text-anchor="middle" font-family="Microsoft YaHei, sans-serif" font-size="21" fill="#1b365d">信息生成、传播、存储方式变化 → 信息更多、更易获取</text>
+<rect x="48" y="153" width="1004" height="58" rx="10" fill="#e7edf5" stroke="#006d77"/>
+<text x="550" y="190" text-anchor="middle" font-family="Microsoft YaHei, sans-serif" font-size="21" fill="#1b365d">外部：供应商与客户关系变化；竞争者也更易获取信息</text>
+<rect x="48" y="231" width="1004" height="58" rx="10" fill="#e5f3f3" stroke="#006d77"/>
+<text x="550" y="268" text-anchor="middle" font-family="Microsoft YaHei, sans-serif" font-size="21" fill="#1b365d">内部：筛选信息 → 调整协同和授权 → 培养技能、改进决策</text>
+</svg>
