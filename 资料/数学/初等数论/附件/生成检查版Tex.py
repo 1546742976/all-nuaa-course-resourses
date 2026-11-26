@@ -1,6 +1,8 @@
 """生成临时检查版：python 生成检查版Tex.py 讲义.md（或题目与解答.md）。"""
 from pathlib import Path
-import re,sys,subprocess,shutil,json
+from datetime import datetime
+import re,sys,subprocess,shutil,json,hashlib
+from urllib.parse import unquote
 from markdown_it import MarkdownIt
 ROOT=Path(__file__).resolve().parents[1]
 if len(sys.argv)!=2 or sys.argv[1] not in ('讲义.md','题目与解答.md'):
@@ -54,17 +56,30 @@ def inline(tokens):
   elif t.type=='em_open':r.append(r'\emph{')
   elif t.type in ('strong_close','em_close'):r.append('}')
   elif t.type=='link_open':
-   href=t.attrGet('href') or ''
+   href=unquote(t.attrGet('href') or '')
    valid=re.fullmatch(r'#[ckp]-\d+',href,re.I)
-   links.append(bool(valid))
+   cross=re.fullmatch(r'(讲义|题目与解答)\.md#([ckp]-\d+)',href,re.I)
+   links.append(bool(valid or cross))
    if valid:r.append(r'\hyperref['+href[1:]+']{')
+   elif cross:
+    target='L' if cross[1]=='讲义' else 'Q'
+    r.append(r'\href{https://pdf-links.invalid/'+target+'/'+cross[2]+'}{')
   elif t.type=='link_close':
    if links.pop():r.append('}')
   elif t.type=='image':
-   name=Path(t.attrGet('src') or '').name
-   if name not in {'q28.png','a28.png','q29.png','a29.png','q30.png','a30.png','q31.png','q33.png','q34.png','a34.png'}:raise ValueError('Unexpected image '+name)
-   shutil.copy2(ROOT/'附件'/'试题原图'/name,WORK/name)
-   r.append(r'\begin{center}\includegraphics[width=.8\linewidth,height=8cm,keepaspectratio]{'+name+r'}\end{center}')
+   name=Path(unquote(t.attrGet('src') or '')).name
+   if re.fullmatch(r'图(?:0-1-数论知识路线|[1-8]-1-知识地图)\.svg',name):
+    import pymupdf
+    svg=ROOT/'附件'/'图示'/name
+    if not svg.is_file():raise ValueError('Missing diagram '+name)
+    target='diagram-'+str(len(list(WORK.glob('diagram-*.pdf'))))+'.pdf'
+    with pymupdf.open(svg) as diagram:
+     (WORK/target).write_bytes(diagram.convert_to_pdf())
+    r.append(r'\begin{center}\includegraphics[width=.98\linewidth,height=8cm,keepaspectratio]{'+target+r'}\end{center}')
+   else:
+    if name not in {'q28.png','a28.png','q29.png','a29.png','q30.png','a30.png','q31.png','q33.png','q34.png','a34.png'}:raise ValueError('Unexpected image '+name)
+    shutil.copy2(ROOT/'附件'/'试题原图'/name,WORK/name)
+    r.append(r'\begin{center}\includegraphics[width=.8\linewidth,height=8cm,keepaspectratio]{'+name+r'}\end{center}')
   elif t.type=='html_inline':pending.extend(re.findall(r'<a\s+id="([^"]+)"\s*>',t.content))
   else:raise ValueError('Unsupported inline '+t.type)
  return ''.join(r)
@@ -76,7 +91,8 @@ for i,t in enumerate(tokens):
  elif typ=='heading_open':
   hlevel=int(t.tag[1:]);skip_heading=hlevel==1
   if not skip_heading:
-   lines=18 if hlevel==2 and sys.argv[1]=='题目与解答.md' else (14 if hlevel==2 else 12)
+   heading = tokens[i+1].content if i+1<len(tokens) and tokens[i+1].type=='inline' else ''
+   lines=5 if heading in ('来源与附件说明','题意待核对') else (18 if hlevel==2 and sys.argv[1]=='题目与解答.md' else (14 if hlevel==2 else 12))
    out.append('\n\\Needspace{'+str(lines)+'\\baselineskip}\n\\'+{2:'section',3:'subsection',4:'subsubsection'}.get(hlevel,'paragraph')+'{')
  elif typ=='heading_close':
   if not skip_heading:
@@ -89,6 +105,12 @@ for i,t in enumerate(tokens):
  elif typ=='paragraph_open':
   paragraph = tokens[i+1].content if i+1<len(tokens) and tokens[i+1].type=='inline' else ''
   current_box=None
+  if paragraph.startswith('**三句话带走：**'):
+   out.append('\n\\Needspace{6cm}\n')
+  if paragraph.startswith('**本节核对手记**'):
+   out.append('\n\\Needspace{7cm}\n')
+  if paragraph.startswith('**符号对照：**'):
+   out.append('\n\\Needspace{5cm}\n')
   if paragraph.startswith(('**原文范围补充','**原文条件补充','**原文疑点','**整理补充：')):
    out.append('\n\\Needspace{4\\baselineskip}\n')
   if sys.argv[1]=='讲义.md':
@@ -151,7 +173,7 @@ preamble=r'''\documentclass[zihao=5,a4paper,UTF8,fontset=fandol]{ctexart}
 \definecolor{warnbg}{HTML}{FDF3F2}
 \definecolor{tipbg}{HTML}{F0F7F7}
 \definecolor{bordergray}{HTML}{CBD5E1}
-\hypersetup{unicode=true,colorlinks=true,linkcolor=navy,urlcolor=tealaccent,bookmarksdepth=3,pdftitle={初等数论课程检查稿}}
+\hypersetup{unicode=true,colorlinks=true,linkcolor=navy,urlcolor=tealaccent,bookmarksdepth=3,pdftitle={初等数论讲义（课件整理版）}}
 \newtcolorbox{formulabox}[1][核心公式与基本规律]{enhanced,breakable,colback=softbg,colframe=navy,title=#1,fonttitle=\bfseries,boxrule=.6pt,arc=2pt,left=6pt,right=6pt,top=5pt,bottom=5pt}
 \newtcolorbox{typebox}[1][题型分析]{enhanced,breakable,colback=tipbg,colframe=tealaccent,title=#1,fonttitle=\bfseries,boxrule=.6pt,arc=2pt,left=6pt,right=6pt,top=5pt,bottom=5pt}
 \newtcolorbox{warnbox}[1][重点与易错点]{enhanced,breakable,colback=warnbg,colframe=warnred,title=#1,fonttitle=\bfseries,boxrule=.6pt,arc=2pt,left=6pt,right=6pt,top=5pt,bottom=5pt}
@@ -171,22 +193,24 @@ preamble=r'''\documentclass[zihao=5,a4paper,UTF8,fontset=fandol]{ctexart}
 \setcounter{secnumdepth}{0}
 \ctexset{section={format=\Large\bfseries\color{navy}},subsection={format=\large\bfseries\color{tealaccent}},subsubsection={format=\normalsize\bfseries}}
 \pagestyle{fancy}\fancyhf{}
-\fancyhead[L]{\small\color{gray}初等数论课程检查稿}
-\fancyhead[R]{\small\color{gray}资料整理检查版}
+\fancyhead[L]{\small\color{gray}初等数论讲义}
+\fancyhead[R]{\small\color{gray}课件整理版}
 \fancyfoot[C]{\thepage}
 \emergencystretch=2em
 \allowdisplaybreaks
-\title{\textbf{初等数论课程检查稿}\\[.4em]\large 课程内容与参考解答}
+\title{\textbf{初等数论讲义}\\[.4em]\large 课件整理版}
 \author{课程资料整理版}
-\date{2026年11月23日}
+\date{生成日期：CHECK_GENERATED_DATE}
 \begin{document}
 \maketitle
 \clearpage
 \tableofcontents
 \clearpage
 '''
+generated_at=datetime.now().astimezone()
+preamble=preamble.replace('CHECK_GENERATED_DATE',generated_at.strftime('%Y年%m月%d日'))
 if sys.argv[1]=='题目与解答.md':
- preamble=preamble.replace('初等数论课程检查稿','初等数论题目与解答检查稿')
+ preamble=preamble.replace('初等数论讲义','初等数论题目与解答')
  preamble=preamble.replace('subsection={format=\\large\\bfseries\\color{tealaccent}}','subsection={format=\\large\\bfseries\\color{navy}}')
 (WORK/'lecture.tex').write_text(preamble+body+'\n\\end{document}\n',encoding='utf8')
 for i in range(3):
@@ -197,4 +221,9 @@ shutil.copy2(WORK/'lecture.pdf',OUTPUT)
 aux=(WORK/'lecture.aux').read_text(encoding='utf8')
 mapping={m[1]:int(m[2]) for m in re.finditer(r'\\newlabel\{([ckp]-\d+)\}\{\{[^}]*\}\{(\d+)\}',aux)}
 (WORK/'pdf_page_map.json').write_text(json.dumps(mapping,ensure_ascii=False,indent=2),encoding='utf8')
+inputs = [ROOT / sys.argv[1], Path(__file__).resolve()]
+if sys.argv[1]=='讲义.md':
+ inputs += sorted((ROOT/'附件'/'图示').glob('*.svg'))
+manifest = {str(path.relative_to(ROOT)):hashlib.sha256(path.read_bytes()).hexdigest() for path in inputs}
+(WORK/'build_inputs.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2),encoding='utf8')
 print('CHECK PDF:', OUTPUT, 'mapped IDs:', len(mapping))

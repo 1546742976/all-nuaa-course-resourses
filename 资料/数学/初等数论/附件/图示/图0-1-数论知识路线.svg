@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="300" viewBox="0 0 1200 300">
+  <title>初等数论知识路线</title>
+  <desc>从整除、最大公约数通向同余，再分为同余方程、二次剩余与原根指标。</desc>
+  <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#006d77"/></marker></defs>
+  <g font-family="Microsoft YaHei, sans-serif" text-anchor="middle" fill="#1b365d">
+    <text text-anchor="middle" x="600" y="32" font-size="25" font-weight="bold">从整数运算到模运算</text>
+    <g fill="#f0f7f7" stroke="#006d77" stroke-width="2">
+      <rect x="30" y="85" width="200" height="76" rx="8"/><rect x="290" y="85" width="220" height="76" rx="8"/><rect x="570" y="85" width="200" height="76" rx="8"/><rect x="860" y="55" width="290" height="60" rx="8"/><rect x="860" y="137" width="290" height="60" rx="8"/><rect x="860" y="219" width="290" height="60" rx="8"/>
+    </g>
+    <g font-size="22"><text text-anchor="middle" x="130" y="117">整除与素数</text><text text-anchor="middle" x="130" y="145" font-size="20">筛法 · 互素</text><text text-anchor="middle" x="400" y="117">最大公约数</text><text text-anchor="middle" x="400" y="145" font-size="20">辗转相除 · 裴蜀等式</text><text text-anchor="middle" x="670" y="117">同余与逆元</text><text text-anchor="middle" x="670" y="145" font-size="20">欧拉函数 · 模幂</text><text text-anchor="middle" x="1005" y="93">一次同余 · 中国剩余定理</text><text text-anchor="middle" x="1005" y="175">平方剩余 · 二次同余</text><text text-anchor="middle" x="1005" y="257">阶 · 原根 · 指标</text></g>
+    <g fill="none" stroke="#006d77" stroke-width="3" marker-end="url(#arrow)"><path d="M230 123 H280"/><path d="M510 123 H560"/><path d="M770 123 H815 V85 H850"/><path d="M770 123 H815 V167 H850"/><path d="M770 123 H815 V249 H850"/></g>
+    <g fill="#006d77"><path d="M280 123 l-10 -5 v10 z"/><path d="M560 123 l-10 -5 v10 z"/><path d="M850 85 l-10 -5 v10 z"/><path d="M850 167 l-10 -5 v10 z"/><path d="M850 249 l-10 -5 v10 z"/></g>
+  </g>
+</svg>
