@@ -4,12 +4,15 @@ from datetime import datetime
 import json
 import re
 import hashlib
+import sys
+import shutil
 from urllib.parse import unquote
 import pymupdf as pdf
 from fontTools.ttLib import TTFont
 from markdown_it import MarkdownIt
 
 root = Path(__file__).resolve().parents[1]
+formal = '--正式' in sys.argv[1:]
 outdir = root / '附件' / '构建临时' / 'MuPDF审校预览'
 outdir.mkdir(parents=True, exist_ok=True)
 archive = pdf.Archive(r'C:\Windows\Fonts')
@@ -70,19 +73,24 @@ for build_pass in (1, 2):
         html = html.replace('src="附件/图示/图论度数示例.svg"', 'src="图论度数示例_高分辨率.png"')
         html = html.replace('src="附件/图示/整除偏序哈斯图.svg"', 'src="整除偏序哈斯图_高分辨率.png"')
         # These headings were visually verified to be stranded at page ends.
-        forced = ('K-3548 ', 'K-3549 ', 'K-3551 ', 'K-3552 ', 'K-3522 ', 'K-3524 ', 'K-3526 ', 'K-3529 ', 'K-3530 ', 'K-3531 ', 'K-3534 ', 'K-3541 ', 'K-3542 ', 'K-3544 ', 'K-3545 ', 'K-3547 ') if name == '讲义' else ('C-34035 ', 'C-34069 ', 'C-34075 ', 'C-34079 ', 'C-34084 ')
+        forced = ('K-3548 ', 'K-3550 ', 'K-3551 ', 'K-3552 ', 'K-3524 ', 'K-3526 ', 'K-3529 ', 'K-3530 ', 'K-3531 ', 'K-3533 ', 'K-3541 ', 'K-3542 ', 'K-3546 ', 'K-3547 ') if name == '讲义' else ('C-34034 ', 'C-34090 ')
         for item in forced:
             html = re.sub(r'<(h[23])>(' + re.escape(item) + ')', r'<\1 style="page-break-before: always">\2', html)
         if name == '讲义':
+            html = html.replace('<h3>代数系统部分复盘</h3>', '<h3 style="page-break-before: always">代数系统部分复盘</h3>', 1)
+            html = html.replace('<h3>数理逻辑部分复盘</h3>', '<h3 style="page-break-before: always">数理逻辑部分复盘</h3>', 1)
             html = html.replace('<h2>核对手记</h2>', '<h2 style="page-break-before: always">核对手记</h2>', 1)
             html = html.replace('<h3>K-3553 原表核对</h3>', '<h3 style="page-break-before: always">K-3553 原表核对</h3>', 1)
             html = html.replace('<h2>来源与附件说明</h2>', '<h2 style="page-break-before: always">来源与附件说明</h2>', 1)
             html = html.replace('<h3>课件原件副本</h3>', '<h3 style="page-break-before: always">课件原件副本</h3>', 1)
             html = html.replace('<p><strong>方法卡｜Huffman 合并</strong>', '<p style="page-break-before: always"><strong>方法卡｜Huffman 合并</strong>', 1)
-            html = html.replace('<p><strong>自编对照例｜同一张图，两种目标：</strong>', '<p style="page-break-before: always"><strong>自编对照例｜同一张图，两种目标：</strong>', 1)
             html = html.replace('<p><strong>自编过程例｜距离会怎样更新：</strong>', '<p style="page-break-before: always"><strong>自编过程例｜距离会怎样更新：</strong>', 1)
             html = html.replace('<p><strong>方法卡｜Kruskal 选边</strong>', '<p style="page-break-before: always"><strong>方法卡｜Kruskal 选边</strong>', 1)
             html = html.replace('<p>图 4 按这些覆盖边', '<p style="page-break-before: always">图 4 按这些覆盖边', 1)
+        else:
+            html = html.replace('<p>【整理补充】下表记录一种确定顺序', '<p style="page-break-before: always">【整理补充】下表记录一种确定顺序', 1)
+            html = html.replace('<h2>命题逻辑</h2>', '<h2 style="page-break-before: always">命题逻辑</h2>', 1)
+            html = html.replace('<h2>二分图与平面图</h2>', '<h2 style="page-break-before: always">二分图与平面图</h2>', 1)
         def balance_table(match):
             table = match.group(0)
             header = table.split('</thead>', 1)[0]
@@ -197,7 +205,7 @@ for build_pass in (1, 2):
                     toc.append([2, line, page_no + 2])
         if name == '题目与解答' and set(sections) != set(section_names):
             raise ValueError(f'未找到目录章节: {set(section_names) - set(sections)}')
-        for title in ('重点与易错点', '核对手记', '来源与附件说明', '当前缺口'):
+        for title in ('重点与易错点', '课件复习地图与课程范围', '核对手记', '来源与附件说明', '当前缺口'):
             for page_no, p in enumerate(doc, 1):
                 if title in p.get_text().splitlines():
                     sections[title] = page_no + 2
@@ -209,16 +217,16 @@ for build_pass in (1, 2):
         cover = doc[0]
         cover.insert_font(fontname='song', fontfile=str(song_path))
         cover.insert_textbox(pdf.Rect(60, 215, page.width - 60, 280), f'离散数学{name}', fontname='song', fontsize=25, align=1, color=(.106,.212,.365))
-        cover.insert_textbox(pdf.Rect(65, 300, page.width - 65, 345), '审校预览 · 非最终交付', fontname='song', fontsize=14, align=1, color=(0,.427,.467))
+        cover.insert_textbox(pdf.Rect(65, 300, page.width - 65, 345), '课件整理版' if formal else '审校预览 · 非最终交付', fontname='song', fontsize=14, align=1, color=(0,.427,.467))
         generated_date = datetime.now().astimezone().strftime('%Y 年 %m 月 %d 日')
-        cover.insert_textbox(pdf.Rect(65, 565, page.width - 65, 620), f'来源：期末速成课讲义资料\n预览生成日期：{generated_date}', fontname='song', fontsize=11, align=1)
+        cover.insert_textbox(pdf.Rect(65, 565, page.width - 65, 620), f'来源：期末速成课讲义资料\n生成日期：{generated_date}', fontname='song', fontsize=11, align=1)
         contents = doc[1]
         contents.insert_font(fontname='song', fontfile=str(song_path))
         contents.insert_text((51, 86), '目录', fontname='song', fontsize=18, color=(.106,.212,.365))
         if name == '讲义':
             groups = [('集合与集合运算','K-3548'), ('关系及其性质','K-3551'), ('关系运算与闭包','K-3522'), ('等价、偏序与函数','K-3524'), ('图的基本概念','K-3529'), ('图的矩阵与路径','K-3532'), ('欧拉图和哈密顿图','K-3535'), ('树、匹配与平面图','K-3537'), ('数理逻辑','K-3541'), ('代数系统','K-3545'), ('重点与易错点','P-3504')]
             entries = [(title, mapping[item]) for title, item in groups]
-            entries += [(title, sections[title]) for title in ('核对手记', '来源与附件说明', '当前缺口') if title in sections]
+            entries += [(title, sections[title]) for title in ('课件复习地图与课程范围', '核对手记', '来源与附件说明', '当前缺口') if title in sections]
         else:
             entries = [(title, sections[title]) for title in section_names]
         for i, (title, target) in enumerate(entries):
@@ -250,10 +258,10 @@ for build_pass in (1, 2):
             elif path == other + '.md':
                 target = other_map.get(key) if fragment else 1
                 if target:
-                    spec = {'kind': pdf.LINK_GOTOR, 'file': other + '-带定位审校预览.pdf', 'page': target-1, 'to': pdf.Point(0, 0)}
+                    spec = {'kind': pdf.LINK_GOTOR, 'file': other + ('.pdf' if formal else '-带定位审校预览.pdf'), 'page': target-1, 'to': pdf.Point(0, 0)}
             elif path.startswith('原始资料/') and (root / path).is_file():
                 target = 1
-                spec = {'kind': pdf.LINK_GOTOR, 'file': '../../../' + path, 'page': 0, 'to': pdf.Point(0, 0)}
+                spec = {'kind': pdf.LINK_GOTOR, 'file': path if formal else '../../../' + path, 'page': 0, 'to': pdf.Point(0, 0)}
             if target:
                 doc[body_no+1].insert_link({'from': rect, **spec})
                 linked += 1
@@ -264,8 +272,8 @@ for build_pass in (1, 2):
         for page_no, p in enumerate(doc, 1):
             p.insert_font(fontname='simsun', fontfile=r'C:\Windows\Fonts\simsun.ttc')
             if page_no > 2:
-                p.insert_text((51, 36), f'离散数学{name} · 审校预览', fontname='simsun', fontsize=8, color=(.45, .45, .45))
-                p.insert_text((page.width - 132, 36), '整理预览版', fontname='simsun', fontsize=8, color=(.45, .45, .45))
+                p.insert_text((51, 36), f'离散数学{name}' + ('' if formal else ' · 审校预览'), fontname='simsun', fontsize=8, color=(.45, .45, .45))
+                p.insert_text((page.width - 132, 36), '课件整理版' if formal else '整理预览版', fontname='simsun', fontsize=8, color=(.45, .45, .45))
                 p.draw_line((51, 43), (page.width - 51, 43), color=(.75,.78,.8), width=.4)
             p.insert_text((page.width / 2 - 5, page.height - 28), str(page_no), fontsize=9)
         if toc:
@@ -302,3 +310,5 @@ for build_pass in (1, 2):
         (outdir / (name + '-条目页码.json')).write_text(json.dumps(mapping, ensure_ascii=False, indent=2), encoding='utf-8')
         print(f'{name}: {len(doc)} 页, 定位条目 {len(mapping)}/{len(expected)}, 缺失 {sorted(expected - mapping.keys())}, 正文链接 {linked}, 尚未处理 {sorted(set(unresolved))}, 提取字符 {sum(len(p.get_text()) for p in doc)}')
         doc.close()
+        if formal and build_pass == 2:
+            shutil.copy2(final, root / (name + '.pdf'))

@@ -31,7 +31,7 @@ for name, doc in docs.items():
     for issue in issues:
         print(' ', issue)
     if name.startswith('讲义'):
-        expected = ['K-3548','K-3551','K-3522','K-3524','K-3529','K-3532','K-3535','K-3537','K-3541','K-3545','P-3504','核对手记','来源与附件说明','当前缺口']
+        expected = ['K-3548','K-3551','K-3522','K-3524','K-3529','K-3532','K-3535','K-3537','K-3541','K-3545','P-3504','课件复习地图与课程范围','核对手记','来源与附件说明','当前缺口']
     else:
         expected = re.findall(r'^## (.+)$', (root / '题目与解答.md').read_text(encoding='utf-8'), re.M)
     directory_links = sorted(doc[1].get_links(), key=lambda link: link['from'].y0)
