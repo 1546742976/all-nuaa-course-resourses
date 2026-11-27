@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="490" viewBox="0 0 1200 490">
+<rect width="1200" height="490" fill="white"/>
+<g font-family="Microsoft YaHei,sans-serif" fill="#1b365d" font-size="27">
+<text x="40" y="42" font-weight="bold">位扩展：两片同时工作，拼成 8 位数据</text>
+<rect x="330" y="170" width="220" height="100" rx="8" fill="#f0f7f7" stroke="#1b365d" stroke-width="3"/>
+<rect x="650" y="170" width="220" height="100" rx="8" fill="#f0f7f7" stroke="#1b365d" stroke-width="3"/>
+<text x="440" y="218" text-anchor="middle">芯片 1</text><text x="440" y="250" text-anchor="middle">1K × 4 位</text>
+<text x="760" y="218" text-anchor="middle">芯片 2</text><text x="760" y="250" text-anchor="middle">1K × 4 位</text>
+<path d="M160 93 H1000 M440 93 V170 M760 93 V170" stroke="#006d77" stroke-width="4" fill="none"/>
+<text x="600" y="82" text-anchor="middle">共同地址 A0—A9</text>
+<path d="M440 270 V335 M760 270 V335" stroke="#006d77" stroke-width="4" fill="none"/>
+<text x="440" y="367" text-anchor="middle">数据 D7—D4</text><text x="760" y="367" text-anchor="middle">数据 D3—D0</text>
+<path d="M120 410 H1080" stroke="#1b365d" stroke-width="3"/>
+<text x="600" y="449" text-anchor="middle">片选与写使能共用；两组 4 位拼成 1K × 8 位</text>
+</g></svg>
